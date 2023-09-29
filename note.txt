@@ -1,0 +1,20 @@
+SƠ ĐỒ :
+sơ đồ lớp : chưa có
+sơ đồ chức năng(chính/phụ) : chưa có
+lưu đồ giải thuật : chưa có
+
+
+
+MÔ HÌNH : 
+mô hình quan niệm  : chưa hoàn thiện
+quan hệ thực thể er : chưa hoàn thiện
+thành phần dữ liệu mức logic : chưa hoàn thiện 
+
+YÊU CẦU:
+tên biến không sử dụng tiếng việt (tiếng anh)
+comment bằng tiếng việt
+tên biến phải có ý nghĩa
+main.cpp  là chương trình gọi các thư viện và hàm khác
+các thực thể sử dụng tiếng anh 
+
+
