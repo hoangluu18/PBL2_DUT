@@ -1,12 +1,12 @@
-LỜI MỞ ĐẦU	   ==> HOÀN THIỆN (0%)
+LỜI MỞ ĐẦU	   ==> HOÀN THIỆN (99%) // vào check hàng đi mấy đồng chí
 
 MỤC LỤC	       
 
 DANH MỤC HÌNH VẼ        ==> HOÀN THIỆN (0%)
 
-1.	GIỚI THIỆU ĐỀ TÀI	 ==> HOÀN THIỆN (0%)
+1.	GIỚI THIỆU ĐỀ TÀI	 ==> HOÀN THIỆN (80%)
 
-2.	PHÂN TÍCH CHỨC NĂNG HỆ THỐNG	 ==> HOÀN THIỆN (0%)
+2.	PHÂN TÍCH CHỨC NĂNG HỆ THỐNG	 ==> HOÀN THIỆN (70%)
 2.1.		
 2.2.		
 2.3.		
