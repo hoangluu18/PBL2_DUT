@@ -1,4 +1,5 @@
 SƠ ĐỒ :
+sơ đồ khối : block_diaram.drawio
 sơ đồ lớp : chưa có
 sơ đồ chức năng(chính/phụ) : chưa có
 lưu đồ giải thuật : chưa có
