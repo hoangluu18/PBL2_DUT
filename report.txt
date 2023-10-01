@@ -1,5 +1,4 @@
-LỜI MỞ ĐẦU	   ==> HOÀN THIỆN (99%) // vào check hàng đi mấy đồng chí
-
+LỜI MỞ ĐẦU	   ==> HOÀN THIỆN (99%)
 MỤC LỤC	       
 
 DANH MỤC HÌNH VẼ        ==> HOÀN THIỆN (0%)
@@ -31,7 +30,7 @@ b.	Hướng phát triển
 
 6. 
 TÀI LIỆU THAM KHẢO	         ==> HOÀN THIỆN (0%)
-[1] Tên tác giả, Tên tài liệu, Tên nhà xuất bản, năm xuất bản	6
-[2] Tên chủ sở hữu, Tên bài viết, url, ngày truy cập	6
+[1] Tên tác giả, Tên tài liệu, Tên nhà xuất bản, năm xuất bản	
+[2] Tên chủ sở hữu, Tên bài viết, url, ngày truy cập	
 
  
