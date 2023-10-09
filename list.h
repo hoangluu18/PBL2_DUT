@@ -19,10 +19,10 @@ struct node{
 template <class T>
 class list
 {
-  
+
 
     private:
-   
+
    node<T>*head;
     int size ;
 
@@ -33,7 +33,7 @@ class list
    virtual  void remove(T data);
    virtual void print();
    virtual  void edit(T data);
-   virtual T* search(T data);
+   virtual T* search(int data);
     virtual int getSize();
 };
 
@@ -46,7 +46,7 @@ list<T>::list(){
 template <class T>
 
 list<T>::~list(){
-    
+    cout<<"huy list\n";
     node<T> *current = this->head;
     node<T> *next;
     while(current!=NULL){
@@ -100,14 +100,14 @@ template <class T>
 void list<T>::print(){
     node<T> *current = this->head;
     while(current!=NULL){
-        cout<<current->data<<" ";
+        cout<<current->data;
         current = current->next;
     }
     cout<<endl;
 }
 
 template <class T>
-void list<T>::edit(T data){
+void list<T>::edit(T data){ 
   node<T> *current = this->head;
   while(current != NULL){
      if(current->data == data){
@@ -129,18 +129,16 @@ int list<T>::getSize(){
 
 
 template <class T>
-T* list<T>::search(T data) {
+T* list<T>::search(int data) {
     node<T>* current = this->head;
 
     while (current != nullptr) {
-        if (current->data == data) {
+        if (current->data.getId() == data) {
             return &(current->data);  // Trả về con trỏ đến đối tượng T nếu tìm thấy
         }
         current = current->next;
     }
 
     // Trả về nullptr nếu không tìm thấy
-    return nullptr;
+    return NULL;
 }
-
-

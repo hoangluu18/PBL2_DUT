@@ -1,6 +1,6 @@
-MP001;The Avengers;Action;143m;PG-13;2012
-MP002;The Godfather;Drama;175m;R;1972
-MP003;The Godfather: Part II;Drama;202m;R;1974
-MP004;The Dark Knight;Action;152m;PG-13;2008
-MP005;Pulp Fiction;Crime;154m;R;1994
-MP006;Schindler's List;Biography;195m;R;1993
+1;The Avengers;Action;143;PG-13;2012
+2;The Godfather;Drama;175;R;1972
+3;The Godfather: Part II;Drama;202;R;1974
+4;The Dark Knight;Action;152;PG-13;2008
+5;Pulp Fiction;Crime;154;R;1994
+6;Schindler's List;Biography;195;R;1993
