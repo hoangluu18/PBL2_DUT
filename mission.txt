@@ -1,3 +1,5 @@
 việt hoàng :
   list , movieManagement
+minh hoàng:
+  ticket
 
