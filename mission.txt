@@ -1,6 +1,9 @@
 việt hoàng :
   list , movieManagement
-  hash Password, UserName , login
+  hash Password, UserName , login 
+   luuviethoang,123 (staff)
+   tranngocminhhoang,345(staff)
+   dolongnghia,789 ( manager)
 minh hoàng:
   ticket
 
