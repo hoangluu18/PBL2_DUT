@@ -4,6 +4,11 @@ việt hoàng :
    luuviethoang,123 (staff)
    tranngocminhhoang,345(staff)
    dolongnghia,789 ( manager)
-minh hoàng:
-  ticket
 
+   hash, word, switch case
+minh hoàng:
+  update ticket, staff ,word
+long nghia:  manager , word
+
+
+ 
