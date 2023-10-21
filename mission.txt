@@ -1,5 +1,6 @@
 việt hoàng :
   list , movieManagement
+  hash Password, UserName , login
 minh hoàng:
   ticket
 
