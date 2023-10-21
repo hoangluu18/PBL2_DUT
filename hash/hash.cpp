@@ -3,12 +3,18 @@
 Hash::Hash()
 {   
     choose = "";
-    hashValue[307][307] = {false};
+   for(int i = 0; i < 307; i++)
+   {
+       for(int j = 0; j < 307; j++)
+       {
+           this->hashValue[i][j] = false;
+       }
+   }
 }
 
 Hash::~Hash()
 {
-    hashValue[307][307] = {false};
+   
 }
 void Hash::setChoose(string name)
 {

@@ -17,4 +17,15 @@ int main()
     {
         cout<<"Login fail"<<endl;
     }
+
+    string name1 = "admin";
+    string pass1 = "admin";
+    
+    if(hash.search(name1,pass1) == false)
+    {
+        hash.insert(name1,pass1);
+    }
+
+    hash.WriteFile();  // hàm này có vấn đề rồi
+    
 }
