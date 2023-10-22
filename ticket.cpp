@@ -33,5 +33,40 @@ void ticket::show(){
     cout << TicketId << endl;
 }
 
+string ticket::getBuyTime(){
+    return this->BuyTime;
+}
+
+string ticket::getCustomerName(){
+    return this->CustomerName;
+}
+
+string ticket::getMovieName(){
+    return this->MovieName;
+}
+
+string ticket::getTheatreCode() {
+    return this->TheatreCode;
+}
+
+string ticket::getSeat(){
+    return this->Seat;
+}
+
+int ticket::getPrice(){
+    return this->Price;
+}
+
+string ticket::getBuyTime(){
+    return this->BuyTime;
+}
+
+string ticket::getMovieTime(){
+    return this->MovieTime;
+}
+
+string ticket::getNameStaff(){
+    return this->NameStaff;
+}
 
 
