@@ -12,7 +12,7 @@ string getCurrentDateTime() {
     return oss.str();
 }
 
-ticket::ticket(string id, string customer, string movie, string theatre, string seat, int price, string movietime, string staff){
+ticket::ticket(string id, string customer, string movie, string theatre, string seat,  string movietime, string staff, int price){
     this->TicketId = id;
     this->CustomerName = customer;
     this->MovieName = movie;
@@ -75,20 +75,59 @@ string ticket::getNameStaff(){
     return this->NameStaff;
 }
 
+void ticket::setBuyTime(string Buy){
+    this->BuyTime = Buy;    
+}
+
 void ticket::SaveToFile() {
-        std::ofstream file("ticket.txt");
-        if (file.is_open()) {
-            file << "ID: " << TicketId << endl;
-            file << "Customer: " << CustomerName << endl;
-            file << "Movie: " << MovieName << endl;
-            file << "Theatre: " << TheatreCode << endl;
-            file << "Seat: " << Seat << endl;
-            file << "Price: " << Price << endl;
-            file << "Buy Time: " << BuyTime << endl;
-            file << "Movie Time: " << MovieTime << endl;
-            file << "Staff: " << NameStaff << endl;
-            file.close();
+        ofstream outFile("ticket.txt", ios::app);
+        if (outFile.is_open()) {
+            outFile << TicketId;
+            outFile << ";" << CustomerName ;
+            outFile << ";" << MovieName ;
+            outFile << ";" << TheatreCode ;
+            outFile << ";" << Seat ;
+            outFile << ";" << Price ;
+            outFile << ";" << BuyTime ;
+            outFile << ";" << MovieTime ;
+            outFile << ";" << NameStaff << endl;
+            outFile.close();
             
     }
 }
+
+
+void ticket::readTicketById(string targetId) {
+        ifstream inFile("ticket.txt");
+        string line;
+        while (getline(inFile, line)) {
+            istringstream iss(line);
+            string id;
+            string customer;
+            string movie;
+            string Theatre;
+            string seat;
+            double price;
+            string buytime;
+            string movietime;
+            string staffname;
+            if (getline(iss, line, ';') >> id >> ws &&
+                getline(iss, customer, ';') >> ws &&
+                getline(iss, movie, ';') >> ws &&
+                getline(iss, Theatre, ';') >> ws &&
+                getline(iss, seat, ';') >> ws &&
+                getline(iss, buytime, ';') >> ws &&
+                getline(iss, movietime, ';') >> ws &&
+                getline(iss, staffname, ';') >> ws &&
+                (iss >> price)) {
+                    if (id == targetId) {
+                        ticket tic(id, customer, movie, Theatre, seat, movietime, staffname, price);
+                        tic.setBuyTime(buytime);
+                        cout << "Da doc";
+                        tic.show();
+                    }
+                }
+                else cout << "Sai2";
+        }
+}  
 

@@ -23,11 +23,12 @@ class ticket {
     string getBuyTime();
     string getMovieTime();
     string getNameStaff();
-    
-    
+    void setBuyTime(string);
+
 
     ~ticket(); // buytime lấy theo thời gian thực
-    ticket(string = "", string = "", string = "", string ="", string = "", int = 0, string ="", string ="");
+    ticket(string = "", string = "", string = "", string ="", string = "", string ="", string ="", int = 0);
     void show();
     void SaveToFile();
+    void readTicketById(string);
 };
