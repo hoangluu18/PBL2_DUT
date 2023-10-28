@@ -1,7 +1,8 @@
 #include "ticket.h"
 #include <ctime>
 #include <iomanip>
-
+#include <fstream>
+#include <string>
 string getCurrentDateTime() {
     std::time_t now = std::time(0);
     std::tm *localTime = std::localtime(&now);
@@ -22,7 +23,9 @@ ticket::ticket(string id, string customer, string movie, string theatre, string 
     this->MovieTime = movietime;
     this->NameStaff = staff;
 }
+ticket::~ticket(){
 
+}
 void ticket::show(){
     cout << MovieName << endl;
     cout << "START: " << MovieTime << endl;
@@ -33,9 +36,12 @@ void ticket::show(){
     cout << TicketId << endl;
 }
 
-string ticket::getBuyTime(){
-    return this->BuyTime;
+
+
+string ticket::getTicketId(){
+    return this->TicketId;
 }
+
 
 string ticket::getCustomerName(){
     return this->CustomerName;
@@ -69,4 +75,20 @@ string ticket::getNameStaff(){
     return this->NameStaff;
 }
 
+void ticket::SaveToFile() {
+        std::ofstream file("ticket.txt");
+        if (file.is_open()) {
+            file << "ID: " << TicketId << endl;
+            file << "Customer: " << CustomerName << endl;
+            file << "Movie: " << MovieName << endl;
+            file << "Theatre: " << TheatreCode << endl;
+            file << "Seat: " << Seat << endl;
+            file << "Price: " << Price << endl;
+            file << "Buy Time: " << BuyTime << endl;
+            file << "Movie Time: " << MovieTime << endl;
+            file << "Staff: " << NameStaff << endl;
+            file.close();
+            
+    }
+}
 
