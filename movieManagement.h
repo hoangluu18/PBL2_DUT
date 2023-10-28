@@ -1,3 +1,5 @@
+#pragma once
+
 #include "list.h"
 #include <iostream>
 #include "movie.h"
@@ -9,28 +11,20 @@
 using namespace std;
 
 
-class movieManagement :public list<movie> 
+class movieManagement :protected list<movie> 
 {   
-    // private:
-    // list<movie> list_movies;
+    
     public:
 
     movieManagement();
     ~movieManagement();
 
     void addMovie(movie m);
-    void removeMovie(int);
-    void editMovie(int);
+    bool removeMovie(string);
+    bool editMovie(string);
     void printListMovies();
     void readFile();
     void writeFile();
 
-
-
-
-   const movieManagement& operator = (const movieManagement &m);
-
-
-
-
+   //const movieManagement& operator = (const movieManagement &m);
 };

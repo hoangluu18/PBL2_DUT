@@ -7,7 +7,6 @@ movieManagement::movieManagement()
 
 movieManagement::~movieManagement() 
 {
-cout<<"huy movieManagement\n";
 
 }
 
@@ -19,59 +18,53 @@ void movieManagement::addMovie(movie newMovie)
 }
 
 
-void movieManagement::removeMovie(int id)
+bool movieManagement::removeMovie(string id)
 {    
     movie* m  = this->search(id);
     if(m == NULL){
         cout<<"not found\n";
+        return false;
     }
-    else{
-        this->remove(*m);
-    }
-
+   
+    this->remove(*m);
+     return true;
+    
 
 }
 
 
 
-void movieManagement::editMovie(int id)
+bool movieManagement::editMovie(string id)
 {  
     movie* m = this->search(id);
     if(m == NULL){
         cout<<"not found\n";
+        return false;
     }
-    else{
-        this->edit(*m);
-    }
+    
+    this->edit(*m);
+    return true;
 }
 
 
 
+void movieManagement::printListMovies()
+{  
+    this->print();
+}
+
+// // đang phát triển
 // void movieManagement::printListMovies()
-// {  
-//     this->print();
+// {
+//     cout<<setw(5)<<"id"<<setw(30)<<"title"<<setw(20)<<"genre"<<setw(10)<<"lenght"<<setw(10)<<"age"<<setw(10)<<"year"<<endl;
+//     //this->print();
+//     for(int i = 0; i < this->getSize(); i++)
+//     {
+//        // cout<<setw(5)<<this->get(i).getId()<<setw(30)<<this->get(i).getTitle()<<setw(20)<<this->get(i).getGenre()<<setw(10)<<this->get(i).getLenght()<<setw(10)<<this->get(i).getAge()<<setw(10)<<this->get(i).getYear()<<endl;
+//     }
 // }
 
-// đang phát triển
-void movieManagement::printListMovies()
-{
-    cout<<setw(5)<<"id"<<setw(30)<<"title"<<setw(20)<<"genre"<<setw(10)<<"lenght"<<setw(10)<<"age"<<setw(10)<<"year"<<endl;
-    //this->print();
-    for(int i = 0; i < this->getSize(); i++)
-    {
-       // cout<<setw(5)<<this->get(i).getId()<<setw(30)<<this->get(i).getTitle()<<setw(20)<<this->get(i).getGenre()<<setw(10)<<this->get(i).getLenght()<<setw(10)<<this->get(i).getAge()<<setw(10)<<this->get(i).getYear()<<endl;
-    }
-}
-
-
-//    int id;
-//     string title;
-//     string genre;
-//     string summary = " ";
-//     int lenght;
-//     int year;
-
-void movieManagement::readFile() // chưa có đọc summary phát triển sau
+void movieManagement::readFile() 
 {
     ifstream file;
 
@@ -87,15 +80,13 @@ void movieManagement::readFile() // chưa có đọc summary phát triển sau
        string line;
        movie token;
        int pos;
-        
-       
-       
+
      try{  
         while (getline(file,line))
        {
           pos = line.find(';');
 
-          token.setId(stoi(line.substr(0,pos)));
+          token.setId(line.substr(0,pos));
 
           line.erase(0,pos+1);
 
@@ -120,10 +111,12 @@ void movieManagement::readFile() // chưa có đọc summary phát triển sau
             pos = line.find(';');
 
             token.setAge(line.substr(0,pos));
-
-          token.setSummary("");
-
-         this->addMovie(token);
+            
+            line.erase(0,pos+1);
+            
+            token.setYear(stoi(line));
+            
+            this->addMovie(token);
        }
      
      }
@@ -135,10 +128,32 @@ void movieManagement::readFile() // chưa có đọc summary phát triển sau
         }
        
     }
-    
-    
-
-
+    file.close();
 } 
 
+
+void movieManagement::writeFile()
+{
+   ofstream file;
+   file.open("Movie_information.txt");
+   if(!file.is_open())
+   {
+       cout<<"can not open file, check again\n";
+   }
+   else
+   {
+      node<movie>* current = this->head;
+      while(current != NULL)
+      {
+        file<<current->data.getId()<<";"<<current->data.getTitle()<<";"<<current->data.getGenre()<<";"<<current->data.getLenght()<<";"<<current->data.getAge()<<";"<<current->data.getYear()<<endl;
+        
+        current = current->next;
+      }
+      
+
+      file.close();
+   
+   }
+
+}
 

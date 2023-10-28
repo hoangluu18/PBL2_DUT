@@ -1,36 +1,35 @@
+#pragma once
+
 #include <iostream>
 using namespace std;
 class movie
 {
-   protected: //id,title,genre,lenght,age,year
-    int id;
-    string title;
-    string genre;
-    string summary; // phát triển thành file riêng 
-    int lenght;
-    string age;
-    int year;
+   protected: 
+    string id; // id
+    string title; // tieu de
+    string genre; // the loai
+    int lenght; // thoi luong
+    string age;// do tuoi
+    int year;// nam san xuat
 
     public:
     movie();
-    movie(int idMovie, string title, string genre, string summary, int lenght, string age, int year);
+    movie(string idMovie, string title, string genre,  int lenght, string age, int year);
     ~movie();
    
     //get
-    int getId();
+    string getId();
     string getTitle();
     string getGenre();
-    string getSummary();
     int getLenght();
     string getAge();
     int getYear();
     
 
     //set
-    void setId(int idMovie);
+    void setId(string idMovie);
     void setTitle(string title);
     void setGenre(string genre);
-    void setSummary(string summary);
     void setLenght(int lenght);
     void setAge(string age);
     void setYear(int year);
@@ -44,9 +43,4 @@ class movie
     const movie& operator = (const movie &m);
     
     //other
-   
-
-
-
-
 };

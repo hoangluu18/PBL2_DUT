@@ -21,7 +21,7 @@ class list
 {
 
 
-    private:
+    protected:
 
    node<T>*head;
     int size ;
@@ -33,7 +33,7 @@ class list
    virtual  void remove(T data);
    virtual void print();
    virtual  void edit(T data);
-   virtual T* search(int data);
+   virtual T* search(string data);
     virtual int getSize();
 };
 
@@ -46,7 +46,6 @@ list<T>::list(){
 template <class T>
 
 list<T>::~list(){
-    cout<<"huy list\n";
     node<T> *current = this->head;
     node<T> *next;
     while(current!=NULL){
@@ -129,7 +128,7 @@ int list<T>::getSize(){
 
 
 template <class T>
-T* list<T>::search(int data) {
+T* list<T>::search(string data) {
     node<T>* current = this->head;
 
     while (current != nullptr) {
