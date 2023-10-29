@@ -1,6 +1,7 @@
 #include "list.h"
 #include "movie.h"
-
+#include <fstream>
+#include <string>
 class ticket {
     private:
     string TicketId;
@@ -30,5 +31,5 @@ class ticket {
     ticket(string = "", string = "", string = "", string ="", string = "", string ="", string ="", int = 0);
     void show();
     void SaveToFile();
-    void readTicketById(string);
+    static void readTicket(std::ifstream& , const std::string& ); 
 };

@@ -1,8 +1,7 @@
 #include "ticket.h"
 #include <ctime>
 #include <iomanip>
-#include <fstream>
-#include <string>
+
 string getCurrentDateTime() {
     std::time_t now = std::time(0);
     std::tm *localTime = std::localtime(&now);
@@ -97,37 +96,72 @@ void ticket::SaveToFile() {
 }
 
 
-void ticket::readTicketById(string targetId) {
-        ifstream inFile("ticket.txt");
-        string line;
-        while (getline(inFile, line)) {
-            istringstream iss(line);
-            string id;
-            string customer;
-            string movie;
-            string Theatre;
-            string seat;
-            double price;
-            string buytime;
-            string movietime;
-            string staffname;
-            if (getline(iss, line, ';') >> id >> ws &&
-                getline(iss, customer, ';') >> ws &&
-                getline(iss, movie, ';') >> ws &&
-                getline(iss, Theatre, ';') >> ws &&
-                getline(iss, seat, ';') >> ws &&
-                getline(iss, buytime, ';') >> ws &&
-                getline(iss, movietime, ';') >> ws &&
-                getline(iss, staffname, ';') >> ws &&
-                (iss >> price)) {
-                    if (id == targetId) {
-                        ticket tic(id, customer, movie, Theatre, seat, movietime, staffname, price);
-                        tic.setBuyTime(buytime);
-                        cout << "Da doc";
-                        tic.show();
-                    }
-                }
-                else cout << "Sai2";
-        }
-}  
 
+
+
+
+void ticket::readTicket(ifstream& inFile, const string& targetId){
+    ticket ticket;
+        std::string line;
+
+        while (std::getline(inFile, line)) {
+            std::string id, customer, movie, TheatreCode, seat, buytime, movietime, staffname;
+            int price;
+
+            std::size_t pos = 0;
+            std::string token;
+            int count = 0;
+            while ((pos = line.find(";")) != string::npos) {
+                token = line.substr(0, pos);
+                line.erase(0, pos + 1);
+                switch (count) {
+                    case 0:
+                        id = token;
+                        break;
+                    case 1:
+                        customer = token;
+                        break;
+                    case 2:
+                        movie = token;
+                        break;
+                    case 3:
+                        TheatreCode = token;
+                        break;
+                    case 4:
+                        seat = token;
+                        break;
+                    case 5:
+                        price = std::stoi(token);
+                        break;
+                    case 6:
+                        buytime = token;
+                        break;
+                    case 7:
+                        movietime = token;
+                        break;
+                    case 8:
+                        staffname = token;
+                        break;
+                }
+                count++;
+            }
+
+            if (id == targetId) {
+                ticket.TicketId = id;
+                ticket.CustomerName = customer;
+                ticket.MovieName = movie;
+                ticket.TheatreCode = TheatreCode;
+                ticket.Seat = seat;
+                ticket.Price = price;
+                ticket.BuyTime = buytime;
+                ticket.MovieTime = movietime;
+                ticket.NameStaff = staffname;
+                ticket.show();
+                inFile.close();
+                return;
+            } 
+        }
+        cout << "Khong tim thay id cua hoa don";
+} 
+
+        
