@@ -6,7 +6,8 @@
 #include <fstream>
 #include <string>
 #include <iomanip>
-
+#include <conio.h>
+#include <cmath>
 
 using namespace std;
 
@@ -19,6 +20,7 @@ class movieManagement :protected list<movie>
     movieManagement();
     ~movieManagement();
 
+    void start();
     void addMovie(movie m);
     bool removeMovie(string);
     bool editMovie(string);
