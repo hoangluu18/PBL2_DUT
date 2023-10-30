@@ -4,15 +4,15 @@
 #include <string>
 class ticket {
     private:
-    string TicketId;
-    string CustomerName;
-    string MovieName;
-    string TheatreCode;
-    string Seat;
-    int Price;
-    string BuyTime;
-    string MovieTime;
-    string NameStaff;
+    string TicketId;// id
+    string CustomerName; // tênh khách hangf
+    string MovieName;// tên phim
+    string TheatreCode;// mã rạp
+    string Seat;//ghế ngồi
+    int Price;// giá
+    string BuyTime; // thời gian mua 
+    string MovieTime; //==> movie.length
+    string NameStaff;// tên nhân viên
     public:
 
     string getTicketId();
