@@ -79,7 +79,23 @@ void Insuatchieuvaotrongfile(string& filename, string& line) {
 
 
 
-
+void Suatchieu::insuatchieucuaphim(){
+    ifstream inFile("suatchieu.txt"); // Thay "your_file.txt" bằng đường dẫn tới tệp của bạn
+    if (!inFile) {
+        cout << "Không thể mở tệp." << endl;
+        return;
+    }
+    string line;
+    string maphim;
+    cout << "Nhap ma phim can tim suat chieu: ";
+    cin >> maphim;
+    while (getline(inFile, line)) {
+        if (line.find(maphim) == 0) {
+            cout << line << endl;
+        }
+    }
+    inFile.close();
+}
 
 void Suatchieu::themsuatchieu(){
     string filephim = "Movie_information.txt"; // file thông tin các phim đã tồn tại

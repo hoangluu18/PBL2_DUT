@@ -17,4 +17,5 @@ class Suatchieu {
     void setTimeBegin();
     void setprice();
     static void themsuatchieu();
+    static void insuatchieucuaphim();
 }; 
