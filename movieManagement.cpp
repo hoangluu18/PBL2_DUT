@@ -208,6 +208,21 @@ void movieManagement::printListMovies()
 }
 
 
+bool movieManagement::checkPrimarykey(string id)
+{
+    node<movie>* current = this->head;
+  
+    while(current != NULL)
+    {
+        if(current->data.getId() == id)
+        {
+            return false; // nếu trùng khóa chính trả về false
+        }
+        current = current->next;
+    }
+    return true;
+}
+
 void movieManagement::start()
 {   
     system("cls");
@@ -231,9 +246,17 @@ do{
     {   
         case '1':
         { 
-            movie new_movie;
+            movie new_movie;         
             cout<<endl;
             cin>>new_movie;
+            
+            while(this->checkPrimarykey(new_movie.getId()) != true)
+            {    string newId ;
+                 cout<<"\nprimary key is exist , retype \n";
+                 cin>>newId;
+                 new_movie.setId(newId);                 
+ 
+            }
             this->addMovie(new_movie);
             this->writeFile();
             break;

@@ -1,33 +1,55 @@
-#include "movieManagement.h"
+//#include "movieManagement.h"
 #include <iostream>
 #include <string>
-#include "movie.h"
+//#include "movie.h"
+#include "accManagement.h"
+#include <conio.h>
+#include "movieManagement.h"
 using namespace std;
 
-int main()
+bool check ;
+void intro()
 {
-//    movie m;
-//    cin>>m;
-   
-//    movieManagement mM;
-//    mM.readFile();
-   
-//    mM.addMovie(m);
-//    mM.printListMovies();
-//    string s ; cin>>s;
+    system("cls");
+    cout <<"\t\t\t"<< " ===============================" << endl;
+	cout <<"\t\t\t"<< " |                             |" << endl;
+	cout <<"\t\t\t"<< " |                             |" << endl;
+	cout <<"\t\t\t"<< " |         Welcome to          |" << endl;
+	cout <<"\t\t\t"<< " |           CINEMA            |" << endl;
+	cout <<"\t\t\t"<< " |                             |" << endl;
+	cout <<"\t\t\t"<< " |                             |" << endl;
+	cout <<"\t\t\t"<< " ===============================" << endl;
+    cout<<"\t\t\t"<<"Press any key to login..."<<endl;
+	getch();
+}
 
-//    while(mM.removeMovie(s) == false){
-//        cin>>s;
-//        continue;
-//    }
-//    //mM.editMovie(s);
-//    mM.printListMovies();
-//    mM.writeFile();
+void choice()
+{
 
-      movieManagement m;
-      m.start();
-      cout<<"hello";
+}
 
+void login()
+{ 
+    accManagement acc;
+	acc.checkLogin();
+}
+
+void movieManager()
+{
+	movieManagement movie;
+	movie.start();
+}
+
+void run()
+{   
+	intro();
+	login();
+	movieManager();
+}
+int main()
+{    
+   run();
+   cout<<"\nhello";
 }
 
 

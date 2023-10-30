@@ -7,7 +7,7 @@
 #include <string>
 #include <iomanip>
 #include <conio.h>
-#include <cmath>
+
 
 using namespace std;
 
@@ -27,6 +27,7 @@ class movieManagement :protected list<movie>
     void printListMovies();
     void readFile();
     void writeFile();
-
+    bool checkPrimarykey(string);
+   
    //const movieManagement& operator = (const movieManagement &m);
 };
