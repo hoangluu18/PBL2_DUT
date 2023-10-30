@@ -5,6 +5,7 @@
 #include "accManagement.h"
 #include <conio.h>
 #include "movieManagement.h"
+#include "suatchieu.h"
 using namespace std;
 
 bool check ;
@@ -45,6 +46,8 @@ void run()
 	intro();
 	login();
 	movieManager();
+	Suatchieu::themsuatchieu();
+	Suatchieu::insuatchieucuaphim();
 }
 int main()
 {    
