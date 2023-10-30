@@ -57,7 +57,7 @@ void Insuatchieuvaotrongfile(string& filename, string& line) {
     inFile.close();
 
     // kiểm tra phim đó đã có suất chiếu nào chưa
-    std::string prefixToFind = line.substr(0, 3); // 3 tức là kiểm tra 3 kí tự đầu tiên mỗi hàng
+    string prefixToFind = line.substr(0, 3); // 3 tức là kiểm tra 3 kí tự đầu tiên mỗi hàng
     size_t foundPosition = fileContent.find(prefixToFind);
     if (foundPosition != string::npos) {
         // nếu có rồi thì thêm suất chiếu mới vào ngay bên dưới các suất chiếu mới của phim đó trong file txt
