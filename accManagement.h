@@ -7,12 +7,14 @@ using namespace std;
 class accManagement : public Hash
 {
 private:
- 
-public:
-   
-    void checkLogin();
-    //orther function
+    string userName;
 
+public:
+    
+    void checkLogin();
+    //orther function 
+    string getUserName();
+    void setUserName(string);
 
 };
 

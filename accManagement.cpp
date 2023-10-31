@@ -1,5 +1,14 @@
 #include "accManagement.h" 
+//get, set
+void accManagement::setUserName(string username)
+{
+	this->userName = username;
+}
 
+string accManagement::getUserName()
+{
+	return this->userName;
+}
 void accManagement::checkLogin()
 {   
     
@@ -30,7 +39,7 @@ void accManagement::checkLogin()
             cout<<"\t\t\t" << " ===============================" << endl;
 			cout<<"\t\t\t" << "                              " << endl;
 			cout<<"\t\t\t" << "         - Login -             " << endl;
-			cout<<"\t\t\t" << "        Username: ", cin >> username;
+			cout<<"\t\t\t" << "        Username: ", cin >> username;  
 			cout<<"\t\t\t" << "        Password: ", cin >> password;
 			cout<<"\t\t\t" << "                              " << endl;
 			cout<<"\t\t\t" << "                              " << endl;
@@ -66,6 +75,7 @@ void accManagement::checkLogin()
 			    cout<<"t\t\t" <<  "        Password: ", cin >> password;
                 continue;
 			}
+			this->setUserName(username);
            return;
 		}
 
