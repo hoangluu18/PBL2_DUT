@@ -1,4 +1,6 @@
 #pragma once
+// #ifndef MOVIE_MANAGEMENT_H
+// #define MOVIE_MANAGEMENT_H
 
 #include "list.h"
 #include <iostream>
@@ -30,4 +32,11 @@ class movieManagement :protected list<movie>
     void readFile();
     void writeFile();
     bool checkPrimarykey(string);
+
 };
+
+   
+  
+
+
+

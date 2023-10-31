@@ -1,11 +1,11 @@
 //#include "movieManagement.h"
 #include <iostream>
 #include <string>
-//#include "movie.h"
 #include "accManagement.h"
 #include <conio.h>
 #include "movieManagement.h"
 #include "suatchieu.h"
+#include "staffManager.h"
 using namespace std;
 bool check ;
 void intro()
@@ -37,11 +37,27 @@ void run()
 	login();
 	// Suatchieu::themsuatchieu();
 	// Suatchieu::insuatchieucuaphim();
+
+	movieManager();
+	Suatchieu sc;
+	sc.insuatchieucuaphim("MP1");
+// }
 }
+
 int main()
 {    
+
    run();
    cout<<"\nPye Pye !!!";
+    run();
+    cout<<"\nhello";
+
+   staffManager sm;
+   sm.readFile();
+   sm.printListStaff();
+   //sm.removeStaff("MNV01");
+   sm.printListStaff();
+   sm.writeFile();
 }
 
 

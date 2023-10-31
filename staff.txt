@@ -1,0 +1,2 @@
+MNV01;Luu Viet Hoang;200000
+MNV02;Tran Ngoc Minh Hoang;30000
