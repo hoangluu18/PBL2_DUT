@@ -50,34 +50,45 @@ bool Checkmaphim(const std::string& filename, const std::string& prefix) {
 }
 
 
-void Insuatchieuvaotrongfile(string& filename, string& line) {
-    // Đọc toàn bộ nội dung từ tệp vào một chuỗi.
-    ifstream inFile(filename);
-    string fileContent((istreambuf_iterator<char>(inFile)), istreambuf_iterator<char>());
-    inFile.close();
-
-    // kiểm tra phim đó đã có suất chiếu nào chưa
-    string prefixToFind = line.substr(0, 3); // 3 tức là kiểm tra 3 kí tự đầu tiên mỗi hàng
-    size_t foundPosition = fileContent.find(prefixToFind);
-    if (foundPosition != string::npos) {
-        // nếu có rồi thì thêm suất chiếu mới vào ngay bên dưới các suất chiếu mới của phim đó trong file txt
-        size_t nextLinePosition = fileContent.find("\n", foundPosition);
-        if (nextLinePosition != string::npos) {
-            // Thêm hàng mới xuống phía dưới của hàng trùng đó.
-            fileContent.insert(nextLinePosition, "\n" + line);
+    void Insuatchieuvaotrongfile(string& filename, string& line) {
+        // Đọc toàn bộ nội dung từ tệp vào một chuỗi.
+        ifstream inFile(filename);
+        string NoidungFile;
+    if(inFile) {
+        string line;
+        while(getline(inFile, line)) {
+            NoidungFile += line + "\n";
         }
-    } else {
-        // nếu chưa có suất chiếu nào thì thêm vào cuối file .txt
-        fileContent += "\n" + line;
+        inFile.close();  // đọc hết nội dung file rồi đóng file để tránh các bản ghi sau ghi đè lên các bản ghi trước
+        } else {
+            inFile.close();
+            cout << "Khong co tep thong tin!" << endl;
+            return;
+        }
+
+        // kiểm tra phim đó đã có suất chiếu nào chưa
+
+        string TimMaphim = line.substr(0, 3); // trích ra 3 kí tự đầu của chuối line  để kiểm tra 3 kí tự đầu tiên mỗi hàng
+        size_t foundPosition = NoidungFile.find(TimMaphim);
+        if (foundPosition != string::npos) {
+
+            // nếu có rồi thì thêm suất chiếu mới vào ngay bên dưới các suất chiếu mới của phim đó trong file txt
+            size_t nextLinePosition = NoidungFile.find("\n", foundPosition);
+            if (nextLinePosition != string::npos) { // string::npos là 1 tín hiệu có nghĩa là không tìm thấy -> != string::npos tức là đã tìm thấy chuỗi cần tìm
+
+                // Thêm hàng mới xuống phía dưới của hàng trùng đó.
+                NoidungFile.insert(nextLinePosition, "\n" + line);
+            }
+        } else {
+            // nếu chưa có suất chiếu nào thì thêm vào cuối file .txt
+            NoidungFile += "\n" + line;
+        }
+
+        // Ghi lại toàn bộ nội dung của chuỗi vào tệp văn bản.
+        ofstream outFile(filename);
+        outFile << NoidungFile;
+        outFile.close();
     }
-
-    // Ghi lại toàn bộ nội dung của chuỗi vào tệp văn bản.
-    ofstream outFile(filename);
-    outFile << fileContent;
-    outFile.close();
-}
-
-
 
 void Suatchieu::insuatchieucuaphim(){
     ifstream inFile("suatchieu.txt"); // Thay "your_file.txt" bằng đường dẫn tới tệp của bạn
