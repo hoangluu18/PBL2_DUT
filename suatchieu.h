@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -20,5 +21,5 @@ class Suatchieu {
     void setstt();
     static void themsuatchieu();
     static void insuatchieucuaphim();
-    static void insuatchieucuaphim(string = "");
+    static void insuatchieucuaphim(string );
 }; 
