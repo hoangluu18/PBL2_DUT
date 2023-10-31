@@ -1,3 +1,6 @@
+#pragma once
+
+
 #include <iostream>
 #include <stdlib.h>
 
@@ -131,7 +134,7 @@ template <class T>
 T* list<T>::search(string data) {
     node<T>* current = this->head;
 
-    while (current != nullptr) {
+    while (current != NULL) {
         if (current->data.getId() == data) {
             return &(current->data);  // Trả về con trỏ đến đối tượng T nếu tìm thấy
         }
@@ -141,3 +144,4 @@ T* list<T>::search(string data) {
     // Trả về nullptr nếu không tìm thấy
     return NULL;
 }
+
