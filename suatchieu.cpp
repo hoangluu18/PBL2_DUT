@@ -3,7 +3,8 @@
 
 
 
-Suatchieu::Suatchieu(string MaMovie, string Begin, int price) {
+Suatchieu::Suatchieu(string stt, string MaMovie, string Begin, int price) {
+    this->Stt = stt;
     this->maphim = MaMovie;
     this->TimeBegin = Begin;
     this->price = price;
@@ -18,7 +19,6 @@ void Suatchieu::setTimeBegin(){
     string begin;
     cin >> begin;
     this->TimeBegin = begin;
-    cout << endl;
 }
 
 void Suatchieu::setprice() {
@@ -26,9 +26,14 @@ void Suatchieu::setprice() {
     int price;
     cin >> price;
     this->price = price;
-    cout << endl;
 }
 
+void Suatchieu::setstt() {
+    cout << "Stt suat chieu:";
+    string stt;
+    cin >> stt;
+    this->Stt = stt;
+}
 
 bool Checkmaphim(const std::string& filename, const std::string& prefix) {
     ifstream file(filename);
@@ -70,11 +75,11 @@ bool Checkmaphim(const std::string& filename, const std::string& prefix) {
 
         string TimMaphim = line.substr(0, 3); // trích ra 3 kí tự đầu của chuối line  để kiểm tra 3 kí tự đầu tiên mỗi hàng
         size_t foundPosition = NoidungFile.find(TimMaphim);
-        if (foundPosition != string::npos) {
+        if (foundPosition != string::npos) { // string::npos là 1 tín hiệu có nghĩa là không tìm thấy -> != string::npos tức là đã tìm thấy chuỗi cần tìm
 
             // nếu có rồi thì thêm suất chiếu mới vào ngay bên dưới các suất chiếu mới của phim đó trong file txt
             size_t nextLinePosition = NoidungFile.find("\n", foundPosition);
-            if (nextLinePosition != string::npos) { // string::npos là 1 tín hiệu có nghĩa là không tìm thấy -> != string::npos tức là đã tìm thấy chuỗi cần tìm
+            if (nextLinePosition != string::npos) { 
 
                 // Thêm hàng mới xuống phía dưới của hàng trùng đó.
                 NoidungFile.insert(nextLinePosition, "\n" + line);
@@ -91,7 +96,7 @@ bool Checkmaphim(const std::string& filename, const std::string& prefix) {
     }
 
 void Suatchieu::insuatchieucuaphim(){
-    ifstream inFile("suatchieu.txt"); // Thay "your_file.txt" bằng đường dẫn tới tệp của bạn
+    ifstream inFile("suatchieu.txt"); 
     if (!inFile) {
         cout << "Không thể mở tệp." << endl;
         return;
@@ -108,6 +113,19 @@ void Suatchieu::insuatchieucuaphim(){
     inFile.close();
 }
 
+void Suatchieu::insuatchieucuaphim(string maphim) {
+    ifstream inFile("suatchieu.txt");
+    if(!inFile) {
+        cout <<"Khong tim thay file";
+    } 
+    string line;
+    while(getline(inFile, line)) {
+        if(line.find(maphim) == 0) {
+            cout<< line << endl;
+        }
+    }
+    inFile.close();
+}
 void Suatchieu::themsuatchieu(){
     string filephim = "Movie_information.txt"; // file thông tin các phim đã tồn tại
     string filesuatchieu = "suatchieu.txt"; // file thông tin các suất chiếu của các phim
@@ -116,10 +134,13 @@ void Suatchieu::themsuatchieu(){
     cin >>maphim;
     Suatchieu New;
     if(Checkmaphim(filephim, maphim) == true) { // hàm kiểm tra phim muốn thêm suất chiếu có tồn tại trong danh sách movie_information hay không
+        cout << "Cac suat chieu da co cua phim " << maphim << endl;
+        Suatchieu::insuatchieucuaphim(maphim);
         cout << "Vui long nhap thong tin suat chieu cua ma phim " << maphim << endl;
+        New.setstt();
         New.setTimeBegin();
         New.setprice();
-        string Thongtinsuatchieu = maphim + ";" + New.TimeBegin + ";" + to_string(New.price);
+        string Thongtinsuatchieu = maphim + ";" + New.Stt + ";" + New.TimeBegin + ";" + to_string(New.price);
         Insuatchieuvaotrongfile(filesuatchieu, Thongtinsuatchieu); // thêm thông tin vô file suatchieu.txt
     } 
     else cout << "Chua co phim do trong danh sach phim"; // nếu phim chưa tồn tại trong file movie_information thì hiện ra thông báo
