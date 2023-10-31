@@ -3,14 +3,14 @@
 #include <string>
 using namespace std;
 
-
-class Suatchieu {
-    private:
+class Suatchieu
+{
+private:
     string maphim;
     string TimeBegin;
     int price;
 
-    public:
+public:
     Suatchieu(string = "", string = "", int = 0);
     ~Suatchieu();
 
@@ -18,4 +18,4 @@ class Suatchieu {
     void setprice();
     static void themsuatchieu();
     static void insuatchieucuaphim();
-}; 
+};

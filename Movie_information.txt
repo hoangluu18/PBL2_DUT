@@ -1,7 +1,8 @@
-MP1;The Avengers;Action;143;PG-13;2012
+MP1;The Avengers;Action;143;PG-13;2012;8
 MP2;The Godfather;Drama;175;R;1972
 MP3;The Godfather: Part II;Drama;202;R;1974
 MP4;The Dark Knight;Action;152;PG-13;2008
 MP5;Pulp Fiction;Crime;154;R;1994
 MP6;Schindler's List;Biography;195;R;1993
 MP9;luu hoang;action;120;R;2023
+MP7;Do Long Nghia;Dark;111;R;2023
