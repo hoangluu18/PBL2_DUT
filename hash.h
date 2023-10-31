@@ -9,7 +9,7 @@ class Hash
 {
   private:
    
-   bool key[capacity][capacity] ; 
+   bool key[capacity][capacity] ;  // true là tìm thấy false là không tìm thấy
    string choose; // staff or Manager 
     
   public:
