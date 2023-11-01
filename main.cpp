@@ -69,9 +69,9 @@ void run()
 
 				case '2':
 				{
-					//đang phát triển
-				    //staffManager staff;
-					//staff.start();
+					
+				    staffManager staff;
+					staff.start();
 					break;
 				}
 
@@ -105,7 +105,16 @@ int main()
 {    
      
 	run();
+	// // // staff d;
+	// // // cin>>d;
 
+    // // // accManagement acc;
+    // // // // acc.removeAccount(d);
+	// // // acc.changePassword(d);
+    // staffManager staff;
+	
+	// staff.start();
+	
 	return 0;
 }
 

@@ -9,7 +9,7 @@
 #include <string>
 #include <iomanip>
 #include "staff.h"
-
+#include "accManagement.h"
 using namespace std;
 
 class staffManager : protected list<staff>
@@ -20,15 +20,14 @@ public:
     staffManager();
     ~staffManager();
 
-    void start();
-    void addStaff(staff s);
-    bool removeStaff(string);
-   // bool editStaff(string);
-    void printListStaff();
+    void start(); // start menu
+    void addStaff(staff s);// thêm nhân viên và mật khẩu nhân viên
+    bool removeStaff(string id);// xóa nhân viên và mật khẩu nhân viên
+    bool changePassword(string id);// thay đổi mật khẩu nhân viên
     void readFile();
     void writeFile();
-    bool checkPrimarykey(string);
-
+    bool checkPrimarykey(string id);
+    void showStaff();
 };
 
 

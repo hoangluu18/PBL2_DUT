@@ -9,6 +9,8 @@ string accManagement::getUserName()
 {
 	return this->userName;
 }
+
+//check login
 void accManagement::checkLogin(bool& check)
 {   
     
@@ -85,7 +87,7 @@ void accManagement::checkLogin(bool& check)
         {   
 			system("cls");
 			cout<<"\n\n\n\t\t\t" << " ====================SEE YOU AGAIN====================" << endl;
-           	exit(0);
+           	exit(0);// điều kiện duy nhất kết thúc chương trình
         }
         
         default: cout<<"\a";
@@ -96,38 +98,67 @@ void accManagement::checkLogin(bool& check)
    
 }
 
+//add account
 
+void accManagement::addAccount(staff new_staff)
+{   
+	string choose = "loginStaff.txt";
+	this->setChoose(choose); // chọn file cần mở
+	this->ReadFile();
+	string password;
+	cout<<"Password: ";
+	cin>>password;
+	this->insert(new_staff.getName(),password);
+	this->WriteFile();
 
+}
 
+void accManagement::removeAccount(staff delStaff)
+{
+	string choose = "loginStaff.txt";
+	this->setChoose(choose); // chọn file cần mở
+	this->ReadFile();
+	string password_current;
+	cout<<"Password : ";
+    cin>>password_current;
+	while(this->search(delStaff.getName(),password_current) == false) // nhập mật khẩu hiện tại để xóa tài khoản
+	{   
+		cout<<"\t\t\tWrong password, retype"<<endl;
+		cout<<"\t\t\t" << "        Password: ", cin >> password_current;
+		continue;
+	}
+	this->removeKey(delStaff.getName(),password_current);
+	this->WriteFile();
 
-
-// system("cls");
-//     char tt;
-//     string choose;
-// 	accManagement acc;
-// 	
 	
+}
 
-    //  this->setChoose(choose);
-    // this->ReadFile();
-    // string username, password;
-    // system("cls");
-    
-    //         cout << " ===============================" << endl;
-	// 		cout << "                              " << endl;
-	// 		cout << "         - Login -             " << endl;
-	// 		cout << "        Username: ", cin >> username;
-	// 		cout << "        Password: ", cin >> password;
-	// 		cout << "                              " << endl;
-	// 		cout << "                              " << endl;
-	// 		cout << " ===============================" << endl;
-    // if(this->search(username, password))
-    // {   
-    //     return true;
-    // }
-    // else
-    // {    cout<<"Wrong username or password, retype"<<endl;
-    //      cout<<"Press any key to continue"<<endl;
-    //      getch();
-    //     return false;
-    // }
+void accManagement::changePassword(staff s)
+{
+    string choose = "loginStaff.txt";
+	this->setChoose(choose); // chọn file cần mở
+	this->ReadFile();
+
+	string password_current;
+	cout<<"Current password: ";
+	cin>>password_current;
+	while(this->search(s.getName(),password_current) == false) // nhập mật khẩu hiện tại để xóa tài khoản
+	{   
+		cout<<"\t\t\tWrong password, retype"<<endl;
+		cout<<"\t\t\t" << "        Password: ", cin >> password_current;
+		continue;
+	}
+
+	this->removeKey(s.getName(),password_current);// xóa mật khẩu cũ
+
+	string new_pass;
+	cout<<"New password: ";
+	cin>>new_pass;
+	
+	this->insert(s.getName(),new_pass);
+	this->WriteFile();
+}
+
+
+
+
