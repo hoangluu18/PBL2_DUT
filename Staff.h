@@ -12,6 +12,7 @@ class staff {
     public:
     staff();
     ~staff();
+    staff(string id, string name, long revenue);
 
     //get 
     string getName();

@@ -13,6 +13,13 @@ staff::~staff()
 
 }
 
+staff::staff(string id, string name, long revenue)
+{
+    this->staffId = id;
+    this->staffName = name;
+    this->revenue = revenue;
+}
+
 //get
 
 string staff::getId()
@@ -60,9 +67,9 @@ ostream& operator<<(ostream& os, const staff& s)
 
 istream& operator>>(istream& is, staff& s)
 {
-    cout<<"Staff Id: ";
+    cout<<"\nStaff Id: ";
     is>>s.staffId;
-    cout<<"Staff Name: ";
+    cout<<"\nStaff Name: ";
     is.ignore();
     getline(is,s.staffName);
     
