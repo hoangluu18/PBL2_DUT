@@ -7,6 +7,7 @@
 #include "suatchieu.h"
 #include "staffManager.h"
 using namespace std;
+
 bool check ;
 void intro()
 {
@@ -19,25 +20,31 @@ void intro()
 	cout <<"\t\t\t"<< " |                             |" << endl;
 	cout <<"\t\t\t"<< " |                             |" << endl;
 	cout <<"\t\t\t"<< " ===============================" << endl;
-    cout<<"\t\t\t"<<"\nPress any key to login..."<<endl;
+    cout<<"\t\t\t"<<"Press any key to login..."<<endl;
 	getch();
 }
 
-void choice(){}
+void choice()
+{
+
+}
+
 void login()
 { 
     accManagement acc;
 	acc.checkLogin();
 }
 
+void movieManager()
+{
+	movieManagement movie;
+	movie.start();
+}
 
 void run()
 {   
 	intro();
 	login();
-	// Suatchieu::themsuatchieu();
-	// Suatchieu::insuatchieucuaphim();
-
 	movieManager();
 	Suatchieu sc;
 	sc.insuatchieucuaphim("MP1");
@@ -46,9 +53,6 @@ void run()
 
 int main()
 {    
-
-   run();
-   cout<<"\nPye Pye !!!";
     run();
     cout<<"\nhello";
 

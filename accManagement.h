@@ -1,5 +1,5 @@
 #pragma once
-//create by : luu viet hoang
+//create by luu viet hoang
 #include<iostream>
 #include "hash.h"
 #include <conio.h>
@@ -12,8 +12,8 @@ private:
 public:
     
     void checkLogin();
-    //orther function 
-    string getUserName();
+    //get , set
+    string getUserName(); // lấy tên nhân viên cho phần booking
     void setUserName(string);
 
 };

@@ -1,7 +1,4 @@
 #include "accManagement.h" 
-
-#include "movieManagement.h"
-
 //get, set
 void accManagement::setUserName(string username)
 {
@@ -31,7 +28,6 @@ void accManagement::checkLogin()
 	cout<<"\t\t\t" << " ===============================" << endl;
     
 	tt  = getche();
-	movieManagement movie;
 	switch (tt)
 	{
 		case '1':
@@ -55,7 +51,6 @@ void accManagement::checkLogin()
 			    cout<<"\t\t\t" << "        Password: ", cin >> password;
                 continue;
 			}
-			movie.startManager();
            return;
 		}
 
@@ -75,15 +70,12 @@ void accManagement::checkLogin()
 			cout<<"\t\t\t" << " ===============================" << endl;
 			while(this->search(username,password) == false)
 			{   system("cls");
-                cout<<"\t\t\t!!! Wrong username or password, retype !!!"<<endl;
+                cout<<"\t\t\tWrong username or password, retype"<<endl;
                 cout<<"\t\t\t" << "        Username: ", cin >> username;
 			    cout<<"t\t\t" <<  "        Password: ", cin >> password;
                 continue;
 			}
-
-			movie.startStaff();
-
-			this->setUserName(username);
+			this->setUserName(username);// lấy tên nhân viên cho phần booking
            return;
 		}
 
@@ -99,3 +91,39 @@ void accManagement::checkLogin()
 	} while (tt != '3');
    
 }
+
+
+
+
+
+
+// system("cls");
+//     char tt;
+//     string choose;
+// 	accManagement acc;
+// 	
+	
+
+    //  this->setChoose(choose);
+    // this->ReadFile();
+    // string username, password;
+    // system("cls");
+    
+    //         cout << " ===============================" << endl;
+	// 		cout << "                              " << endl;
+	// 		cout << "         - Login -             " << endl;
+	// 		cout << "        Username: ", cin >> username;
+	// 		cout << "        Password: ", cin >> password;
+	// 		cout << "                              " << endl;
+	// 		cout << "                              " << endl;
+	// 		cout << " ===============================" << endl;
+    // if(this->search(username, password))
+    // {   
+    //     return true;
+    // }
+    // else
+    // {    cout<<"Wrong username or password, retype"<<endl;
+    //      cout<<"Press any key to continue"<<endl;
+    //      getch();
+    //     return false;
+    // }
