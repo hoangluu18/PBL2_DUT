@@ -1,8 +1,5 @@
 #include "suatchieu.h"
 
-
-
-
 Suatchieu::Suatchieu(string stt, string MaMovie, string Begin, int price) {
     this->Stt = stt;
     this->maphim = MaMovie;
@@ -35,6 +32,24 @@ void Suatchieu::setstt() {
     this->Stt = stt;
 }
 
+string** Suatchieu::inseat(){
+     char a = 'A';
+    string** S = new string*[12];
+    for (int i = 0; i < 12; i++) {
+        S[i] = new string[12];
+        for (int j = 0; j < 12; j++) {
+            stringstream ss;
+            int index = j;
+            index++;
+            ss << '1' << a << index;
+            S[i][j] = ss.str();
+        }
+        a += 1;
+    }
+    
+    return S;
+}
+
 bool Checkmaphim(const std::string& filename, const std::string& prefix) {
     ifstream file(filename);
     if (!file.is_open()) {
@@ -55,10 +70,10 @@ bool Checkmaphim(const std::string& filename, const std::string& prefix) {
 }
 
 
-    void Insuatchieuvaotrongfile(string& filename, string& line) {
-        // Đọc toàn bộ nội dung từ tệp vào một chuỗi.
-        ifstream inFile(filename);
-        string NoidungFile;
+void Insuatchieuvaotrongfile(string& filename, string& line) {
+    // Đọc toàn bộ nội dung từ tệp vào một chuỗi.
+    ifstream inFile(filename);
+    string NoidungFile;
     if(inFile) {
         string line;
         while(getline(inFile, line)) {
@@ -70,7 +85,7 @@ bool Checkmaphim(const std::string& filename, const std::string& prefix) {
             cout << "Khong co tep thong tin!" << endl;
             return;
         }
-
+        string** S = Suatchieu::inseat();
         // kiểm tra phim đó đã có suất chiếu nào chưa
 
         string TimMaphim = line.substr(0, 3); // trích ra 3 kí tự đầu của chuối line  để kiểm tra 3 kí tự đầu tiên mỗi hàng
@@ -79,15 +94,34 @@ bool Checkmaphim(const std::string& filename, const std::string& prefix) {
 
             // nếu có rồi thì thêm suất chiếu mới vào ngay bên dưới các suất chiếu mới của phim đó trong file txt
             size_t nextLinePosition = NoidungFile.find("\n", foundPosition);
+            size_t seatPosition = NoidungFile.find("\n", nextLinePosition);
             if (nextLinePosition != string::npos) { 
-
+                string newline = "";
+                for(int i = 0; i < 12; i++) {
+                    for(int j = 0; j < 12; j++){
+                        newline += S[i][j] + " ";
+                    }
+                    newline += "\n";
+                }
+                
                 // Thêm hàng mới xuống phía dưới của hàng trùng đó.
-                NoidungFile.insert(nextLinePosition, "\n" + line);
+                NoidungFile.insert(seatPosition, "\n" + line); // chỗ này biến bị ngược :/ éo biết vì sao nữa (code đã chạy đúng thì đừng có sửa)
+                NoidungFile.insert(nextLinePosition, "\n" + newline);
             }
         } else {
             // nếu chưa có suất chiếu nào thì thêm vào cuối file .txt
             NoidungFile += "\n" + line;
+            NoidungFile += "\n";
+            string** S = Suatchieu::inseat();
+            for(int i = 0; i < 12; i++) {
+                for(int j = 0; j < 12; j++) {
+                    NoidungFile += S[i][j] + " ";
+                }
+                NoidungFile += "\n";
+            }
+            NoidungFile += "\n";
         }
+        
 
         // Ghi lại toàn bộ nội dung của chuỗi vào tệp văn bản.
         ofstream outFile(filename);
@@ -122,10 +156,14 @@ void Suatchieu::insuatchieucuaphim(string maphim) {
     while(getline(inFile, line)) {
         if(line.find(maphim) == 0) {
             cout<< line << endl;
+            
         }
     }
     inFile.close();
 }
+
+
+
 void Suatchieu::themsuatchieu(){
     string filephim = "Movie_information.txt"; // file thông tin các phim đã tồn tại
     string filesuatchieu = "suatchieu.txt"; // file thông tin các suất chiếu của các phim

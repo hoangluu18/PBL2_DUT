@@ -1,9 +1,9 @@
-#pragma once
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <sstream>
 using namespace std;
-//create by tran ngoc minh hoang
+
 
 class Suatchieu {
     private:
@@ -19,7 +19,9 @@ class Suatchieu {
     void setTimeBegin();
     void setprice();
     void setstt();
+    
     static void themsuatchieu();
     static void insuatchieucuaphim();
-    static void insuatchieucuaphim(string );
+    static void insuatchieucuaphim(string = "");
+    static string** inseat();
 }; 
