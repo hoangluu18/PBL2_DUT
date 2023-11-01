@@ -50,7 +50,7 @@ string** Suatchieu::inseat(){
     return S;
 }
 
-bool Checkmaphim(const std::string& filename, const std::string& prefix) {
+bool Suatchieu::Checkmaphim(const std::string& filename, const std::string& prefix) {
     ifstream file(filename);
     if (!file.is_open()) {
         cout << "Không thể mở tệp " << filename << endl;
@@ -147,7 +147,7 @@ void Suatchieu::insuatchieucuaphim(){
     inFile.close();
 }
 
-void Suatchieu::insuatchieucuaphim(string maphim) {
+void Suatchieu::insuatchieucuaphimcochuoidauvao(string maphim) {
     ifstream inFile("suatchieu.txt");
     if(!inFile) {
         cout <<"Khong tim thay file";
@@ -171,9 +171,9 @@ void Suatchieu::themsuatchieu(){
     string maphim;
     cin >>maphim;
     Suatchieu New;
-    if(Checkmaphim(filephim, maphim) == true) { // hàm kiểm tra phim muốn thêm suất chiếu có tồn tại trong danh sách movie_information hay không
+    if(Suatchieu::Checkmaphim(filephim, maphim) == true) { // hàm kiểm tra phim muốn thêm suất chiếu có tồn tại trong danh sách movie_information hay không
         cout << "Cac suat chieu da co cua phim " << maphim << endl;
-        Suatchieu::insuatchieucuaphim(maphim);
+        Suatchieu::insuatchieucuaphimcochuoidauvao(maphim);
         cout << "Vui long nhap thong tin suat chieu cua ma phim " << maphim << endl;
         New.setstt();
         New.setTimeBegin();
@@ -182,4 +182,43 @@ void Suatchieu::themsuatchieu(){
         Insuatchieuvaotrongfile(filesuatchieu, Thongtinsuatchieu); // thêm thông tin vô file suatchieu.txt
     } 
     else cout << "Chua co phim do trong danh sach phim"; // nếu phim chưa tồn tại trong file movie_information thì hiện ra thông báo
+}
+
+
+
+void Suatchieu::inthongtinsuatchieu(string maphim){
+    ifstream inFile("suatchieu.txt");
+
+    if (!inFile.is_open()) {
+        cout << "Không thể mở tệp!" << std::endl;
+        return;
+    }
+
+   
+     // Mã suất chiếu bạn muốn tìm
+    string Sothutu ;  // Số thứ tự bạn muốn tìm
+    cin >> Sothutu;
+    system("cls");
+    string line;
+    bool foundTarget = false;
+
+    while (getline(inFile, line)) {
+        if (line.find(maphim) != std::string::npos && line.find(Sothutu) != std::string::npos) {
+            foundTarget = true;
+            cout << line << endl;  // In ra dòng chứa mã suất chiếu và số thứ tự
+        } else if (foundTarget && !line.empty()) {
+            cout << line << endl;  // In ra các dòng thông tin ghế ngồi
+        } else if (foundTarget && line.empty()) {
+            // Khi gặp dòng trắng, dừng in ra thông tin ghế ngồi
+            break;
+        }
+    }
+
+    inFile.close();
+
+    if (!foundTarget) {
+        std::cout << "Không tìm thấy mã suất chiếu: " << maphim << " và số thứ tự: " << Sothutu << endl;
+    }
+
+    return;
 }
