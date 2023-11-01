@@ -22,16 +22,21 @@ class movieManagement :protected list<movie>
     movieManagement();
     ~movieManagement();
 
-    void start();
+    void startManager();
+    void startStaff();
     void addMovie(movie m);
     bool removeMovie(string);
     bool editMovie(string);
     void printListMovies();
+    void printMovie(string);
     void readFile();
     void writeFile();
     bool checkPrimarykey(string);
-   
-   //const movieManagement& operator = (const movieManagement &m);
+
 };
 
-//#endif
+   
+  
+
+
+
