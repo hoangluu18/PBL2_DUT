@@ -2,6 +2,7 @@
 #include "movie.h"
 #include <fstream>
 #include <string>
+//create by : tran ngoc minh hoang
 class ticket {
     private:
     string TicketId;// id

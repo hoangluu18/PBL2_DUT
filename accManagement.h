@@ -1,5 +1,5 @@
 #pragma once
-
+//create by : luu viet hoang
 #include<iostream>
 #include "hash.h"
 #include <conio.h>
@@ -17,5 +17,4 @@ public:
     void setUserName(string);
 
 };
-
 
