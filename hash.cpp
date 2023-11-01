@@ -120,5 +120,12 @@ void Hash::WriteFile()
     file.close();
 }
 
+void Hash::removeKey(string user,string pass)
+{
+    int hashName = hashFunction(user);
+    int hashPass = hashFunction(pass);
+    this->key[hashName][hashPass] = false;
+}
+
 
 

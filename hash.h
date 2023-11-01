@@ -25,4 +25,5 @@ class Hash
    void WriteFile(); // ghi value vào file
    void insert(string  , string);
    bool search(string , string);
+   void removeKey(string , string);
 };
