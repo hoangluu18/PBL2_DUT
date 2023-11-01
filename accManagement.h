@@ -11,7 +11,7 @@ private:
 
 public:
     
-    void checkLogin();
+    void checkLogin(bool&check); // true = manager, false = staff
     //get , set
     string getUserName(); // lấy tên nhân viên cho phần booking
     void setUserName(string);

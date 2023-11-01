@@ -9,7 +9,7 @@ string accManagement::getUserName()
 {
 	return this->userName;
 }
-void accManagement::checkLogin()
+void accManagement::checkLogin(bool& check)
 {   
     
     char tt;
@@ -34,6 +34,7 @@ void accManagement::checkLogin()
 		{   system("cls");
             string username, password;
 			string choose = "loginManager.txt";
+			check = true; // true == manager
             this->setChoose(choose);
             this->ReadFile();
             cout<<"\t\t\t" << " ===============================" << endl;
@@ -58,6 +59,7 @@ void accManagement::checkLogin()
 		{   system("cls");
 			string username, password;
 			string choose = "loginStaff.txt";
+			check = false; // false == staff
             this->setChoose(choose);
             this->ReadFile();
             cout<<"\t\t\t" << " ===============================" << endl;
@@ -80,8 +82,10 @@ void accManagement::checkLogin()
 		}
 
         case '3':
-        {
-           return;
+        {   
+			system("cls");
+			cout<<"\n\n\n\t\t\t" << " ====================SEE YOU AGAIN====================" << endl;
+           	exit(0);
         }
         
         default: cout<<"\a";
