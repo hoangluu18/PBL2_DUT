@@ -26,7 +26,7 @@ class movieManagement :protected list<movie>
     void addMovie(movie m);
     bool removeMovie(string);
     bool editMovie(string);
-    static void printListMovies();
+    void printListMovies();
     void readFile();
     void writeFile();
     bool checkPrimarykey(string);
