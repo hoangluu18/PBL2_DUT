@@ -11,7 +11,7 @@ string accManagement::getUserName()
 }
 
 //check login
-void accManagement::checkLogin(bool& check)
+void accManagement::checkLogin(bool& check, string& nameStaff)
 {   
     
     char tt;
@@ -80,6 +80,7 @@ void accManagement::checkLogin(bool& check)
                 continue;
 			}
 			this->setUserName(username);// lấy tên nhân viên cho phần booking
+			nameStaff = username;
            return;
 		}
 

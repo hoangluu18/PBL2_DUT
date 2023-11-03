@@ -17,7 +17,7 @@ public:
     // string getPassword();
     // void setPassword(string);
     //other
-    void checkLogin(bool& check); // true = manager, false = staff
+    void checkLogin(bool& check, string& nameStaff); // true = manager, false = staff
     void addAccount(staff s);
     void removeAccount(staff s);
     void changePassword(staff s);
