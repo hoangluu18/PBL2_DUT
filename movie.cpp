@@ -39,11 +39,12 @@ ostream& operator<<(ostream& os, const movie& m)
 }
 
 istream& operator>>(istream& is, movie& m)
-{
+{ 
     cout<<"idMovie: ";
     is>>m.id;
+    
     is.ignore();
-
+   
     cout<<"title: ";
     getline(is,m.title);
 
