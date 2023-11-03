@@ -1,18 +1,5 @@
-001;HOANG;HEHE;A;F1;10000;29/10/23 21:51;12H30;HUY
-001;HOANG;HEHE;A;F1;10000;29/10/23 21:51;12H30;HUY
-002;HOANG;HEHE;A;F1;10000;29/10/23 21:52;12H30;HUY
-0;hoang;Ave;A3;55000;02/11/23 23:53;12H30;Nghia
-1;hoang;Ave;b4;55000;02/11/23 23:53;12H30;Nghia
-2;hoang;Ave;A5;55000;02/11/23 23:53;12H30;Nghia
-0;Hoang;Ave;A5;55000;03/11/23 00:00;12H30;Nghia
-1;Hoang;Ave;B3;55000;03/11/23 00:00;12H30;Nghia
-2;Hoang;Ave;C7;55000;03/11/23 00:00;12H30;Nghia
-3;Hoang;Ave;G2;55000;03/11/23 00:00;12H30;Nghia
-0;Hoang;Ave;A3;55000;03/11/23 08:26;12h30;Nghia
-1;Hoang;Ave;A4;55000;03/11/23 08:26;12h30;Nghia
-0;Hoang;Ave;B6;55000;03/11/23 08:27;10H30;Nghia
-1;Hoang;Ave;A6;55000;03/11/23 08:27;10H30;Nghia
-0;Hoang;Ave;A3;55000;03/11/23 08:34;10H30;Nghia
-1;Hoang;Ave;H6;55000;03/11/23 08:34;10H30;Nghia
-0;cuong;The Godfather;A2;55000;03/11/23 08:51;10H30;Nghia
-1;cuong;The Godfather;A3;55000;03/11/23 08:51;10H30;Nghia
+0;luu viet hoang;The Godfather;A1;55000;03/11/23 12:51;11H30;Nghia
+1;luu viet hoang;The Godfather;A2;55000;03/11/23 12:52;11H30;Nghia
+0;nguyen van a;The Godfather;B1;55000;03/11/23 13:07;11H30;luuviethoang
+0;nguyen van b;The Godfather;A1;55000;03/11/23 13:16;11H30;luuviethoang
+0;nguyen van c;The Godfather;A8;55000;03/11/23 13:19;10H30;luuviethoang

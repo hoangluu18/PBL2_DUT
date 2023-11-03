@@ -25,13 +25,14 @@ ticket::~ticket(){
 
 }
 void ticket::show(){
+    cout <<"TicketId: "<< TicketId << endl;
     cout << "Movie: " << MovieName << endl;
     cout << "START: " << MovieTime << endl;
     cout << "Price: " << Price << "VND" << endl; 
     cout << "CUSTOMER: " << CustomerName << endl;
     cout << "STAFF: " << NameStaff << endl;
     cout << BuyTime << endl;
-    cout << TicketId << endl;
+   
 }
 
 
