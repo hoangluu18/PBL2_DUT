@@ -37,6 +37,7 @@ class ticket {
     ~ticket(); 
     ticket(string = "", string = "", string = "",  string = "", string ="", string ="");
     void show();
+    string removeHyphens(string);
     void SaveToFile();
     // static void readTicket(ifstream& , const string); 
     friend ostream& operator<<(ostream&, const ticket&);

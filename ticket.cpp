@@ -1,8 +1,10 @@
 #include "ticket.h"
 #include <ctime>
 #include <iomanip>
-
-string getCurrentDateTime() {
+#include <iostream>
+#include <algorithm>
+string getCurrentDateTime()
+{
     std::time_t now = std::time(0);
     std::tm *localTime = std::localtime(&now);
 
@@ -11,7 +13,8 @@ string getCurrentDateTime() {
     return oss.str();
 }
 
-ticket::ticket(string id, string customer, string movie,  string seat,  string movietime, string staff){
+ticket::ticket(string id, string customer, string movie, string seat, string movietime, string staff)
+{
     this->TicketId = id;
     this->CustomerName = customer;
     this->MovieName = movie;
@@ -21,122 +24,142 @@ ticket::ticket(string id, string customer, string movie,  string seat,  string m
     this->MovieTime = movietime;
     this->NameStaff = staff;
 }
-ticket::~ticket(){
-
+ticket::~ticket()
+{
 }
-void ticket::show(){
-    cout <<"TicketId: "<< TicketId << endl;
-    cout << "Movie: " << MovieName << endl;
-    cout << "START: " << MovieTime << endl;
-    cout << "Price: " << Price << "VND" << endl; 
-    cout << "CUSTOMER: " << CustomerName << endl;
-    cout << "STAFF: " << NameStaff << endl;
-    cout << BuyTime << endl;
-   
+void ticket::show()
+{
+    
+    cout << "o" << std::string(38, '=') << "o" << endl;
+    std::cout << "\t  TicketId:   "  << TicketId << endl;
+    std::cout << "  Movie:\t"  << MovieName << endl;
+    std::cout << "  START:\t"  << MovieTime << endl;
+    std::cout << "  Price:\t"  << Price << "VND " << endl;
+    std::cout << "  CUSTOMER:    "  << CustomerName << endl;
+    std::cout << "  STAFF:       "  << NameStaff << " " <<endl;
+    std::cout << "  BUYTIME:     "  << BuyTime  << endl;
+    cout << "o" << std::string(38, '=') << "o";
 }
 
-
-
-string ticket::getId(){
+string ticket::removeHyphens(string str)
+{
+    // Xóa tất cả các ký tự '-' khỏi chuỗi
+    str.erase(std::remove(str.begin(), str.end(), '-'), str.end());
+    return str;
+}
+string ticket::getId()
+{
     return this->TicketId;
 }
 
-
-string ticket::getCustomerName(){
+string ticket::getCustomerName()
+{
     return this->CustomerName;
 }
 
-string ticket::getMovieName(){
+string ticket::getMovieName()
+{
     return this->MovieName;
 }
 
-
-
-string ticket::getSeat(){
+string ticket::getSeat()
+{
     return this->Seat;
 }
 
-int ticket::getPrice(){
+int ticket::getPrice()
+{
     return this->Price;
 }
 
-string ticket::getBuyTime(){
+string ticket::getBuyTime()
+{
     return this->BuyTime;
 }
 
-string ticket::getMovieTime(){
+string ticket::getMovieTime()
+{
     return this->MovieTime;
 }
 
-string ticket::getNameStaff(){
+string ticket::getNameStaff()
+{
     return this->NameStaff;
 }
 
-
-
-void ticket::setId(string id) {
+void ticket::setId(string id)
+{
     this->TicketId = id;
 }
 
-void ticket::setCustomer(string customer) {
+void ticket::setCustomer(string customer)
+{
     this->CustomerName = customer;
 }
 
-void ticket::setMovieName(string movie){
+void ticket::setMovieName(string movie)
+{
     this->MovieName = movie;
 }
-void ticket::setMovieTime(string time){
+void ticket::setMovieTime(string time)
+{
     this->MovieTime = time;
 }
-void ticket::setSeat(string seat){
+void ticket::setSeat(string seat)
+{
     this->Seat = seat;
 }
-void ticket::setPrice(int price) {
+void ticket::setPrice(int price)
+{
     this->Price = price;
 }
 
-void ticket::setBuyTime(){
-    this->BuyTime = getCurrentDateTime();    
+void ticket::setBuyTime()
+{
+    this->BuyTime = getCurrentDateTime();
 }
 
-void ticket::setNameStaff(string staff){
+void ticket::setNameStaff(string staff)
+{
     this->NameStaff = staff;
 }
 
-
-
-void ticket::SaveToFile() {
-        ofstream outFile("ticket.txt", ios::app);
-        if (outFile.is_open()) {
-            outFile << TicketId;
-            outFile << ";" << CustomerName ;
-            outFile << ";" << MovieName;
-            outFile << ";" << Seat ;
-            outFile << ";" << Price ;
-            outFile << ";" << BuyTime ;
-            outFile << ";" << MovieTime ;
-            outFile << ";" << NameStaff << endl;
-            outFile.close();
-            
+void ticket::SaveToFile()
+{
+    ofstream outFile("ticket.txt", ios::app);
+    if (outFile.is_open())
+    {
+        outFile << TicketId;
+        outFile << ";" << CustomerName;
+        outFile << ";" << MovieName;
+        outFile << ";" << Seat;
+        outFile << ";" << Price;
+        outFile << ";" << BuyTime;
+        outFile << ";" << MovieTime;
+        outFile << ";" << NameStaff << endl;
+        outFile.close();
     }
 }
 
-
-bool ticket::operator==(const ticket& t) {
-    if(this->TicketId == t.TicketId) return true;
-    else return false;
+bool ticket::operator==(const ticket &t)
+{
+    if (this->TicketId == t.TicketId)
+        return true;
+    else
+        return false;
 }
 
-ostream& operator<<(ostream& o, const ticket& t) {
-            o << t.TicketId;
-            o << ";" << t.CustomerName ;
-            o << ";" << t.MovieName;
-            o << ";" << t.Seat ;
-            o << ";" << t.Price ;
-            o << ";" << t.BuyTime ;
-            o << ";" << t.MovieTime ;
-            o << ";" << t.NameStaff << endl;
-    return o;    
+ostream &operator<<(ostream &o, const ticket &t)
+{
+    o << t.TicketId;
+    o << ";" << t.CustomerName;
+    o << ";" << t.MovieName;
+    o << ";" << t.Seat;
+    o << ";" << t.Price;
+    o << ";" << t.BuyTime;
+    o << ";" << t.MovieTime;
+    o << ";" << t.NameStaff << endl;
+    return o;
 }
 // void ticket::readTicket(ifstream& inFile, const string& targetId){
 //     ticket ticket;
@@ -193,9 +216,7 @@ ostream& operator<<(ostream& o, const ticket& t) {
 //                 ticket.show();
 //                 inFile.close();
 //                 return;
-//             } 
+//             }
 //         }
 //         cout << "Khong tim thay id cua hoa don";
-// } 
-
-        
+// }
