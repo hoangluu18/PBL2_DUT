@@ -249,14 +249,15 @@ do{
             movie new_movie;         
             cout<<endl;
             cin>>new_movie;
-            
             while(this->checkPrimarykey(new_movie.getId()) != true)
-            {    string newId ;
-                 cout<<"\nprimary key is exist , retype \n";
+            {    string newId;
+                 cout<<"\nprimary key is exist , retype!!! \n";
+                 cout<<"Id: ";
                  cin>>newId;
                  new_movie.setId(newId);                 
  
             }
+            
             this->addMovie(new_movie);
             this->writeFile();
             break;
