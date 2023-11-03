@@ -159,6 +159,7 @@ void Booking::Datve(string NameStaff){
     system("cls");
     for(int i = 0; i < count; i++) {
         s[i].show();
+        cout << endl;
     }
     cout << "Tong so tien ban can tra la " << 55000 * count << " Y/n" << endl;
     char temp;

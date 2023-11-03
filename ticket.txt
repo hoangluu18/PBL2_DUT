@@ -3,3 +3,10 @@
 0;nguyen van a;The Godfather;B1;55000;03/11/23 13:07;11H30;luuviethoang
 0;nguyen van b;The Godfather;A1;55000;03/11/23 13:16;11H30;luuviethoang
 0;nguyen van c;The Godfather;A8;55000;03/11/23 13:19;10H30;luuviethoang
+0;nghia;titanic;A2;55000;03/11/23 21:55;17H30;luuviethoang
+1;nghia;titanic;A4;55000;03/11/23 21:55;17H30;luuviethoang
+2;nghia;titanic;B6;55000;03/11/23 21:55;17H30;luuviethoang
+0;Nghia;titanic;A4;55000;03/11/23 21:58;7H30 ;luuviethoang
+1;Nghia;titanic;B4;55000;03/11/23 21:58;7H30 ;luuviethoang
+2;Nghia;titanic;C4;55000;03/11/23 21:58;7H30 ;luuviethoang
+3;Nghia;titanic;D4;55000;03/11/23 21:58;7H30 ;luuviethoang
