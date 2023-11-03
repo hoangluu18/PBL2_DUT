@@ -1,10 +1,10 @@
 #include "suatchieu.h"
 
-Suatchieu::Suatchieu(string stt, string MaMovie, string Begin, int price) {
+Suatchieu::Suatchieu(string stt, string MaMovie, string Begin) {
     this->Stt = stt;
     this->maphim = MaMovie;
     this->TimeBegin = Begin;
-    this->price = price;
+    
 } 
 
 Suatchieu::~Suatchieu(){
@@ -18,12 +18,7 @@ void Suatchieu::setTimeBegin(){
     this->TimeBegin = begin;
 }
 
-void Suatchieu::setprice() {
-    cout << "Gia: ";
-    int price;
-    cin >> price;
-    this->price = price;
-}
+
 
 void Suatchieu::setstt() {
     cout << "Stt suat chieu:";
@@ -147,7 +142,7 @@ void Suatchieu::insuatchieucuaphim(){
     inFile.close();
 }
 
-void Suatchieu::insuatchieucuaphimcochuoidauvao(string maphim) {
+void Suatchieu::printMovieShow(string maphim) {
     ifstream inFile("suatchieu.txt");
     if(!inFile) {
         cout <<"Khong tim thay file";
@@ -156,7 +151,6 @@ void Suatchieu::insuatchieucuaphimcochuoidauvao(string maphim) {
     while(getline(inFile, line)) {
         if(line.find(maphim) == 0) {
             cout<< line << endl;
-            
         }
     }
     inFile.close();
@@ -173,12 +167,11 @@ void Suatchieu::themsuatchieu(){
     Suatchieu New;
     if(Suatchieu::Checkmaphim(filephim, maphim) == true) { // hàm kiểm tra phim muốn thêm suất chiếu có tồn tại trong danh sách movie_information hay không
         cout << "Cac suat chieu da co cua phim " << maphim << endl;
-        Suatchieu::insuatchieucuaphimcochuoidauvao(maphim);
+        New.printMovieShow(maphim);
         cout << "Vui long nhap thong tin suat chieu cua ma phim " << maphim << endl;
         New.setstt();
         New.setTimeBegin();
-        New.setprice();
-        string Thongtinsuatchieu = maphim + ";" + New.Stt + ";" + New.TimeBegin + ";" + to_string(New.price);
+        string Thongtinsuatchieu = maphim + ";" + New.Stt + ";" + New.TimeBegin;
         Insuatchieuvaotrongfile(filesuatchieu, Thongtinsuatchieu); // thêm thông tin vô file suatchieu.txt
     } 
     else cout << "Chua co phim do trong danh sach phim"; // nếu phim chưa tồn tại trong file movie_information thì hiện ra thông báo
@@ -186,7 +179,7 @@ void Suatchieu::themsuatchieu(){
 
 
 
-void Suatchieu::inthongtinsuatchieu(string maphim){
+void Suatchieu::inthongtinsuatchieu(string maphim, string Sothutu){
     ifstream inFile("suatchieu.txt");
 
     if (!inFile.is_open()) {
@@ -196,8 +189,7 @@ void Suatchieu::inthongtinsuatchieu(string maphim){
 
    
      // Mã suất chiếu bạn muốn tìm
-    string Sothutu ;  // Số thứ tự bạn muốn tìm
-    cin >> Sothutu;
+    
     system("cls");
     string line;
     bool foundTarget = false;

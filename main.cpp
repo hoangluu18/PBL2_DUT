@@ -6,6 +6,7 @@
 #include "movieManagement.h"
 #include "suatchieu.h"
 #include "staffManager.h"
+#include "booking.h"
 using namespace std;
 
 
@@ -104,7 +105,8 @@ void run()
 int main()
 {    
      
-	run();
+	 run();
+    
 	// // // staff d;
 	// // // cin>>d;
 

@@ -1,17 +1,15 @@
 #include "suatchieu.h"
+#include <iostream>
+#include <string>
+#include <fstream>
+#include "accManagement.h"
+#include "ticket.h"
+#include "list.h"
+#include "movieManagement.h"
 class Booking {
     public:
-    static void Datve(){
-        system("cls");
-    string filemovie = "Movie_information.txt";
-    cout << "Nhap ma phim ban muon chon: ";
-    string maphim;
-    cin >> maphim;
-    if(Suatchieu::Checkmaphim(filemovie, maphim) == true) {
-       system("cls");
-       cout << "Xin moi chon suat chieu: " << endl;
-       Suatchieu::insuatchieucuaphimcochuoidauvao(maphim);
-       Suatchieu::inthongtinsuatchieu(maphim);
-    }
-    }
+    void Datve();
+    string Chonghe();
+    string getmoviename(string);
+    string getmovietime(string);
 };

@@ -1,4 +1,3 @@
-#include "list.h"
 #include "movie.h"
 #include <fstream>
 #include <string>
@@ -8,29 +7,39 @@ class ticket {
     string TicketId;// id
     string CustomerName; // tênh khách hangf
     string MovieName;// tên phim
-    string TheatreCode;// mã rạp
     string Seat;//ghế ngồi
     int Price;// giá
     string BuyTime; // thời gian mua 
-    string MovieTime; //==> movie.length
+    string MovieTime;
     string NameStaff;// tên nhân viên
     public:
 
-    string getTicketId();
+    string getId();
     string getCustomerName();
     string getMovieName();
-    string getTheatreCode();
+    string getMovieTime();
     string getSeat();
     int getPrice();
     string getBuyTime();
-    string getMovieTime();
     string getNameStaff();
-    void setBuyTime(string);
 
 
-    ~ticket(); // buytime lấy theo thời gian thực
-    ticket(string = "", string = "", string = "", string ="", string = "", string ="", string ="", int = 0);
+    
+    void setId(string);
+    void setCustomer(string);
+    void setMovieName(string);
+    void setMovieTime(string);
+    void setSeat(string);
+    void setPrice(int);
+    void setBuyTime();
+    void setNameStaff(string);
+
+    ~ticket(); 
+    ticket(string = "", string = "", string = "",  string = "", string ="", string ="");
     void show();
     void SaveToFile();
-    static void readTicket(std::ifstream& , const std::string& ); 
+    // static void readTicket(ifstream& , const string); 
+    friend ostream& operator<<(ostream&, const ticket&);
+    friend istream& operator>>(istream&, ticket&);
+    bool operator==(const ticket&);
 };

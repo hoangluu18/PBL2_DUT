@@ -19,7 +19,7 @@ private:
 public:
     staffManager();
     ~staffManager();
-
+   
     void start(); // start menu
     void addStaff(staff s);// thêm nhân viên và mật khẩu nhân viên
     bool removeStaff(string id);// xóa nhân viên và mật khẩu nhân viên
