@@ -8,8 +8,9 @@
 #include "movieManagement.h"
 class Booking {
     public:
-    void Datve();
+    void Datve(string nameStaff);
     string Chonghe();
     string getmoviename(string);
     string getmovietime(string);
+  
 };

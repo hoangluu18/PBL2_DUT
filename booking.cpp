@@ -47,7 +47,8 @@ string Booking::Chonghe(){
         }
         cout << endl << endl;
         }
-        return token;
+
+    return token;// => A1
  }
 
 
@@ -66,10 +67,11 @@ string Booking::getmoviename(string maphim){ // hàm lấy tên phim để bỏ 
         }
     }
     inFile.close();
+
     return tenphim;
 }
 
-string Booking::getmovietime(string find){ // hàm lấy thời gian bắt đầu chiếu phim để bỏ vào ticket
+string Booking::getmovietime(string find ){ // hàm lấy thời gian bắt đầu chiếu phim để bỏ vào ticket
     ifstream inFile("suatchieu.txt");
     if(!inFile) {
         cout <<"Khong tim thay file";
@@ -99,13 +101,15 @@ string Booking::getmovietime(string find){ // hàm lấy thời gian bắt đầ
 }
 
 
-void Booking::Datve(){
+void Booking::Datve(string NameStaff){
+    system("cls");
     movieManagement m;
     m.readFile();
     m.printListMovies();
     string customer;
     cout <<"Ten cua ban: ";
-    cin >> customer;
+    cin.ignore();
+    getline(cin,customer);
     cout << "Put in movie ID: ";
     string maphim;
     cin >> maphim;
@@ -147,7 +151,7 @@ void Booking::Datve(){
     s[i].setSeat(seat);
     s[i].setPrice(55000);
     s[i].setBuyTime();
-    s[i].setNameStaff("Nghia");
+    s[i].setNameStaff(NameStaff);
     system("cls");
     }
 
@@ -165,6 +169,10 @@ void Booking::Datve(){
             s[i].SaveToFile();
         }
     }
+     system("cls");
+
+    cout<<"\t\t\tTHANK YOU FOR CHOSE OUR SERVICE!\n";
+    getch();
 }
 
 
