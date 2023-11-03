@@ -38,6 +38,18 @@ void intro_manager()
      
 }
 
+void intro_staff()
+{
+	system("cls");
+	cout <<"\t\t\t"<<"|===========================|" << endl;
+	cout <<"\t\t\t"<<"|     	STAFF               |"<< endl;
+	cout <<"\t\t\t"<<"|  1. Booking               |" << endl;
+	cout <<"\t\t\t"<<"|  2. Exit                  |" << endl;
+	cout <<"\t\t\t"<<"|===========================|" << endl;
+	cout <<"\t\t\tChoose: ";
+   
+}
+
 
 
 void run()
@@ -46,9 +58,10 @@ void run()
 	do
 	{ 
 	  bool check ,out_the_loop = false;// điều kiện thoát vòng lặp
+	  string nameStaff = "";
 	  intro();
 	  accManagement acc;
-	  acc.checkLogin(check);// check = true gọi đến quản lí , false gọi đến nhân viên đặt vé
+	  acc.checkLogin(check, nameStaff);// check = true gọi đến quản lí , false gọi đến nhân viên đặt vé
       if(check == true)
 	  { 
 		
@@ -89,11 +102,34 @@ void run()
 		
 	  }
 
-	  else
-	  {
-           // gọi đến hàm booking.start(); // đang phát triển
+	  else 
+	{	while(out_the_loop == false)
+		{
+       		char tt; 
+			intro_staff();
 
+			tt = getche();
+       		switch (tt)
+			{
+		   
+				case '1':
+				{
+					Booking booking;
+					booking.Datve(nameStaff);
+					break;
+				}
 
+				case '2':
+				{   
+					out_the_loop = true;
+					break;
+				}
+
+				default: cout<<"\a";
+			
+			} 
+		}
+			
 	  }
 
 		
@@ -117,6 +153,7 @@ int main()
 	
 	// staff.start();
 	
+
 	return 0;
 }
 
