@@ -198,9 +198,7 @@ void Suatchieu::inthongtinsuatchieu(string maphim, string Sothutu){
         if (line.find(maphim) != std::string::npos && line.find(Sothutu) != std::string::npos) {
             foundTarget = true;
             cout << line << endl;  // In ra dòng chứa mã suất chiếu và số thứ tự
-        } else if (foundTarget && !line.empty()) {
-            cout << line << endl;  // In ra các dòng thông tin ghế ngồi
-        } else if (foundTarget && line.empty()) {
+        }   else if (foundTarget && line.empty()) {
             // Khi gặp dòng trắng, dừng in ra thông tin ghế ngồi
             break;
         }
