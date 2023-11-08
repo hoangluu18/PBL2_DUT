@@ -25,4 +25,6 @@ class Suatchieu {
     void printMovieShow(string = "");
     static string** inseat();
     void inthongtinsuatchieu(string, string);
+    static void printseat(string, string);
+    static void readseat(string);
 }; 

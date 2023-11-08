@@ -277,3 +277,58 @@ void Suatchieu::inthongtinsuatchieu(string maphim, string Sothutu)
 
     return;
 }
+
+// void Suatchieu::printseat(string suatchieu, string seat){
+//     ifstream inFile("suatchieu.txt");
+//     if(!inFile){
+//         cerr<<"Error opening file";
+//         exit(-1);
+//     }
+//     string file;
+//     string line;
+//     if(inFile.is_open()) {
+//         while(getline(inFile, line)) {
+//             file += line + "\n";
+//             if(line.find(suatchieu) != string::npos){
+//                 file += seat + ";" ;
+//                 break;
+//         }
+//     }
+//     while(getline(inFile, line)) {
+//         file += line + '\n';
+//     }
+//     inFile.close();
+// }
+//     ofstream outFile("suatchieu.txt");
+//     if(outFile.is_open()) {
+//         outFile << file;
+//         outFile.close();
+//     } else cerr << "Khong tim thay file"; 
+
+// }
+
+
+// void Suatchieu::readseat(string suatchieu){
+//     ifstream inFile("suatchieu.txt");
+//     if(!inFile){
+//         cerr<<"Error opening file";
+//         exit(-1);
+//     }
+//     string line;
+//     string target;
+//     bool istarget = false;
+//     while(getline(inFile, line)) {
+//         if(istarget == true) {
+//             istringstream linestream(line);
+//             string field;
+//             while(getline(linestream, field, ';')) {
+//                 cout << field << " ";
+//             }
+//             cout << endl;
+//             istarget = false;
+//         } else if (line.find(suatchieu) != string::npos) {
+//             istarget = true;
+//         }   
+//     }
+//     inFile.close();
+// }

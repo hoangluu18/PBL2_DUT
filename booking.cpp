@@ -1,10 +1,8 @@
 #include "booking.h"
 char S[9][9];
-string Booking::Chonghe()
-{
-    if (S[0][0] != ' ')
-    {
-        S[0][0] = ' ';
+//hàm tạo bảng chỗ ngồi
+void createtable() {
+    S[0][0] = ' ';
         int index = 0;
         for (int i = 1; i < 9; i++)
         {
@@ -22,31 +20,86 @@ string Booking::Chonghe()
                 S[i][j] = '0';
             }
         }
-    }
-    for (int i = 0; i < 9; i++)
-    {
-        for (int j = 0; j < 9; j++)
-        {
-            cout << S[i][j] << "   ";
-        }
-        cout << endl
-             << endl;
-    }
-    cout << "Chon ghe ban mong muon: " << endl;
-    string token;
+}
 
-    bool book = false;
-    while (book == false)
-    {
-        cin >> token;
-        char hangghe = token[0];
+
+// in suất chiếu vừa đặt để lưu vào file suatchieu.txt
+void printseat(string suatchieu, string seat){
+    ifstream inFile("suatchieu.txt");
+    if(!inFile){
+        cerr<<"Error opening file";
+        exit(-1);
+    }
+    string file;
+    string line;
+    if(inFile.is_open()) {
+        while(getline(inFile, line)) {
+            file += line + "\n";
+            if(line.find(suatchieu) != string::npos){
+                file += seat + ";" ;
+                break;
+        }
+    }
+    while(getline(inFile, line)) {
+        file += line + '\n';
+    }
+    inFile.close();
+}
+    ofstream outFile("suatchieu.txt");
+    if(outFile.is_open()) {
+        outFile << file;
+        outFile.close();
+    } else cerr << "Khong tim thay file"; 
+}
+
+
+
+// hàm để kiểm tra các chỗ ngồi đã được đặt
+void Suatchieu::readseat(string suatchieu){
+    ifstream inFile("suatchieu.txt");
+    if(!inFile){
+        cerr<<"Error opening file";
+        exit(-1);
+    }
+    string line;
+    string target;
+    bool istarget = false;
+    while(getline(inFile, line)) {
+        if(istarget == true) {
+            istringstream linestream(line);
+            string field;
+            while(getline(linestream, field, ';')) {         
+                char hangghe = field[0];
+                int hang = hangghe - 64;
+                char soghe = field[1];
+                int ghe = soghe - '0';
+                if (S[hang][ghe] == '0') {
+                    S[hang][ghe] = 'X';
+                }   
+            }
+            istarget = false;
+        } else if (line.find(suatchieu) != string::npos) {
+            istarget = true;
+        }   
+    }
+    inFile.close();
+}
+
+
+string pickseat(string suatchieu) {
+    cout << "Chon ghe ban mong muon: " << endl;
+    string seat;
+    bool booking = false;
+    while(booking == false) {
+        cin >> seat;
+        char hangghe = seat[0];
         int hang = hangghe - 64;
-        char soghe = token[1];
+        char soghe = seat[1];
         int ghe = soghe - '0';
         if (S[hang][ghe] == '0')
         {
             S[hang][ghe] = 'X';
-            cout << "Ban da dat thanh cong ghe " << token << endl;
+            cout << "Ban da dat thanh cong ghe " << seat << endl;
             break;
         }
         else
@@ -54,8 +107,19 @@ string Booking::Chonghe()
             cout << "Hang ghe nay da co nguoi dat. Xin vui long chon hang ghe khac: ";
         }
     }
-    for (int i = 0; i < 9; i++)
-    {
+    printseat(suatchieu, seat);
+    return seat;
+}
+
+
+// hàm đặt ghế
+string Booking::Chonghe(string suatchieu)
+{
+    if (S[0][0] != ' ') {
+        createtable();
+    }
+    Suatchieu::readseat(suatchieu);
+    for (int i = 0; i < 9; i++) {
         for (int j = 0; j < 9; j++)
         {
             cout << S[i][j] << "   ";
@@ -63,8 +127,25 @@ string Booking::Chonghe()
         cout << endl
              << endl;
     }
+    return pickseat(suatchieu);
 
-    return token; // => A1
+    // // bool book = false;
+    // // while (book == false)
+    // // {
+    // //     cin >> token;
+        
+    // // }
+    // for (int i = 0; i < 9; i++)
+    // {
+    //     for (int j = 0; j < 9; j++)
+    //     {
+    //         cout << S[i][j] << "   ";
+    //     }
+    //     cout << endl
+    //          << endl;
+    // }
+
+    // return token; // => A1
 }
 
 string Booking::getmoviename(string maphim)
@@ -166,7 +247,7 @@ void Booking::Datve(string NameStaff)
 
     for (int i = 0; i < count; i++)
     { // bước chọn chỗ ngồi
-        string seat = h.Chonghe();
+        string seat = h.Chonghe(find);
         s[i].setId(to_string(i));
         s[i].setCustomer(customer);
         s[i].setMovieName(tenphim);

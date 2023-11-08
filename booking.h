@@ -9,7 +9,7 @@
 class Booking {
     public:
     void Datve(string nameStaff);
-    string Chonghe();
+    string Chonghe(string);
     string getmoviename(string);
     string getmovietime(string);
   
