@@ -1,6 +1,12 @@
+#include <iostream>
+#include <string>
+#include <ctime>
+#include <fstream>
+using namespace std;
 
-#include "booking.h"
+
+
+
 int main() {
-    Booking b;
-    b.Datve("Lmao");
+
 }

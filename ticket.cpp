@@ -5,11 +5,11 @@
 #include <algorithm>
 string getCurrentDateTime()
 {
-    std::time_t now = std::time(0);
-    std::tm *localTime = std::localtime(&now);
+    time_t now = time(0);
+    tm *localTime = localtime(&now);
 
-    std::ostringstream oss;
-    oss << std::put_time(localTime, "%d/%m/%y %H:%M");
+    ostringstream oss;
+    oss << put_time(localTime, "%d/%m/%y %H:%M");
     return oss.str();
 }
 

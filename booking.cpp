@@ -129,23 +129,6 @@ string Booking::Chonghe(string suatchieu)
     }
     return pickseat(suatchieu);
 
-    // // bool book = false;
-    // // while (book == false)
-    // // {
-    // //     cin >> token;
-        
-    // // }
-    // for (int i = 0; i < 9; i++)
-    // {
-    //     for (int j = 0; j < 9; j++)
-    //     {
-    //         cout << S[i][j] << "   ";
-    //     }
-    //     cout << endl
-    //          << endl;
-    // }
-
-    // return token; // => A1
 }
 
 string Booking::getmoviename(string maphim)
@@ -196,15 +179,58 @@ string Booking::getmovietime(string find)
                 cout << "Không tìm thấy dấu ';' cuối cùng trong dòng." << endl;
             }
         }
-        // if(line.find(find) == 0)
-        // size_t lastpos = line.find_last_of(';');
-        // if(lastpos != string::npos && lastpos + 1 < line.length()) {
-        //     movietime = line.substr (lastpos + 1);
-        //     break;
-        // }
+        
     }
     return movietime;
 }
+
+void resetshowtime(string maphim) {
+    ifstream inFile("suatchieu.txt");
+    if (!inFile.is_open()) {
+        cerr << "K tim thay file" << endl;
+        return;
+    }
+    string line;
+    string file;
+    bool found = false;
+    while(getline(inFile, line)) { // hàm này tìm dòng có thông tin ghế ngồi của suất chiếu cần tìm và xóa thông tin ghế ngồi (nếu suất chiếu đó đã chiếu xong rồi)
+        if(found == false && line.find(maphim) != string::npos) {
+            found = true;
+            file += line + "\n";
+        } else if (found == true){ // dòng thông tin ghế ngồi bị bỏ qua không ghi vào file (coi như là xóa)
+            file += "\n";
+            found = false;
+        } else {
+            file += line + "\n";
+        }
+    }
+        
+    inFile.close();
+    ofstream outFile("suatchieu.txt");
+    outFile << file;
+    outFile.close();
+}
+
+
+bool CheckTime(const string& targetTime) {
+    // Lấy thời gian hiện tại
+    time_t currentTime;
+    time(&currentTime);
+    // Chuyển đổi thời gian hiện tại thành cấu trúc tm
+    struct tm* timeinfo;
+    timeinfo = localtime(&currentTime);
+    int targetHour, targetMinute;
+    // So sánh thời gian đích với thời gian hiện tại
+    if (timeinfo->tm_hour > targetHour || (timeinfo->tm_hour == targetHour && timeinfo->tm_min >= targetMinute)) {
+        return true; 
+    } else {
+        return false; 
+    }
+}
+
+
+
+
 
 void Booking::Datve(string NameStaff)
 {
@@ -236,10 +262,16 @@ void Booking::Datve(string NameStaff)
     string Sothutu;
     cin >> Sothutu;
     k.inthongtinsuatchieu(maphim, Sothutu); // In thông tin suất chiếu
-
+    
     string find = maphim + ";" + Sothutu;
     string movietime = h.getmovietime(find); // hàm lấy giờ suất chiếu để bỏ vô ticket
 
+
+    // if(CheckTime(movietime)) { // kiểm tra suất chiếu đã chiếu chưa, nếu rồi thì reset chỗ ngồi
+    //     resetshowtime(find);
+    // }
+
+    
     cout << "So Luong Ve can dat: ";
     int count;
     cin >> count;
