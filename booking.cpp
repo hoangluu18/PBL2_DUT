@@ -266,8 +266,8 @@ void Booking::Datve(string NameStaff)
     string find = maphim + ";" + Sothutu;
     string movietime = h.getmovietime(find); // hàm lấy giờ suất chiếu để bỏ vô ticket
 
-
-    // if(CheckTime(movietime)) { // kiểm tra suất chiếu đã chiếu chưa, nếu rồi thì reset chỗ ngồi
+    //FIXME:
+    // if(CheckTime(movietime)) { // kiểm tra suất chiếu đã chiếu chưa, nếu rồi thì reset chỗ ngồi 
     //     resetshowtime(find);
     // }
 
