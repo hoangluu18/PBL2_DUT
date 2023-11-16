@@ -1,3 +1,4 @@
+
 #include "booking.h"
 char S[9][9];
 //hàm tạo bảng chỗ ngồi
@@ -87,7 +88,7 @@ void Suatchieu::readseat(string suatchieu){
 
 
 string pickseat(string suatchieu) {
-    cout << "Chon ghe ban mong muon: " << endl;
+    cout << "Pick the seat you desire: " << endl;
     string seat;
     bool booking = false;
     while(booking == false) {
@@ -99,12 +100,12 @@ string pickseat(string suatchieu) {
         if (S[hang][ghe] == '0')
         {
             S[hang][ghe] = 'X';
-            cout << "Ban da dat thanh cong ghe " << seat << endl;
+            cout << "Booked successed! " << seat << endl;
             break;
         }
         else
         {
-            cout << "Hang ghe nay da co nguoi dat. Xin vui long chon hang ghe khac: ";
+            cout << "Someone else had booked this seat. Please pick another seat!: ";
         }
     }
     printseat(suatchieu, seat);
@@ -184,48 +185,123 @@ string Booking::getmovietime(string find)
     return movietime;
 }
 
-void resetshowtime(string maphim) {
-    ifstream inFile("suatchieu.txt");
-    if (!inFile.is_open()) {
-        cerr << "K tim thay file" << endl;
-        return;
+
+bool CheckTime(const string& targetTime) {
+    time_t currentTime;
+    time(&currentTime);
+    struct tm* timeinfo;
+    timeinfo = localtime(&currentTime);
+    int targetHour, targetMinute;
+    sscanf(targetTime.c_str(), "%dH%d", &targetHour, &targetMinute);
+    if (timeinfo->tm_hour > targetHour || (timeinfo->tm_hour == targetHour && timeinfo->tm_min >= targetMinute)) {
+        return true; // Nếu thời gian hiện tại đã vượt qua thời gian target
+    } else {
+        return false; 
     }
+}
+
+int CompareDate(const string& dateString) {
+    time_t currentTime = time(nullptr);
+    tm* localTime = localtime(&currentTime);
+    tm inputDate = {};
+    istringstream iss(dateString);
+    char delimiter;
+    iss >> inputDate.tm_mday >> delimiter >> inputDate.tm_mon;
+    inputDate.tm_mon -= 1;
+    if (localTime->tm_mon > inputDate.tm_mon ||
+        (localTime->tm_mon == inputDate.tm_mon && localTime->tm_mday > inputDate.tm_mday)) {
+        return 0; // trước ngày hiện tại
+    } else if (localTime->tm_mon == inputDate.tm_mon && localTime->tm_mday == inputDate.tm_mday) {
+        return 1; // là ngày hiện tại
+    } else {
+        return 2; // sau ngày hiện tại
+    }
+}
+
+string GetTomorrowDate() {
+    // Lấy thời gian hiện tại
+    time_t currentTime = time(nullptr);
+    tm* localTime = localtime(&currentTime);
+    localTime->tm_mday += 1;
+    mktime(localTime);
+    ostringstream oss;
+    oss << setw(2) << setfill('0') << localTime->tm_mday << '/'
+        << setw(2) << setfill('0') << localTime->tm_mon + 1;
+    return oss.str();
+}
+
+
+string getCurrentDate()
+{
+    time_t now = time(0);
+    tm *localTime = localtime(&now);
+
+    ostringstream oss;
+    oss << put_time(localTime, "%d/%m");
+    return oss.str();
+}
+
+void resetSeat(){
+    ifstream inputFile("suatchieu.txt"); 
     string line;
     string file;
-    bool found = false;
-    while(getline(inFile, line)) { // hàm này tìm dòng có thông tin ghế ngồi của suất chiếu cần tìm và xóa thông tin ghế ngồi (nếu suất chiếu đó đã chiếu xong rồi)
-        if(found == false && line.find(maphim) != string::npos) {
-            found = true;
-            file += line + "\n";
-        } else if (found == true){ // dòng thông tin ghế ngồi bị bỏ qua không ghi vào file (coi như là xóa)
+    istringstream plus;
+    bool checkreset = false;
+    while (getline(inputFile, line)) {
+        if(checkreset == true) {
             file += "\n";
-            found = false;
+            // cout << "Trigger";
+            checkreset = false;
+            continue;
+        } else if (line.find("MP") != string::npos){
+            
+            istringstream iss(line);
+            string token;
+
+            getline(iss, token, ';'); 
+            string maphim = token;
+
+            getline(iss, token, ';'); 
+            string stt = token;
+
+            getline(iss, token, ';');
+            string time = token;
+
+            getline(iss, token, ';');
+            string date = token;
+    
+            if((CompareDate(date) == 1 && CheckTime(time) == false) || CompareDate(date) == 2) {
+                file += line + "\n";
+                // cout << "Cringe";
+                continue;
+            } else if (CompareDate(date)  == 1 && CheckTime(time) == true) {
+                checkreset = true;
+                // cout << "DCM";
+                date = GetTomorrowDate();
+                file += maphim + ";" + stt + ";" + time + ";" + date + "\n";
+                continue;
+            } else if (CompareDate(date) == 0 && CheckTime(time) == false) {
+                checkreset = true;
+                // cout << "何？";
+                date = getCurrentDate();
+                file += maphim + ";" + stt + ";" + time + ";" + date + "\n";
+                continue;
+            } else if (CompareDate(date) == 0 && CheckTime(time) == true) {
+                checkreset = true;
+                // cout << "HUH?";
+                date = GetTomorrowDate();
+                file += maphim + ";" + stt + ";" + time + ";" + date + "\n";
+                continue;
+            }
         } else {
             file += line + "\n";
         }
     }
-        
-    inFile.close();
+    inputFile.close();
+    
     ofstream outFile("suatchieu.txt");
     outFile << file;
     outFile.close();
-}
-
-
-bool CheckTime(const string& targetTime) {
-    // Lấy thời gian hiện tại
-    time_t currentTime;
-    time(&currentTime);
-    // Chuyển đổi thời gian hiện tại thành cấu trúc tm
-    struct tm* timeinfo;
-    timeinfo = localtime(&currentTime);
-    int targetHour, targetMinute;
-    // So sánh thời gian đích với thời gian hiện tại
-    if (timeinfo->tm_hour > targetHour || (timeinfo->tm_hour == targetHour && timeinfo->tm_min >= targetMinute)) {
-        return true; 
-    } else {
-        return false; 
-    }
 }
 
 
@@ -239,7 +315,7 @@ void Booking::Datve(string NameStaff)
     m.readFile();
     m.printListMovies();
     string customer;
-    cout << "Ten cua ban: ";
+    cout << "Customer Name: ";
     cin.ignore();
     getline(cin, customer);
     cout << "Put in movie ID: ";
@@ -249,30 +325,23 @@ void Booking::Datve(string NameStaff)
     {
         cout << "Movie not found, try again!: ";
         cin >> maphim;
-    }
+    }   
     system("cls");
 
     Booking h;
     Suatchieu k;
     string tenphim = h.getmoviename(maphim); // hàm lấy tên phim để bỏ vào ticket
-
+    resetSeat(); // thao tác reset suất chiếu theo giờ
     k.printMovieShow(maphim);
 
-    cout << "Chon suat chieu ma ban muon: " << endl;
+    cout << "Pick the showtime you desire: " << endl;
     string Sothutu;
     cin >> Sothutu;
     k.inthongtinsuatchieu(maphim, Sothutu); // In thông tin suất chiếu
     
     string find = maphim + ";" + Sothutu;
-    string movietime = h.getmovietime(find); // hàm lấy giờ suất chiếu để bỏ vô ticket
-
-    //FIXME:
-    // if(CheckTime(movietime)) { // kiểm tra suất chiếu đã chiếu chưa, nếu rồi thì reset chỗ ngồi 
-    //     resetshowtime(find);
-    // }
-
-    
-    cout << "So Luong Ve can dat: ";
+    string movietime = h.getmovietime(find); // hàm lấy giờ suất chiếu để bỏ vô ticket    
+    cout << "Ticket's quantity: ";
     int count;
     cin >> count;
     ticket s[count];
@@ -297,17 +366,22 @@ void Booking::Datve(string NameStaff)
         s[i].show();
         cout << endl;
     }
-    cout << "Tong so tien ban can tra la " << 55000 * count << " Y/n" << endl;
+    cout << "The total amount you need to pay is " << 55000 * count << "VND.  Y/n" << endl;
     char temp;
     cin >> temp;
+    
     if (temp == 'y' || temp == 'Y')
     {
-        cout << "Ban da thanh toan thanh cong. Chuc ban xem phim vui ve!" << endl;
+        cout << "Paid successed!. Have a nice time!" << endl;
         for (int i = 0; i < count; i++)
         {
             s[i].SaveToFile();
         }
+    } else if (temp == 'n' || temp == 'N') {
+        cout << "You have cancelled the payment." << endl;
     }
+
+
     system("cls");
 
     cout << "\t\t\tTHANK YOU FOR CHOSE OUR SERVICE!\n";

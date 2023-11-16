@@ -1,3 +1,5 @@
+#pragma once
+
 #include "suatchieu.h"
 #include <iostream>
 #include <string>
@@ -5,6 +7,7 @@
 #include "accManagement.h"
 #include "ticket.h"
 #include "list.h"
+
 #include "movieManagement.h"
 class Booking {
     public:

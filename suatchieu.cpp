@@ -1,31 +1,31 @@
 #include "suatchieu.h"
 
-Suatchieu::Suatchieu(string stt, string MaMovie, string Begin)
-{
-    this->Stt = stt;
-    this->maphim = MaMovie;
-    this->TimeBegin = Begin;
-}
+// Suatchieu::Suatchieu(string stt, string MaMovie, string Begin)
+// {
+//     this->Stt = stt;
+//     this->maphim = MaMovie;
+//     this->TimeBegin = Begin;
+// } 
 
-Suatchieu::~Suatchieu()
-{
-}
+// Suatchieu::~Suatchieu()
+// {
+// }
 
-void Suatchieu::setTimeBegin()
-{
-    cout << "Thoi gian bat dau: ";
-    string begin;
-    cin >> begin;
-    this->TimeBegin = begin;
-}
+// void Suatchieu::setTimeBegin()
+// {
+//     cout << "Thoi gian bat dau: ";
+//     string begin;
+//     cin >> begin;
+//     this->TimeBegin = begin;
+// }
 
-void Suatchieu::setstt()
-{
-    cout << "Stt suat chieu:";
-    string stt;
-    cin >> stt;
-    this->Stt = stt;
-}
+// void Suatchieu::setstt()
+// {
+//     cout << "Stt suat chieu:";
+//     string stt;
+//     cin >> stt;
+//     this->Stt = stt;
+// }
 
 string **Suatchieu::inseat()
 {
@@ -48,28 +48,28 @@ string **Suatchieu::inseat()
     return S;
 }
 
-bool Suatchieu::Checkmaphim(const std::string &filename, const std::string &prefix)
-{
-    ifstream file(filename);
-    if (!file.is_open())
-    {
-        cout << "Không thể mở tệp " << filename << endl;
-        return false;
-    }
+// bool Suatchieu::Checkmaphim(const std::string &filename, const std::string &prefix)
+// {
+//     ifstream file(filename);
+//     if (!file.is_open())
+//     {
+//         cout << "Không thể mở tệp " << filename << endl;
+//         return false;
+//     }
 
-    string line;
-    while (getline(file, line))
-    {
-        if (line.compare(0, prefix.size(), prefix) == 0)
-        {
-            file.close();
-            return true;
-        }
-    }
+//     string line;
+//     while (getline(file, line))
+//     {
+//         if (line.compare(0, prefix.size(), prefix) == 0)
+//         {
+//             file.close();
+//             return true;
+//         }
+//     }
 
-    file.close();
-    return false;
-}
+//     file.close();
+//     return false;
+// }
 
 void Insuatchieuvaotrongfile(string &filename, string &line)
 {
@@ -202,27 +202,27 @@ void Suatchieu::printMovieShow(string maphim)
     inFile.close();
 }
 
-void Suatchieu::themsuatchieu()
-{
-    string filephim = "Movie_information.txt"; // file thông tin các phim đã tồn tại
-    string filesuatchieu = "suatchieu.txt";    // file thông tin các suất chiếu của các phim
-    cout << "Nhap ma phim: ";                  // nhập mã phim cần thêm suất chiếu mới
-    string maphim;
-    cin >> maphim;
-    Suatchieu New;
-    if (Suatchieu::Checkmaphim(filephim, maphim) == true)
-    { // hàm kiểm tra phim muốn thêm suất chiếu có tồn tại trong danh sách movie_information hay không
-        cout << "Cac suat chieu da co cua phim " << maphim << endl;
-        New.printMovieShow(maphim);
-        cout << "Vui long nhap thong tin suat chieu cua ma phim " << maphim << endl;
-        New.setstt();
-        New.setTimeBegin();
-        string Thongtinsuatchieu = maphim + ";" + New.Stt + ";" + New.TimeBegin;
-        Insuatchieuvaotrongfile(filesuatchieu, Thongtinsuatchieu); // thêm thông tin vô file suatchieu.txt
-    }
-    else
-        cout << "Chua co phim do trong danh sach phim"; // nếu phim chưa tồn tại trong file movie_information thì hiện ra thông báo
-}
+// void Suatchieu::themsuatchieu()
+// {
+//     string filephim = "Movie_information.txt"; // file thông tin các phim đã tồn tại
+//     string filesuatchieu = "suatchieu.txt";    // file thông tin các suất chiếu của các phim
+//     cout << "Nhap ma phim: ";                  // nhập mã phim cần thêm suất chiếu mới
+//     string maphim;
+//     cin >> maphim;
+//     Suatchieu New;
+//     if (Suatchieu::Checkmaphim(filephim, maphim) == true)
+//     { // hàm kiểm tra phim muốn thêm suất chiếu có tồn tại trong danh sách movie_information hay không
+//         cout << "Cac suat chieu da co cua phim " << maphim << endl;
+//         New.printMovieShow(maphim);
+//         cout << "Vui long nhap thong tin suat chieu cua ma phim " << maphim << endl;
+//         New.setstt();
+//         New.setTimeBegin();
+//         string Thongtinsuatchieu = maphim + ";" + New.Stt + ";" + New.TimeBegin;
+//         Insuatchieuvaotrongfile(filesuatchieu, Thongtinsuatchieu); // thêm thông tin vô file suatchieu.txt
+//     }
+//     else
+//         cout << "Chua co phim do trong danh sach phim"; // nếu phim chưa tồn tại trong file movie_information thì hiện ra thông báo
+// }
 
 void Suatchieu::inthongtinsuatchieu(string maphim, string Sothutu)
 {

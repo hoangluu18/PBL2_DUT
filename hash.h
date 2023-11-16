@@ -16,7 +16,7 @@ class Hash
   public:
    Hash();
    ~Hash();
-
+  
    string getChoose();
    void setChoose(string name);
     
