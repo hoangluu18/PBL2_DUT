@@ -1,8 +1,4 @@
-//#include "movieManagement.h"
-#include <iostream>
-#include <string>
 #include "accManagement.h"
-#include <conio.h>
 #include "movieManagement.h"
 #include "suatchieu.h"
 #include "staffManager.h"
