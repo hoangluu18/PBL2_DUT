@@ -1,4 +1,4 @@
-#include "suatchieuthunghiem.h"
+#include "suatchieu.h"
 #include <fstream>
 #include <iostream>
 #include <iomanip>

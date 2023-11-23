@@ -25,3 +25,5 @@
 1;luu van b;titanic;H2;55000;12/11/23 22:00;7H30 ;luuviethoang
 0;luu van c;titanic;H2;55000;12/11/23 22:02;7H30 ;luuviethoang
 1;luu van c;titanic;H3;55000;12/11/23 22:02;7H30 ;luuviethoang
+0;nguyen van D;Schindler's List;H1;55000;23/11/23 12:54;17H30;luuviethoang
+1;nguyen van D;Schindler's List;H2;55000;23/11/23 12:54;17H30;luuviethoang

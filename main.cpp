@@ -1,6 +1,6 @@
 #include "accManagement.h"
 #include "movieManagement.h"
-#include "suatchieu.h"
+
 #include "staffManager.h"
 #include "booking.h"
 using namespace std;
