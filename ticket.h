@@ -1,19 +1,21 @@
 #include "movie.h"
 #include <fstream>
 #include <string>
-//create by : tran ngoc minh hoang
-class ticket {
-    private:
-    string TicketId;// id
+// create by : tran ngoc minh hoang
+class ticket
+{
+private:
+    string TicketId;     // id
     string CustomerName; // tênh khách hangf
-    string MovieName;// tên phim
-    string Seat;//ghế ngồi
-    int Price;// giá
-    string BuyTime; // thời gian mua 
+    string MovieName;    // tên phim
+    string Seat;         // ghế ngồi
+    int Price;           // giá
+    string BuyTime;      // thời gian mua
     string MovieTime;
-    string NameStaff;// tên nhân viên
-    public:
+    string NameStaff; // tên nhân viên
+    string Staff_id;
 
+public:
     string getId();
     string getCustomerName();
     string getMovieName();
@@ -22,9 +24,8 @@ class ticket {
     int getPrice();
     string getBuyTime();
     string getNameStaff();
+    string getStaff_id();
 
-
-    
     void setId(string);
     void setCustomer(string);
     void setMovieName(string);
@@ -34,13 +35,13 @@ class ticket {
     void setBuyTime();
     void setNameStaff(string);
 
-    ~ticket(); 
-    ticket(string = "", string = "", string = "",  string = "", string ="", string ="");
+    ~ticket();
+    ticket(string = "", string = "", string = "", string = "", string = "", string = "", string ="");
     void show();
     string removeHyphens(string);
     void SaveToFile();
-    // static void readTicket(ifstream& , const string); 
-    friend ostream& operator<<(ostream&, const ticket&);
-    friend istream& operator>>(istream&, ticket&);
-    bool operator==(const ticket&);
+    // static void readTicket(ifstream& , const string);
+    friend ostream &operator<<(ostream &, const ticket &);
+    friend istream &operator>>(istream &, ticket &);
+    bool operator==(const ticket &);
 };
