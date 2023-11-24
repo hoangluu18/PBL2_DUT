@@ -12,7 +12,7 @@ void Booking::Datve(string nameStaff)
     getline(cin, customer);
     suatchieumanager manager;
     manager.readFile();
-    
+    manager.resetseat();
     string id;
     cout << "Put in movie ID: ";
     cin >> id;
@@ -23,12 +23,12 @@ void Booking::Datve(string nameStaff)
     }
     system("cls");
 
-    manager.checkId(id);
+    manager.checkId(id);  FIXME:
 
     string stt;
     cout << "Nhap stt ma ban muon: ";
     cin >> stt;
-    string m = manager.readseat(id, stt);
+    string m = manager.readseat(id, stt);  FIXME:
     // manager.print_Pre_seat(m);
     cout << "Nhap so luong ve ban muon mua: ";
     int count;

@@ -129,7 +129,7 @@ string suatchieumanager::getmoviename(string id){
 
 
 void suatchieumanager::writeFile(){
-    ofstream outfile("clone.txt");
+    ofstream outfile("suatchieu.txt");
     node<suatchieu>* current = this->head;
     while(current != NULL) {
         outfile << current->data.getId() << ";" << current->data.getstt() << ";" << current->data.gettime() << ";" << current->data.getdate();

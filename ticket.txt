@@ -27,3 +27,10 @@
 1;luu van c;titanic;H3;55000;12/11/23 22:02;7H30 ;luuviethoang
 0;nguyen van D;Schindler's List;H1;55000;23/11/23 12:54;17H30;luuviethoang
 1;nguyen van D;Schindler's List;H2;55000;23/11/23 12:54;17H30;luuviethoang
+0;HOANG;The Avengers;A1;55000;24/11/23 21:44;7H30;luuviethoang
+1;HOANG;The Avengers;A2;55000;24/11/23 21:44;7H30;luuviethoang
+2;HOANG;The Avengers;A3;55000;24/11/23 21:44;7H30;luuviethoang
+0;HOANG;The Avengers;A1;55000;24/11/23 21:45;7H30;luuviethoang
+1;HOANG;The Avengers;A2;55000;24/11/23 21:45;7H30;luuviethoang
+0;MP1;The Avengers;A1;55000;24/11/23 21:46;7H30;luuviethoang
+1;MP1;The Avengers;A2;55000;24/11/23 21:46;7H30;luuviethoang
