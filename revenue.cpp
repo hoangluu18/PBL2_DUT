@@ -41,6 +41,7 @@ void Revenue::total_inDay()
     }
     printTotalRevenues();
 
+    
     inputFile.close();
 }
 
@@ -76,10 +77,12 @@ void Revenue::processRevenue(const string &employeeName, const string &employeeI
 
 void Revenue::printTotalRevenues()
 {
+    system("cls");
     for (const auto &er : temporaryRevenues)
     {
         cout << "ID: " << er.employeeId << ", Name: " << er.employeeName << ", Total Revenue: " << er.totalRevenue << endl;
     }
+    system("pause");
 }
 
 string Revenue::getCurrentDateTime()
