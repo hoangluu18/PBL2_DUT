@@ -12,7 +12,7 @@ class suatchieumanager : protected list<suatchieu> {
     suatchieumanager();
     ~suatchieumanager();
 
-    string getmovieid(string, string);
+    string getmovieid(string, string); 
     string getmovietime(string, string);
     string getmoviedate(string, string);
 

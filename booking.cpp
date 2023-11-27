@@ -23,14 +23,14 @@ void Booking::Datve(string nameStaff)
     }
     system("cls");
 
-    manager.checkId(id);  FIXME:
+    manager.checkId(id); // FIXME:
 
     string stt;
-    cout << "Nhap stt ma ban muon: ";
+    cout << "Pick showtime you desire: ";
     cin >> stt;
-    string m = manager.readseat(id, stt);  FIXME:
+    string m = manager.readseat(id, stt);  //FIXME:
     // manager.print_Pre_seat(m);
-    cout << "Nhap so luong ve ban muon mua: ";
+    cout << "Ticket's quantity: ";
     int count;
     cin >> count;
     system("cls");
@@ -72,6 +72,6 @@ void Booking::Datve(string nameStaff)
     } else if (temp == 'n' || temp == 'N') {
         cout << "You have cancelled the payment." << endl;
     }
-    // cout << "Press any key to continue!";
-    // cin.get();
+    cout << "Press any key to continue!";
+    cin.get();
 }

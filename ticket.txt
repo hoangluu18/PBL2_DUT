@@ -5,3 +5,6 @@
 1;HOANG;The Avengers;A2;55000;24/11/23 21:45;7H30;luuviethoang;MNV01
 0;MP1;The Avengers;A1;55000;24/11/23 21:46;7H30;luuviethoang;MNV01
 1;MP1;The Avengers;A2;55000;24/11/23 21:46;7H30;luuviethoang;MNV01
+0;HOANG;The Avengers;A1;55000;27/11/23 23:08;7H30;luuviethoang;
+1;HOANG;The Avengers;A2;55000;27/11/23 23:08;7H30;luuviethoang;
+2;HOANG;The Avengers;A3;55000;27/11/23 23:08;7H30;luuviethoang;

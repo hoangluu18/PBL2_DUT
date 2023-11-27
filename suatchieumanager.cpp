@@ -34,7 +34,7 @@ void createtable() {
 void suatchieumanager::readFile(){
     ifstream inFile("suatchieu.txt");
     if(inFile.is_open() == false) {
-        cerr << "File not found";
+        cerr << "File wa doko?";
         return;
     }
     string line;
@@ -109,7 +109,7 @@ string suatchieumanager::getmoviename(string id){
     ifstream inFile("Movie_information.txt");
     if (!inFile)
     {
-        cout << "Khong tim thay file";
+        cout << "File wa doko? ";
     }
     string line;
     string moviename;
@@ -151,7 +151,6 @@ void suatchieumanager::checkId(string id){
             current = current->next;
         } else current = current->next;
     }
-    
 }
 
 string suatchieumanager::readseat(string id, string stt) {
@@ -223,17 +222,17 @@ int CompareDate(const string& dateString) {
 void suatchieumanager::resetseat(){
     node<suatchieu>* current = this->head;
     while(current != NULL) {
-        if((CompareDate(current->data.getdate()) == 1 && CheckTime(current->data.gettime()) == false) || CompareDate(current->data.getdate()) == 2){
+        if((CompareDate(current->data.getdate()) == 1 && CheckTime(current->data.gettime()) == false) || CompareDate(current->data.getdate()) == 2){ //TODO:: 
             current = current->next;
-        } else if(CompareDate(current->data.getdate()) == 1 && CheckTime(current->data.gettime()) == true) {
+        } else if(CompareDate(current->data.getdate()) == 1 && CheckTime(current->data.gettime()) == true) { //da qua roi
             current->data.setseat("");
             current->data.setdate(GetTomorrowDate());
             current= current->next;
-        } else if(CompareDate(current->data.getdate()) == 0 && CheckTime(current->data.gettime()) == false) {
+        } else if(CompareDate(current->data.getdate()) == 0 && CheckTime(current->data.gettime()) == false) { //  ngay hom trươc va chua qua gio
             current->data.setseat("");
             current->data.setdate(getCurrentDate());
             current = current->next;
-        } else if(CompareDate(current->data.getdate()) == 0 && CheckTime(current->data.gettime()) == true) {
+        } else if(CompareDate(current->data.getdate()) == 0 && CheckTime(current->data.gettime()) == true) { // hom truo va da qua gio
             current->data.setseat("");
             current->data.setdate(GetTomorrowDate());
             current = current->next;
@@ -272,14 +271,12 @@ string suatchieumanager::pickseat(){
         int hang = hangghe - 64;
         char soghe = seat[1];
         int ghe = soghe - '0';
-        if (S[hang][ghe] == '0')
-        {
+        if(ghe >= 9 || hangghe > 'H' || seat.size() >= 3) {
+            cout << "Omae wa bakayarou da?. Mou ichido erabe!: ";
+        } else if (S[hang][ghe] == '0') {
             S[hang][ghe] = 'X';
-            
             break;
-        }
-        else
-        {
+        } else {
             cout << "Someone else had booked this seat. Please pick another seat!: ";
         }
     }
