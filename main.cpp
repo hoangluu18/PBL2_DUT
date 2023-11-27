@@ -3,6 +3,7 @@
 
 #include "staffManager.h"
 #include "booking.h"
+#include "revenue.h"
 using namespace std;
 
 
@@ -28,7 +29,8 @@ void intro_manager()
 	cout <<"\t\t\t"<<"|     	MANAGEMENT          |"<< endl;
 	cout <<"\t\t\t"<<"|  1. Movie Management      |" << endl;
 	cout <<"\t\t\t"<<"|  2. Staff Managemnt       |" << endl;
-	cout <<"\t\t\t"<<"|  3. Exit                  |" << endl;
+	cout <<"\t\t\t"<<"|  3. Revenue Statistics    |" << endl;
+	cout <<"\t\t\t"<<"|  4. Exit                  |" << endl;
 	cout <<"\t\t\t"<<"|===========================|" << endl;
     cout<<"\t\t\tChoose: ";
 
@@ -84,8 +86,13 @@ void run()
 					staff.start();
 					break;
 				}
-
 				case '3':
+				{
+					Revenue revenue;
+					revenue.total_inDay();
+					break;
+				}
+				case '4':
 				{   
 					out_the_loop = true;
 					break;
