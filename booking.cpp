@@ -28,6 +28,10 @@ void Booking::Datve(string nameStaff)
     string stt;
     cout << "Pick showtime you desire: ";
     cin >> stt;
+    while(stoi(stt) > 6) {
+        cout <<"Showtime you picked doesn't exist. Please pick again!: ";
+        cin >> stt;
+    }
     string m = manager.readseat(id, stt);  //FIXME:
     // manager.print_Pre_seat(m);
     cout << "Ticket's quantity: ";
@@ -65,13 +69,16 @@ void Booking::Datve(string nameStaff)
     if(temp == 'y' || temp == 'Y') {
         system("cls");
         cout << "\t\t\t Paid successed!. Thank you for chose our service!" << endl;
+        system("pause");
         for(int i = 0; i < count; i++){
             s[i].SaveToFile();
         }
         manager.writeFile();
     } else if (temp == 'n' || temp == 'N') {
         cout << "You have cancelled the payment." << endl;
+        system("pause");
     }
-    cout << "Press any key to continue!";
-    cin.get();
+    
+    // cout << "Press any key to continue!";
+    // cin.get();
 }
