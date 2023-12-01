@@ -16,6 +16,7 @@ void accManagement::checkLogin(bool& check, string& nameStaff)
     
     char tt;
     string choose;
+	bool checkExit = false ;// chuyển về trạng thái đăng nhập nếu không nhớ mk
     do
 	{
 
@@ -39,6 +40,7 @@ void accManagement::checkLogin(bool& check, string& nameStaff)
 			check = true; // true == manager
             this->setChoose(choose);
             this->ReadFile();
+
             cout<<"\t\t\t" << " ===============================" << endl;
 			cout<<"\t\t\t" << "                              " << endl;
 			cout<<"\t\t\t" << "         - Login -             " << endl;
@@ -47,14 +49,39 @@ void accManagement::checkLogin(bool& check, string& nameStaff)
 			cout<<"\t\t\t" << "                              " << endl;
 			cout<<"\t\t\t" << "                              " << endl;
 			cout<<"\t\t\t" << " ===============================" << endl;
-			while(this->search(username,password) == false)
-			{   system("cls");
-                cout<<"\t\t\tWrong username or password, retype"<<endl;
-                cout<<"\t\t\t" << "        Username: ", cin >> username;
-			    cout<<"\t\t\t" << "        Password: ", cin >> password;
-                continue;
+
+			while(this->search(username,password) == false) //sk xử lí nếu nhập sai mk
+			{   
+				system("cls");
+                cout<<"\t\t\tWrong username or password"<<endl;
+				cout<<"\t\t\t1.Retype"<<endl;
+				cout<<"\t\t\t2.Back menu"<<endl;
+				cout<<"\t\t\tChoose: ";
+
+				char choose;
+				choose = getche();
+
+				if(choose == '1')
+				{
+				system("cls");
+                cout<<"\t\t\t" << "Username: ", cin >> username;
+			    cout<<"\t\t\t" << "Password: ", cin >> password;
+				}
+
+				else if(choose == '2')
+				{   
+					checkExit = true;
+					break;
+				}
+				
+                continue; // nếu nhập char khác 1 và 2 thì tiếp tục vòng lặp
 			}
-           return;
+			if(checkExit == true)// nếu muốn trở về menu chính
+			{   
+				checkExit = false; 
+				break; //tiếp tục vòng lặp do while
+			}
+           return; //nhập đúng trả về main tiếp tục gọi hàm tiếp theo
 		}
 
 		case '2':
@@ -64,6 +91,7 @@ void accManagement::checkLogin(bool& check, string& nameStaff)
 			check = false; // false == staff
             this->setChoose(choose);
             this->ReadFile();
+
             cout<<"\t\t\t" << " ===============================" << endl;
 			cout<<"\t\t\t" << "                              " << endl;
 			cout<<"\t\t\t" << "         - Login -             " << endl;
@@ -72,12 +100,32 @@ void accManagement::checkLogin(bool& check, string& nameStaff)
 			cout<<"\t\t\t" << "                              " << endl;
 			cout<<"\t\t\t" << "                              " << endl;
 			cout<<"\t\t\t" << " ===============================" << endl;
-			while(this->search(username,password) == false)
-			{   system("cls");
-                cout<<"\t\t\tWrong username or password, retype"<<endl;
-                cout<<"\t\t\t" << "        Username: ", cin >> username;
-			    cout<<"t\t\t" <<  "        Password: ", cin >> password;
+
+			while(this->search(username,password) == false)//tương tự case 1
+			{   
+				system("cls");
+                cout<<"\t\t\tWrong username or password"<<endl;
+				cout<<"\t\t\t1.Retype"<<endl;
+				cout<<"\t\t\t2.Back Menu"<<endl;
+				cout<<"\t\t\tChoose: ";
+				char choose;
+				choose = getche();
+				if(choose == '1')
+				{
+                cout<<"\t\t\t" << "Username: ", cin >> username;
+			    cout<<"t\t\t" <<  "Password: ", cin >> password;
+				}
+				else if(choose == '2')
+				{
+					checkExit = true;
+					break;
+				}
                 continue;
+			}
+			if(checkExit == true)
+			{   
+				checkExit = false;
+				break;
 			}
 			this->setUserName(username);// lấy tên nhân viên cho phần booking
 			nameStaff = username;
