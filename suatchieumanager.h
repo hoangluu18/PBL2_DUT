@@ -1,3 +1,4 @@
+#pragma once
 #include "suatchieu.h"
 #include <fstream>
 #include <iostream>
@@ -27,4 +28,6 @@ class suatchieumanager : protected list<suatchieu> {
     void resetseat();
     void print_Pre_seat(string);
     string pickseat();
+
+    void createNewSuatchieu(string id);
 };

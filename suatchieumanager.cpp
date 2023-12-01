@@ -283,5 +283,25 @@ string suatchieumanager::pickseat(){
     return seat;
 }
 
+void suatchieumanager::createNewSuatchieu(string id){
+    ofstream outFile("suatchieu.txt", ios::app);
+    suatchieu s;
+    int timehour = 7;
+    string timeminute = "H30";
+    for(int i = 0; i < 6; i++) {
+        s.setid(id);
 
+        string stt = "00" + to_string(i+1);
+        s.setstt(stt);
 
+        s.settime(to_string(timehour) + timeminute);
+        timehour += 2;
+
+        s.setdate(getCurrentDate());
+        s.setseat("");
+
+        outFile << s.getId() << ";" << s.getstt() << ";" << s.gettime() << ";" << s.getdate();
+        outFile << endl << endl << endl;
+    }
+    outFile.close();
+}

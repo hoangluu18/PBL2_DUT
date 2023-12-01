@@ -1,3 +1,4 @@
+#pragma once
 #include "list.h"
 
 class suatchieu {

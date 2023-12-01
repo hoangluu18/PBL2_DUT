@@ -255,8 +255,10 @@ do{
                  cout<<"Id: ";
                  cin>>newId;
                  new_movie.setId(newId);                 
- 
+
             }
+            suatchieumanager m;
+            m.createNewSuatchieu(new_movie.getId());
             
             this->addMovie(new_movie);
             this->writeFile();

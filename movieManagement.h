@@ -9,7 +9,7 @@
 #include <string>
 #include <iomanip>
 #include <conio.h>
-
+#include "suatchieumanager.h"
 
 using namespace std;
 
