@@ -3,15 +3,57 @@
 void intro()
 {
     system("cls");
-    cout <<"\t\t\t"<< " ===============================" << endl;
-	cout <<"\t\t\t"<< " |                             |" << endl;
-	cout <<"\t\t\t"<< " |                             |" << endl;
-	cout <<"\t\t\t"<< " |         Welcome to          |" << endl;
-	cout <<"\t\t\t"<< " |           CINEMA            |" << endl;
-	cout <<"\t\t\t"<< " |                             |" << endl;
-	cout <<"\t\t\t"<< " |                             |" << endl;
-	cout <<"\t\t\t"<< " ===============================" << endl;
-    cout<<"\t\t\t"<<"Press any key to login..."<<endl;
+	cout << "\t\t" << char(218);
+    for(int i=0; i<70; i++){
+        cout << char(196);
+    }
+    cout << char(191) << endl;
+
+    cout << "\t\t" << char(179) << " " ;
+    cout << char(218);
+    for(int i=0; i<66; i++){
+        cout << char(196);
+    }
+    cout << char(191) << " " << char(179) << endl << "\t\t" << char(179) << " " << char(179) << "\t\t";
+    cout << "DA NANG UNIVERSITY OF SCIENCE AND TECHNOLOGY";
+    cout << "         " << char(179) << " " << char(179) << endl;
+    cout << "\t\t" << char(179) << " " << char(179) << "\t\t     ";
+    cout << "FACULTY OF INFORMATION TECHNOLOGY";
+    cout << "               " << char(179) << " " << char(179) << endl;
+    cout << "\t\t" << char(179) << " " << char(179);
+    for(int i=0; i<33; i++) cout << "  ";
+    cout << char(179) << " " << char(179) << endl;
+    cout << "\t\t" << char(179) << " " << char(179) << "\t\t     ";
+    cout << "  PBL2: DU AN CO SO LAP TRINH";
+    cout << "                   " << char(179) << " " << char(179) << endl;
+
+    cout << "\t\t" << char(179) << " " << char(179) << "\t\t ";
+    cout << "DE TAI: Quan ly dat ve xem phim tai rap phim";
+    cout << "        " << char(179) << " " << char(179) << endl;
+
+    cout << "\t\t" << char(179) << " " << char(179);
+    for(int i=0; i<33; i++) cout << "  ";
+    cout << char(179) << " " << char(179) << endl;
+
+    cout << "\t\t" << char(179) << " " << char(179) << "\t\t ";
+    cout << "  Sinh vien thuc hien:  Do Long Nghia";
+    cout << "               " << char(179) << " " << char(179) << endl;
+    cout << "\t\t" << char(179) << " " << char(179) << "\t\t ";
+    cout << "                        Luu Viet Hoang";
+    cout << "              " << char(179) << " " << char(179) << endl;
+    cout << "\t\t" << char(179) << " " << char(179) << "\t\t ";
+    cout << "                        Tran Ngoc Minh Hoang";
+    cout << "        " << char(179) << " " << char(179) << endl;
+    cout << "\t\t" << char(179) << " " << char(179) << "\t\t ";
+    cout << "            Lop:  22T_NHAT2         ";
+    cout << "                " << char(179) << " " << char(179) << endl;
+
+    cout << "\t\t" << char(179) <<  " " << char(192);
+    for(int i=0; i<66; i++) cout << char(196);
+    cout << char(217) << " " << char(179) << endl;
+    cout << "\t\t" << char(192);
+    for(int i=0; i<70; i++) cout << char(196);
+    cout << char(217);
 	getch();
 }
 
