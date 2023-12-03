@@ -9,7 +9,54 @@ string accManagement::getUserName()
 {
 	return this->userName;
 }
-
+void display_select_login(){
+	system("cls");
+    cout << endl
+         << endl;
+    cout << "\t\t\t";
+    for (int i = 0; i < 60; i++)
+        cout << char(219);
+    cout << endl
+         << "\t\t\t" << char(219);
+    cout << "                                                          ";
+    cout << char(219);
+    cout << endl
+         << "\t\t\t" << char(219);
+    cout << "\t\t  ";
+    cout << "SELECT LOGIN PERMISSIOSN";
+    cout << "\t\t   " << char(219) << endl;
+    cout << "\t\t\t" << char(219);
+    cout << "                                                          ";
+    cout << char(219);
+    cout << "\t\t\t" << char(219);
+    cout << endl
+         << "\t\t\t";
+    for (int i = 0; i < 60; i++)
+        cout << char(219);
+    cout << endl
+         << endl
+         << "\t\t\t";
+    for (int k = 0; k < 3; k++)
+    {
+        cout << char(218);
+        for (int i = 0; i < 16; i++)
+            cout << char(196);
+        cout << char(191) << "   ";
+    }
+    cout << endl << "\t\t\t"; 
+    cout << char(179) << " 1 " << char(179) << "   MANAGER  " << char(179);
+    cout << "   " << char(179) << " 2 " << char(179) << "    STAFF   " << char(179);
+    cout << "   " << char(179) << " 3 " << char(179) << "     EXIT   " << char(179);
+    cout << endl << "\t\t\t";
+    for(int k=0; k<3;k++){
+        cout << char(192);
+        for (int i = 0; i < 16; i++)
+            cout << char(196);
+        cout << char(217) << "   ";
+    }
+    cout << endl << endl << "\t\t\t";
+    for(int i=0;i<60; i++) cout<< char(219);
+}
 //check login
 void accManagement::checkLogin(bool& check, string& nameStaff)
 {   
@@ -18,17 +65,8 @@ void accManagement::checkLogin(bool& check, string& nameStaff)
     string choose;
 	bool checkExit = false ;// chuyển về trạng thái đăng nhập nếu không nhớ mk
     do
-	{
-
-    system("cls");   
-	cout<<"\t\t\t" << " ===============================" << endl;
-	cout<<"\t\t\t" << " |                             |" << endl;
-	cout<<"\t\t\t" << " |         Login as            |" << endl;
-	cout<<"\t\t\t" << " |         1) Manager          |" << endl;
-	cout<<"\t\t\t" << " |         2) Staff            |" << endl;
-	cout<<"\t\t\t" << " |         3) Exit             |" << endl;
-	cout<<"\t\t\t" << " |                             |" << endl;
-	cout<<"\t\t\t" << " ===============================" << endl;
+	{ 
+	display_select_login();
     
 	tt  = getche();
 	switch (tt)
