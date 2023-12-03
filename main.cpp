@@ -7,20 +7,6 @@
 using namespace std;
 
 
-void intro()
-{
-    system("cls");
-    cout <<"\t\t\t"<< " ===============================" << endl;
-	cout <<"\t\t\t"<< " |                             |" << endl;
-	cout <<"\t\t\t"<< " |                             |" << endl;
-	cout <<"\t\t\t"<< " |         Welcome to          |" << endl;
-	cout <<"\t\t\t"<< " |           CINEMA            |" << endl;
-	cout <<"\t\t\t"<< " |                             |" << endl;
-	cout <<"\t\t\t"<< " |                             |" << endl;
-	cout <<"\t\t\t"<< " ===============================" << endl;
-    cout<<"\t\t\t"<<"Press any key to login..."<<endl;
-	getch();
-}
 
 void intro_manager()
 {    
@@ -57,7 +43,6 @@ void run()
 	{ 
 	  bool check ,out_the_loop = false;// điều kiện thoát vòng lặp
 	  string nameStaff = "";
-	  intro();
 	  accManagement acc;
 	  acc.checkLogin(check, nameStaff);// check = true gọi đến quản lí , false gọi đến nhân viên đặt vé
       if(check == true)
@@ -160,6 +145,8 @@ int main()
 
 	// suatchieumanager m;
 	// m.createNewSuatchieu(maphim);
+	// staffManager staff;
+	// cout<<staff.getStaffId("tranngocminhhoang");
 
 	return 0;
 }

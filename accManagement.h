@@ -14,8 +14,7 @@ public:
     //get , set
     string getUserName(); // lấy tên nhân viên cho phần booking
     void setUserName(string);
-    // string getPassword();
-    // void setPassword(string);
+   
     //other
     void checkLogin(bool& check, string& nameStaff); // true = manager, false = staff
     void addAccount(staff s);

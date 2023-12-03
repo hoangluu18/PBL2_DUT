@@ -28,6 +28,8 @@ public:
     void writeFile();
     bool checkPrimarykey(string id);
     void showStaff();
+    string getStaffId(string nameStaff);// lấy id nhân viên từ tên
+    string getStaffName(string id) ;// lấy tên nhân viên từ id
 };
 
 

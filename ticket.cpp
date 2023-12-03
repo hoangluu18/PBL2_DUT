@@ -126,7 +126,9 @@ void ticket::setNameStaff(string staff)
 {
     this->NameStaff = staff;
 }
-
+void ticket::setStaff_id(string id){
+    this->Staff_id = id;
+}
 void ticket::SaveToFile()
 {
     ofstream outFile("ticket.txt", ios::app);

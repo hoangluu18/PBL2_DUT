@@ -11,8 +11,8 @@ private:
     string Seat;         // ghế ngồi
     int Price;           // giá
     string BuyTime;      // thời gian mua
-    string MovieTime;
-    string NameStaff; // tên nhân viên
+    string MovieTime;    // thời gian chiếu
+    string NameStaff;    // tên nhân viên
     string Staff_id;
 
 public:
@@ -34,13 +34,13 @@ public:
     void setPrice(int);
     void setBuyTime();
     void setNameStaff(string);
+    void setStaff_id(string);
 
     ~ticket();
-    ticket(string = "", string = "", string = "", string = "", string = "", string = "", string ="");
+    ticket(string = "", string = "", string = "", string = "", string = "", string = "", string = "");
     void show();
     string removeHyphens(string);
     void SaveToFile();
-    // static void readTicket(ifstream& , const string);
     friend ostream &operator<<(ostream &, const ticket &);
     friend istream &operator>>(istream &, ticket &);
     bool operator==(const ticket &);

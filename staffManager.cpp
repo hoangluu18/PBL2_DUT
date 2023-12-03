@@ -60,6 +60,37 @@ bool staffManager::checkPrimarykey(string id)
     }
 }
 
+
+string staffManager::getStaffId(string nameStaff)
+{
+    this->readFile();
+    node<staff>* temp = this->head;
+    while(temp != NULL)
+    {
+        if(temp->data.getName() == nameStaff)
+        {
+            return temp->data.getId();
+        }
+        temp = temp->next;
+    }
+    return "";// không tìm thấy
+}
+
+string staffManager::getStaffName(string id)
+{
+    node<staff>* temp = this->head;
+    while(temp != NULL)
+    {
+        if(temp->data.getId()== id)
+        {
+            return temp->data.getName();
+        }
+        temp = temp->next;
+    }
+    return "";// không tìm thấy
+}
+
+
 void staffManager::readFile()
 {
     ifstream file;
