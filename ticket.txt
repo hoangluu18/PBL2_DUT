@@ -1,2 +1,7 @@
 0;nguyen van dut;Schindler's List;H2;55000;03/12/23 14:47;17H30;luuviethoang;MNV01
 0;MP6;Schindler's List;H3;55000;03/12/23 14:49;17H30;tranngocminhhoang;MNV02
+0;nguyen van c;Schindler's List;A1;55000;03/12/23 22:04;9H30;luuviethoang;MNV01
+1;nguyen van c;Schindler's List;A2;55000;03/12/23 22:04;9H30;luuviethoang;MNV01
+2;nguyen van c;Schindler's List;A3;55000;03/12/23 22:04;9H30;luuviethoang;MNV01
+3;nguyen van c;Schindler's List;A4;55000;03/12/23 22:04;9H30;luuviethoang;MNV01
+4;nguyen van c;Schindler's List;A5;55000;03/12/23 22:04;9H30;luuviethoang;MNV01
