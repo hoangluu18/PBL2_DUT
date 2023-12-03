@@ -1,5 +1,20 @@
 #include "revenue.h"
 
+Revenue::Revenue()
+{
+    employees = nullptr;
+    employeesCount = 0;
+
+    temporaryRevenues = nullptr;
+    temporaryRevenuesCount = 0;
+}
+
+Revenue::~Revenue()
+{
+    delete[] employees;
+    delete[] temporaryRevenues;
+}
+
 void Revenue::total_inDay()
 {
     ifstream inputFile("ticket.txt");
@@ -41,46 +56,66 @@ void Revenue::total_inDay()
     }
     printTotalRevenues();
 
-    
     inputFile.close();
 }
 
 void Revenue::processEmployee(const string &employeeName, const string &employeeId)
 {
-    auto it = find_if(employees.begin(), employees.end(),
-                      [&employeeId](const Employee &e) {
-                          return e.employeeId == employeeId;
-                      });
-
-    if (it == employees.end())
+    bool employeeExist = false;
+    for (int i = 0; i < employeesCount; ++i)
     {
-        employees.push_back({employeeId, employeeName});
+        if (employees[i].employeeId == employeeId)
+        {
+            employeeExist = true;
+            break;
+        }
+    }
+
+    if (!employeeExist)
+    {
+        // Add a new employee
+        Employee* newEmployees = new Employee[employeesCount + 1];
+        copy(employees, employees + employeesCount, newEmployees);
+        newEmployees[employeesCount] = {employeeId, employeeName};
+
+        delete[] employees;
+        employees = newEmployees;
+        ++employeesCount;
     }
 }
 
 void Revenue::processRevenue(const string &employeeName, const string &employeeId, long revenue)
 {
-    auto it = find_if(temporaryRevenues.begin(), temporaryRevenues.end(),
-                      [&employeeId](const EmployeeRevenue &er) {
-                          return er.employeeId == employeeId;
-                      });
-
-    if (it != temporaryRevenues.end())
+    bool revenueExist = false;
+    for (int i = 0; i < temporaryRevenuesCount; ++i)
     {
-        it->totalRevenue += revenue;
+        if (temporaryRevenues[i].employeeId == employeeId)
+        {
+            revenueExist = true;
+            temporaryRevenues[i].totalRevenue += revenue;
+            break;
+        }
     }
-    else
+
+    if (!revenueExist)
     {
-        temporaryRevenues.push_back({employeeId, employeeName, revenue});
+        // Add a new revenue entry
+        EmployeeRevenue* newRevenues = new EmployeeRevenue[temporaryRevenuesCount + 1];
+        copy(temporaryRevenues, temporaryRevenues + temporaryRevenuesCount, newRevenues);
+        newRevenues[temporaryRevenuesCount] = {employeeId, employeeName, revenue};
+
+        delete[] temporaryRevenues;
+        temporaryRevenues = newRevenues;
+        ++temporaryRevenuesCount;
     }
 }
 
 void Revenue::printTotalRevenues()
 {
     system("cls");
-    for (const auto &er : temporaryRevenues)
+    for (int i = 0; i < temporaryRevenuesCount; ++i)
     {
-        cout << "ID: " << er.employeeId << ", Name: " << er.employeeName << ", Total Revenue: " << er.totalRevenue << endl;
+        cout << "ID: " << temporaryRevenues[i].employeeId << ", Name: " << temporaryRevenues[i].employeeName << ", Total Revenue: " << temporaryRevenues[i].totalRevenue << endl;
     }
     system("pause");
 }

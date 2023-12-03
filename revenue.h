@@ -2,7 +2,6 @@
 
 #include <iostream>
 #include <fstream>
-#include <vector>
 #include <sstream>
 #include <algorithm>
 #include <iomanip>
@@ -25,12 +24,18 @@ struct EmployeeRevenue
 class Revenue
 {
 private:
-    vector<Employee> employees;
-    vector<EmployeeRevenue> temporaryRevenues;
+    Employee* employees;
+    int employeesCount;
+
+    EmployeeRevenue* temporaryRevenues;
+    int temporaryRevenuesCount;
 
 public:
+    Revenue();
+    ~Revenue();
+
     void total_inDay();
-    
+
 private:
     void processEmployee(const string &employeeName, const string &employeeId);
     void processRevenue(const string &employeeName, const string &employeeId, long revenue);
