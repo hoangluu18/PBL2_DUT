@@ -131,12 +131,51 @@ void intro_manager()
 void intro_staff()
 {
 	system("cls");
-	cout <<"\t\t\t"<<"|===========================|" << endl;
-	cout <<"\t\t\t"<<"|     	STAFF               |"<< endl;
-	cout <<"\t\t\t"<<"|  1. Booking               |" << endl;
-	cout <<"\t\t\t"<<"|  2. Exit                  |" << endl;
-	cout <<"\t\t\t"<<"|===========================|" << endl;
-	cout <<"\t\t\tChoose: ";
+	cout << "\t\t\t";
+    for(int i=0; i<50; i++) cout << char(219);
+    cout << endl;
+    cout << "\t\t\t" << char(219);
+    for(int i=0; i<48; i++) cout << " ";
+    cout << char(219) << endl;
+    cout << "\t\t\t" << char(219);
+    cout << "                      STAFF                     ";
+    cout << char(219) << endl;
+
+    cout << "\t\t\t" << char(219);
+    for(int i=0; i<48; i++) cout << " ";
+    cout << char(219) << endl;
+
+    cout << "\t\t\t" << char(219);
+    cout << "  " << char(218);
+    for(int i=0; i<19; i++) cout << char(196);
+    cout << char(191);
+    cout << "   " << char(218);
+    for(int i=0; i<19; i++) cout << char(196);
+    cout << char(191);
+    cout << " " << char(219) << endl;
+
+    cout << "\t\t\t" << char(219);
+    cout << "  " << char(179);
+    cout << " 1 " << char(179) << "    Booking    " << char(179);
+    cout << "   " << char(179) << " 2 " << char(179) << "      Exit     " << char(179);
+    cout << " " << char(219) << endl;
+
+    cout << "\t\t\t" << char(219);
+    cout << "  " << char(192);
+    for(int i=0; i<19; i++) cout << char(196);
+    cout << char(217);
+    cout << "   " << char(192);
+    for(int i=0; i<19; i++) cout << char(196);
+    cout << char(217);
+    cout << " " << char(219) << endl;
+
+    cout << "\t\t\t" << char(219);
+    for(int i=0; i<48; i++) cout << " ";
+    cout << char(219) << endl;
+
+    cout << "\t\t\t";
+    for(int i=0; i<50; i++) cout << char(219);
+    cout << endl;
 
 }
 
