@@ -47,27 +47,84 @@ void intro()
     cout << "\t\t" << char(179) << " " << char(179) << "\t\t ";
     cout << "            Lop:  22T_NHAT2         ";
     cout << "                " << char(179) << " " << char(179) << endl;
-
+	cout << "\t\t" << char(179) << " " << char(179);
+    for(int i=0; i<33; i++) cout << "  ";
+    cout << char(179) << " " << char(179) << endl;
+	cout << "\t\t" << char(179) << " " << char(179) << "\t\t";
+	cout << "Giang vien huong dan: GVC.ThS. TRAN HO THUY TIEN     ";
+	cout << char(179) << " " << char(179) << endl;
     cout << "\t\t" << char(179) <<  " " << char(192);
     for(int i=0; i<66; i++) cout << char(196);
     cout << char(217) << " " << char(179) << endl;
     cout << "\t\t" << char(192);
     for(int i=0; i<70; i++) cout << char(196);
-    cout << char(217);
+    cout << char(217) << endl;
 	getch();
 }
 
 void intro_manager()
 {    
 	system("cls");
-	cout <<"\t\t\t"<<"|===========================|" << endl;
-	cout <<"\t\t\t"<<"|     	MANAGEMENT          |"<< endl;
-	cout <<"\t\t\t"<<"|  1. Movie Management      |" << endl;
-	cout <<"\t\t\t"<<"|  2. Staff Managemnt       |" << endl;
-	cout <<"\t\t\t"<<"|  3. Revenue Statistics    |" << endl;
-	cout <<"\t\t\t"<<"|  4. Exit                  |" << endl;
-	cout <<"\t\t\t"<<"|===========================|" << endl;
-    cout<<"\t\t\tChoose: ";
+	cout << "\t\t";
+    for (int i = 0; i < 60; i++)
+        cout << char(219);
+    for (int k = 0; k < 12; k++)
+    {
+        cout << endl << "\t\t" << char(219);
+
+        switch (k) {
+            case 1:
+                cout << "                        ";
+                cout << "MANAGEMENT                        ";
+                break;
+            case 3:
+            case 7:
+                cout << "  " << char(218);
+                for(int j=0; j< 23; j++) cout << char(196);
+                cout << char(191);
+                cout << "    " << char(218);
+                for(int j=0; j< 23; j++) cout << char(196);
+                cout << char(191) << "  ";
+                break;
+            case 4:
+                cout << "  " << char(179);;
+                cout << " 1 " << char(179) << "  Movie Management " << char(179);
+                cout << "    ";
+                cout << char(179) << " 2 " << char(179);
+                cout << "  Staff Management " << char(179) << "  ";
+                break;
+            case 5:
+            case 9:
+                cout << "  " << char(192);
+                for(int j=0; j< 23; j++) cout << char(196);
+                cout << char(217);
+                cout << "    " << char(192);
+                for(int j=0; j< 23; j++) cout << char(196);
+                cout << char(217) << "  ";
+                break;
+            case 8:
+                cout << "  " << char(179);
+                cout << " 3 " << char(179) << " Revenue Statistics" << char(179);
+                cout << "    ";
+                cout << char(179) << " 4 " << char(179);
+                cout << "       Exit        " << char(179) << "  ";
+                break;
+            case 0:
+            case 2:
+            case 6:
+            case 10:
+            case 11:
+                for (int i = 0; i < 58; i++)
+                    cout << " ";
+                break;
+        }
+
+        cout << char(219);
+    }
+    cout << endl << "\t\t";
+    for (int i = 0; i < 60; i++)
+        cout << char(219);
+	cout << endl;
 
 }
 
