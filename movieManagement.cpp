@@ -38,7 +38,7 @@ bool movieManagement::editMovie(string id)
 {  
     movie* m = this->search(id);
     if(m == NULL){
-        cout<<"\nnot found check again : \n";
+        cout<<"\n\t\t\tNot found check again : \n";
         return false;
     }
     
@@ -232,12 +232,64 @@ void movieManagement::start()
 do{
      
     this->printListMovies();
-    cout<<"\t\t\t1. add movie\n";
-    cout<<"\t\t\t2. remove movie\n";
-    cout<<"\t\t\t3. edit movie\n";
-    cout<<"\t\t\t4. list movie\n";
-    cout<<"\t\t\t5. exit\n";
-    cout<<"\t\t\tchoose: ";
+    cout << endl;
+    cout << "\t\t\t";
+    for (int j = 0; j <= 1; j++)
+    {
+        cout << char(218);
+        for (int i = 0; i < 20; i++)
+            cout << char(196);
+        cout << char(191) << "                     ";
+    }
+    cout << endl;
+    cout << "\t\t\t";
+    cout << char(179) << " 1 " << char(179) << "   ADD MOVIE    " << char(179);
+    cout << "                     " << char(179) << " 2 " << char(179) << "  REMOVE MOVIE  " << char(179) << endl;
+
+    cout << "\t\t\t";
+    for (int j = 0; j <= 1; j++)
+    {
+        cout << char(192);
+        for (int i = 0; i < 20; i++)
+            cout << char(196);
+        cout << char(217) << "                     ";
+    }
+    cout << endl;
+    cout << "\t\t\t";
+    for (int j = 0; j <= 1; j++)
+    {
+        cout << char(218);
+        for (int i = 0; i < 20; i++)
+            cout << char(196);
+        cout << char(191) << "                     ";
+    }
+    cout << endl;
+    cout << "\t\t\t";
+    cout << char(179) << " 3 " << char(179) << "   EDIT MOVIE   " << char(179);
+    cout << "                     " << char(179) << " 4 " << char(179) << "   LIST MOVIE   " << char(179) << endl;
+
+    cout << "\t\t\t";
+    for (int j = 0; j <= 1; j++)
+    {
+        cout << char(192);
+        for (int i = 0; i < 20; i++)
+            cout << char(196);
+        cout << char(217) << "                     ";
+    }
+    cout << endl;
+    cout << "\t\t\t\t\t\t";
+
+    cout << char(218);
+    for (int i = 0; i < 15; i++)
+        cout << char(196);
+    cout << char(191);
+    cout << endl;
+    cout << "\t\t\t\t\t\t";
+    cout << char(179) << " 5 " << char(179) << "   BACK    " << char(179) << endl;
+    cout << "\t\t\t\t\t\t" << char(192);
+    for (int i = 0; i < 15; i++)
+        cout << char(196);
+    cout << char(217) << endl;
     
     tt = getche();
     
@@ -251,8 +303,8 @@ do{
             cin>>new_movie;
             while(this->checkPrimarykey(new_movie.getId()) != true)
             {    string newId;
-                 cout<<"\nprimary key is exist , retype!!! \n";
-                 cout<<"Id: ";
+                 cout<<"\n\t\t\tPrimary key is exist , retype!!! \n";
+                 cout<<"\t\t\tId: ";
                  cin>>newId;
                  new_movie.setId(newId);                 
 
@@ -266,7 +318,7 @@ do{
         }
         case '2':
         {   string id;
-            cout<<"\nmovie id : ";
+            cout<<"\n\t\t\tMovie ID need Remove : ";
             cin>>id;
             while(this->removeMovie(id) != true)
             {    
@@ -279,7 +331,7 @@ do{
         case '3':
         {
             string id;
-            cout<<"\nmovie id : ";
+            cout<<"\n\t\t\tMovie ID : ";
             cin>>id;
             while(this->editMovie(id) != true)
             {
@@ -293,7 +345,7 @@ do{
         {   cout<<"\n";
             system("cls");
             this->printListMovies();
-            cout<<"\t\t\tpress any key to continue";
+            cout<<"\t\t\tPress any key to continue";
             getch();
             break;
         }
