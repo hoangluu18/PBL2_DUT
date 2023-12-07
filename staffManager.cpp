@@ -116,7 +116,7 @@ void staffManager::readFile()
                 pos = line.find(';');
                 token.setName(line.substr(0,pos));
                 line.erase(0,pos+1);
-                token.setRevenue(stoi(line));
+                
 
                 this->addStaff(token);
 
@@ -148,7 +148,7 @@ void staffManager::writeFile()
        node<staff>* temp = this->head;
        while(temp != NULL)
        {
-           file<<temp->data.getId()<<";"<<temp->data.getName()<<";"<<temp->data.getRevenue()<<endl;
+           file<<temp->data.getId()<<";"<<temp->data.getName()<<";"<<endl;
            temp = temp->next;
        }
    }

@@ -5,30 +5,24 @@
 #include <sstream>
 #include <algorithm>
 #include <iomanip>
-
+#include "Staff.h"
 using namespace std;
 
-struct Employee
-{
-    string employeeId;
-    string employeeName;
-};
 
 struct EmployeeRevenue
 {
-    string employeeId;
-    string employeeName;
+    staff Staff;
     long totalRevenue;
 };
 
-class Revenue
+class Revenue : public staff
 {
 private:
-    Employee* employees;
-    int employeesCount;
+    staff* employees; //nhan vien
+    int employeesCount;// so nhan vien
 
-    EmployeeRevenue* temporaryRevenues;
-    int temporaryRevenuesCount;
+    EmployeeRevenue* temporaryRevenues;//doanh thu tam thoi
+    int temporaryRevenuesCount;//tong doanh thu tam
 
 public:
     Revenue();

@@ -7,22 +7,22 @@ class staff {
 
     string staffId; // mã nhân viên
     string staffName;// tên nhân viên
-    long  revenue; // doanh thu
+   
 
     public:
     staff();
     ~staff();
-    staff(string id, string name, long revenue);
+    staff(string id, string name);
 
     //get 
     string getName();
     string getId();
-    long getRevenue();
+
 
     //set
     void setName(string);
     void setId(string);
-    void setRevenue(long);
+
     //operator
     bool operator== (const staff&);
     friend ostream& operator<<(ostream& os, const staff& );

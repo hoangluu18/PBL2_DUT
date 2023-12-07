@@ -4,7 +4,7 @@ staff::staff()
 {
     this->staffId = "";
     this->staffName = "";
-    this->revenue = 0;
+
 
 }
 
@@ -13,11 +13,11 @@ staff::~staff()
 
 }
 
-staff::staff(string id, string name, long revenue)
+staff::staff(string id, string name)
 {
     this->staffId = id;
     this->staffName = name;
-    this->revenue = revenue;
+ 
 }
 
 //get
@@ -32,10 +32,7 @@ string staff::getName()
     return this->staffName;
 }
 
-long staff::getRevenue()
-{
-    return this->revenue;
-}
+
 
 //set
 void staff::setId(string id)
@@ -48,10 +45,7 @@ void staff::setName(string name)
     this->staffName = name;
 }
 
-void staff::setRevenue(long revenue)
-{
-    this->revenue = revenue;
-}
+
 
 //operator
 bool staff::operator==(const staff& s)
@@ -61,7 +55,7 @@ bool staff::operator==(const staff& s)
 
 ostream& operator<<(ostream& os, const staff& s)
 {
-    os << s.staffId << " " << s.staffName << " " << s.revenue << endl;
+    os << s.staffId << " " << s.staffName << " "  << endl;
     return os;
 }
 
@@ -81,6 +75,6 @@ const staff& staff::operator = (const staff &s)
 {
     this->staffId = s.staffId;
     this->staffName = s.staffName;
-    this->revenue = s.revenue;
+ 
     return *this;
 }

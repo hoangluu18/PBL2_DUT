@@ -64,7 +64,7 @@ void Revenue::processEmployee(const string &employeeName, const string &employee
     bool employeeExist = false;
     for (int i = 0; i < employeesCount; ++i)
     {
-        if (employees[i].employeeId == employeeId)
+        if (employees[i].getId() == employeeId)
         {
             employeeExist = true;
             break;
@@ -74,7 +74,7 @@ void Revenue::processEmployee(const string &employeeName, const string &employee
     if (!employeeExist)
     {
         // Add a new employee
-        Employee* newEmployees = new Employee[employeesCount + 1];
+        staff* newEmployees = new staff[employeesCount + 1];
         copy(employees, employees + employeesCount, newEmployees);
         newEmployees[employeesCount] = {employeeId, employeeName};
 
@@ -89,7 +89,7 @@ void Revenue::processRevenue(const string &employeeName, const string &employeeI
     bool revenueExist = false;
     for (int i = 0; i < temporaryRevenuesCount; ++i)
     {
-        if (temporaryRevenues[i].employeeId == employeeId)
+        if (temporaryRevenues[i].Staff.getId() == employeeId)
         {
             revenueExist = true;
             temporaryRevenues[i].totalRevenue += revenue;
@@ -100,9 +100,13 @@ void Revenue::processRevenue(const string &employeeName, const string &employeeI
     if (!revenueExist)
     {
         // Add a new revenue entry
+        
         EmployeeRevenue* newRevenues = new EmployeeRevenue[temporaryRevenuesCount + 1];
         copy(temporaryRevenues, temporaryRevenues + temporaryRevenuesCount, newRevenues);
-        newRevenues[temporaryRevenuesCount] = {employeeId, employeeName, revenue};
+        //newRevenues[temporaryRevenuesCount] = {employeeId, employeeName, revenue};
+        newRevenues[temporaryRevenuesCount].Staff.setId(employeeId);
+        newRevenues[temporaryRevenuesCount].Staff.setName(employeeName);
+        newRevenues[temporaryRevenuesCount].totalRevenue = revenue;
 
         delete[] temporaryRevenues;
         temporaryRevenues = newRevenues;
@@ -115,7 +119,7 @@ void Revenue::printTotalRevenues()
     system("cls");
     for (int i = 0; i < temporaryRevenuesCount; ++i)
     {
-        cout << "ID: " << temporaryRevenues[i].employeeId << ", Name: " << temporaryRevenues[i].employeeName << ", Total Revenue: " << temporaryRevenues[i].totalRevenue << endl;
+        cout << "ID: " << temporaryRevenues[i].Staff.getId() << ", Name: " << temporaryRevenues[i].Staff.getName() << ", Total Revenue: " << temporaryRevenues[i].totalRevenue << endl;
     }
     system("pause");
 }
