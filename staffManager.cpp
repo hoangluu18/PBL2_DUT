@@ -171,7 +171,6 @@ void staffManager::showStaff()
        
         table[count][0] = current->data.getId();
         table[count][1] = current->data.getName();
-        table[count][2] = to_string(current->data.getRevenue());
         
         count++;
         current = current->next;
@@ -180,7 +179,7 @@ void staffManager::showStaff()
     int width[3] = {0};
     // Duyệt qua mảng 2 chiều để tính độ rộng của mỗi cột
     for (int i = 0; i < widthTable; i++) {
-        for (int j = 0; j < 3; j++) {
+        for (int j = 0; j < 2; j++) {
             if (table[i][j].length() > width[j]) {
                 width[j] = table[i][j].length();
             }
@@ -188,7 +187,7 @@ void staffManager::showStaff()
     }
       // In ra dòng ngăn cách trên cùng của khung
       cout << "\t\t\t+";
-      for (int j = 0; j < 3; j++) {
+      for (int j = 0; j < 2; j++) {
       cout << setw(width[j] + 2) << setfill('-') << "-"; 
       cout << "+";
     }
@@ -197,13 +196,12 @@ void staffManager::showStaff()
     cout << "\t\t\t|";
     cout << setw(width[0] + 2) << setfill(' ') << left << "ID" << "|";
     cout << setw(width[1] + 2) << setfill(' ') << left << "TEN NHAN VIEN" << "|";
-    cout << setw(width[2] + 2) << setfill(' ') << left << "DOANHTHU" << "|";
     cout << endl;
 
     // In ra nội dung của bảng
     for (int i = 0; i < widthTable; i++) {
         cout << "\t\t\t|";
-        for (int j = 0; j < 3; j++) {
+        for (int j = 0; j < 2; j++) {
             cout << setw(width[j] + 2) << setfill(' ') << left << table[i][j] << "|";
         }
         cout << endl;
@@ -211,7 +209,7 @@ void staffManager::showStaff()
 
   // In ra dòng ngăn cách dưới cùng của khung
     cout << "\t\t\t+";
-    for (int j = 0; j < 3; j++) {
+    for (int j = 0; j < 2; j++) {
     cout << setw(width[j] + 2) << setfill('-') << "-"; 
     // In ra dấu "+"
     cout << "+";
@@ -235,11 +233,52 @@ void staffManager::start()
 do{
      
     this->showStaff();
-    cout<<"\t\t\t1. add staff\n";
-    cout<<"\t\t\t2. remove staff\n";
-    cout<<"\t\t\t3. change password\n";
-    cout<<"\t\t\t4. exit\n";
-    cout<<"\t\t\tchoose: ";
+    cout << endl;
+
+    cout << "\t\t\t";
+    for (int j = 0; j <= 1; j++)
+    {
+        cout << char(218);
+        for (int i = 0; i < 21; i++)
+            cout << char(196);
+        cout << char(191) << "     ";
+    }
+    cout << endl;
+    cout << "\t\t\t";
+    cout << char(179) << " 1 " << char(179) << "    ADD STAFF    " << char(179);
+    cout << "     " << char(179) << " 2 " << char(179) << "   REMOVE STAFF  " << char(179) << endl;
+
+    cout << "\t\t\t";
+    for (int j = 0; j <= 1; j++)
+    {
+        cout << char(192);
+        for (int i = 0; i < 21; i++)
+            cout << char(196);
+        cout << char(217) << "     ";
+    }
+    cout << endl;
+    cout << "\t\t\t";
+    for (int j = 0; j <= 1; j++)
+    {
+        cout << char(218);
+        for (int i = 0; i < 21; i++)
+            cout << char(196);
+        cout << char(191) << "     ";
+    }
+    cout << endl;
+    cout << "\t\t\t";
+    cout << char(179) << " 3 " << char(179) << " CHANGE PASSWORD " << char(179);
+    cout << "     " << char(179) << " 4 " << char(179) << "       BACK      " << char(179) << endl;
+
+    cout << "\t\t\t";
+    for (int j = 0; j <= 1; j++)
+    {
+        cout << char(192);
+        for (int i = 0; i < 21; i++)
+            cout << char(196);
+        cout << char(217) << "     ";
+    }
+    cout << endl;
     
    
     tt = getche();
@@ -260,11 +299,11 @@ do{
         case '2':
         {   
             string id;
-            cout<<"\nID: ";
+            cout<<"\n\t\t\tID need remove: ";
             cin>>id;
             while(this->removeStaff(id) != true)
             {   
-                cout<<"\nID: ";
+                cout<<"\n\t\t\tID: ";
                 cin>>id;
                 continue;
             }
@@ -274,11 +313,11 @@ do{
         case '3':
         {  
             string id;
-            cout<<"\nID: ";
+            cout<<"\n\t\t\tID: ";
             cin>>id;
             while(this->changePassword(id) != true)
             {   
-                cout<<"ID: ";
+                cout<<"\t\t\tID: ";
                 cin>>id;
                 continue;
             }
