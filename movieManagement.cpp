@@ -12,7 +12,7 @@ movieManagement::~movieManagement()
 
 
 
-void movieManagement::addMovie(movie newMovie)
+void movieManagement::addMovie(const movie& newMovie)
 {    
     this->insert(newMovie);
 }
@@ -34,15 +34,18 @@ bool movieManagement::removeMovie(string id)
 
 
 
-bool movieManagement::editMovie(string id)
+bool movieManagement::editMovie(string& id , string& newId)
 {  
     movie* m = this->search(id);
     if(m == NULL){
         cout<<"\nnot found check again : \n";
         return false;
     }
-    
-    this->edit(*m);
+
+    movie newMovie;
+    cin>>newMovie;
+    newId = newMovie.getId();
+    this->edit(*m, newMovie);
     return true;
 }
 
@@ -208,7 +211,7 @@ void movieManagement::printListMovies()
 }
 
 
-bool movieManagement::checkPrimarykey(string id)
+bool movieManagement::checkPrimarykey(const string& id)
 {
     node<movie>* current = this->head;
   
@@ -279,14 +282,16 @@ do{
         case '3':
         {
             string id;
+            string newId;
             cout<<"\nmovie id : ";
             cin>>id;
-            while(this->editMovie(id) != true)
+            while(this->editMovie(id,newId) != true)
             {
                 cin>>id;
                 continue;
             }
             this->writeFile();
+            
             break;
         }
         case '4':

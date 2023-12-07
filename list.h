@@ -187,7 +187,7 @@ class list
    virtual void insert(T data);
    virtual  void remove(T data);
    virtual void print();
-   virtual  void edit(T data);
+   virtual  void edit(T data , T newData);
    virtual T* search(string data);
     virtual int getSize();
 };
@@ -268,13 +268,13 @@ void list<T>::print(){
 }
 
 template <class T>
-void list<T>::edit(T data){ 
+void list<T>::edit(T data ,T newData){ 
   node<T> *current = this->head;
   while(current != NULL){
      if(current->data == data){
-          T temp;
-          cin>>temp;
-          current->data = temp;
+        //   T temp;
+        //   cin>>temp;
+          current->data = newData;
           return;
      }
      current = current->next;
