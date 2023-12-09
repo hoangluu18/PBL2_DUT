@@ -1,6 +1,4 @@
 #pragma once
-//create by luu viet hoang
-#include<iostream>
 #include "hash.h"
 #include <conio.h>
 #include "staff.h"
@@ -9,7 +7,7 @@ class accManagement : public Hash
 {
 private:
     string userName;
-   // string password;
+
 public:
     //get , set
     string getUserName(); // lấy tên nhân viên cho phần booking

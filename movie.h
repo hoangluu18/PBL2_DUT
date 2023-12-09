@@ -1,5 +1,4 @@
 #pragma once
-//create by : luu viet hoang
 #include <iostream>
 using namespace std;
 class movie

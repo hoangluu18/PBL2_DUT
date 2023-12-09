@@ -1,7 +1,6 @@
 #pragma once
 #include <iostream>
 using namespace std;
-//create by luu viet hoang , tran ngoc minh hoang
 class staff {
     private:
 

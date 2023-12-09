@@ -40,7 +40,7 @@ void Booking::Datve(string nameStaff)
     cin >> stt;
 
     while (stoi(stt) > 6)
-    { // FIXME: nên dùng try catch nhập sai bắt nhập lại
+    { 
         cout << "Showtime you picked doesn't exist. Please pick again!: ";
         cin >> stt;
     }

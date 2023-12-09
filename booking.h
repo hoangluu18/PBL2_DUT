@@ -1,6 +1,4 @@
 #pragma once
-#include <string>
-#include <fstream>
 #include "accManagement.h"
 #include "ticket.h"
 #include "list.h"

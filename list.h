@@ -1,209 +1,63 @@
-// #pragma once
-
-// //create by : luu viet hoang
-// #include <iostream>
-// #include <stdlib.h>
-
-// using namespace std; 
-// template <class T>
-// struct node{
-//       T data;
-//       node<T>*next;
-//       node(){
-//         this->data = 0;
-//         this->next = NULL;
-//       }
-//       node(T data){
-//         this->data=data;
-//         this->next = NULL;
-//       }
-//    };
-
-// template <class T>
-// class list
-// {
-
-
-//     protected:
-
-//    node<T>*head;
-//     int size ;
-
-//    public:
-//     list();
-//    virtual ~list();
-//    virtual void insert(T data);
-//    virtual  void remove(T data);
-//    virtual void print();
-//    virtual  void edit(T data);
-//    virtual T* search(string data);
-//     virtual int getSize();
-// };
-
-// template <class T>
-// list<T>::list(){
-//   this->head = NULL;
-//   this->size = 0;
-// }
-
-// template <class T>
-
-// list<T>::~list(){
-//     node<T> *current = this->head;
-//     node<T> *next;
-//     while(current!=NULL){
-//         next = current->next;
-//         delete current;
-//         current = next;
-//     }
-//     this->head = NULL;
-//     this->size = 0;
-// }
-
-// template <class T>
-
-// void list<T>::insert(T data){
-//     node<T> *newNode = new node<T>(data);
-//     if(this->head == NULL){
-//         this->head = newNode;
-//     }
-//     else{
-//         node<T> *current = this->head;
-//         while(current->next!=NULL){
-//             current = current->next;
-//         }
-//         current->next = newNode;
-//     }
-//     this->size++;
-// }
-
-// template <class T>
-// void list<T>::remove(T data){
-//     node<T> *current = this->head;
-//     node<T> *prev = NULL;
-//     while(current!=NULL){
-//         if(current->data == data){ 
-//             if(prev == NULL){
-//                 this->head = current->next;
-//             }
-//             else{
-//                 prev->next = current->next;
-//             }
-//             delete current;
-//             this->size--;
-//             return;
-//         }
-//         prev = current;
-//         current = current->next;
-//     }
-// }
-
-// template <class T>
-// void list<T>::print(){
-//     node<T> *current = this->head;
-//     while(current!=NULL){
-//         cout<<current->data;
-//         current = current->next;
-//     }
-//     cout<<endl;
-// }
-
-// template <class T>
-// void list<T>::edit(T data){ 
-//   node<T> *current = this->head;
-//   while(current != NULL){
-//      if(current->data == data){
-//           T temp;
-//           cin>>temp;
-//           current->data = temp;
-//           return;
-//      }
-//      current = current->next;
-//   }
-//   cout<<"not found\n";
-// }
-
-
-// template <class T>
-// int list<T>::getSize(){
-//     return this->size;
-// }
-
-
-// template <class T>
-// T* list<T>::search(string data) {
-//     node<T>* current = this->head;
-
-//     while (current != NULL) {
-//         if (current->data.getId() == data) {
-//             return &(current->data);  // Trả về con trỏ đến đối tượng T nếu tìm thấy
-//         }
-//         current = current->next;
-//     }
-
-//     // Trả về nullptr nếu không tìm thấy
-//     return NULL;
-// }
-
-
-
 #pragma once
-
-
-
-//doubly linklist 
+// doubly linklist
 #include <iostream>
 #include <stdlib.h>
 
-using namespace std; 
+using namespace std;
 template <class T>
-struct node{
-      T data;
-      node<T>*next;
-      node<T>*prev;
+struct node
+{
+    T data;
+    node<T> *next;
+    node<T> *prev;
 
-      node(){
+    node()
+    {
         this->data = 0;
         this->next = NULL;
         this->prev = NULL;
-      }
-      node(T data){
-        this->data=data;
+    }
+    node(T data)
+    {
+        this->data = data;
         this->next = NULL;
         this->prev = NULL;
-      }
-   };
+    }
+};
 
 template <class T>
 class list
 {
-    protected:
-    node<T>*head;
-    int size ;
+protected:
+    node<T> *head;
+    int size;
 
-   public:
+public:
     list();
-   virtual ~list();
-   virtual void insert(T data);
-   virtual  void remove(T data);
-   virtual void print();
-   virtual  void edit(T data , T newData);
-   virtual T* search(string data);
+    virtual ~list();
+    virtual void insert(T data);
+    virtual void remove(T data);
+    virtual void print();
+    virtual void edit(T data, T newData);
+    virtual T *search(string data);
     virtual int getSize();
 };
 
 template <class T>
-list<T>::list(){
-  this->head = NULL;
-  this->size = 0;
+list<T>::list()
+{
+    this->head = NULL;
+    this->size = 0;
 }
 
 template <class T>
 
-list<T>::~list(){
+list<T>::~list()
+{
     node<T> *current = this->head;
     node<T> *next;
-    while(current!=NULL){
+    while (current != NULL)
+    {
         next = current->next;
         delete current;
         current = next;
@@ -214,14 +68,18 @@ list<T>::~list(){
 
 template <class T>
 
-void list<T>::insert(T data){
+void list<T>::insert(T data)
+{
     node<T> *newNode = new node<T>(data);
-    if(this->head == NULL){
+    if (this->head == NULL)
+    {
         this->head = newNode;
     }
-    else{
+    else
+    {
         node<T> *current = this->head;
-        while(current->next!=NULL){
+        while (current->next != NULL)
+        {
             current = current->next;
         }
         current->next = newNode;
@@ -231,22 +89,26 @@ void list<T>::insert(T data){
 }
 
 template <class T>
-void list<T>::remove(T data){
+void list<T>::remove(T data)
+{
     node<T> *current = this->head;
     node<T> *prev = NULL;
-    while(current!=NULL){
-        if(current->data == data){ 
-            if(prev == NULL){
+    while (current != NULL)
+    {
+        if (current->data == data)
+        {
+            if (prev == NULL)
+            {
                 this->head = current->next;
             }
-            else if(current->next != NULL)
+            else if (current->next != NULL)
             {
                 prev->next = current->next;
                 current->next->prev = prev;
             }
             else
             {
-                 prev->next = NULL;
+                prev->next = NULL;
             }
             delete current;
             this->size--;
@@ -258,44 +120,50 @@ void list<T>::remove(T data){
 }
 
 template <class T>
-void list<T>::print(){
+void list<T>::print()
+{
     node<T> *current = this->head;
-    while(current!=NULL){
-        cout<<current->data;
+    while (current != NULL)
+    {
+        cout << current->data;
         current = current->next;
     }
-    cout<<endl;
+    cout << endl;
 }
 
 template <class T>
-void list<T>::edit(T data ,T newData){ 
-  node<T> *current = this->head;
-  while(current != NULL){
-     if(current->data == data){
-        //   T temp;
-        //   cin>>temp;
-          current->data = newData;
-          return;
-     }
-     current = current->next;
-  }
-  cout<<"not found\n";
+void list<T>::edit(T data, T newData)
+{
+    node<T> *current = this->head;
+    while (current != NULL)
+    {
+        if (current->data == data)
+        {
+
+            current->data = newData;
+            return;
+        }
+        current = current->next;
+    }
+    cout << "not found\n";
 }
 
-
 template <class T>
-int list<T>::getSize(){
+int list<T>::getSize()
+{
     return this->size;
 }
 
-
 template <class T>
-T* list<T>::search(string data) {
-    node<T>* current = this->head;
+T *list<T>::search(string data)
+{
+    node<T> *current = this->head;
 
-    while (current != NULL) {
-        if (current->data.getId() == data) {
-            return &(current->data);  // Trả về con trỏ đến đối tượng T nếu tìm thấy
+    while (current != NULL)
+    {
+        if (current->data.getId() == data)
+        {
+            return &(current->data); // Trả về con trỏ đến đối tượng T nếu tìm thấy
         }
         current = current->next;
     }
@@ -303,4 +171,3 @@ T* list<T>::search(string data) {
     // Trả về nullptr nếu không tìm thấy
     return NULL;
 }
-

@@ -1,7 +1,10 @@
 #include "movie.h"
 #include <fstream>
 #include <string>
-// create by : tran ngoc minh hoang
+#include <ctime>
+#include <iomanip>
+#include <iostream>
+#include <algorithm>
 class ticket
 {
 private:

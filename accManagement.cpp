@@ -193,7 +193,7 @@ void accManagement::addAccount(staff new_staff)
 	this->setChoose(choose); // chọn file cần mở
 	this->ReadFile();
 	string password;
-	cout<<"\t\t\tPassword: ";
+	cout<<"\nPassword: ";
 	cin>>password;
 	this->insert(new_staff.getName(),password);
 	this->WriteFile();

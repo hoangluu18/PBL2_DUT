@@ -1,8 +1,5 @@
 #include "ticket.h"
-#include <ctime>
-#include <iomanip>
-#include <iostream>
-#include <algorithm>
+
 string getCurrentDateTime()
 {
     time_t now = time(0);

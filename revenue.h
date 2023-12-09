@@ -1,13 +1,11 @@
 #pragma once
 
-#include <iostream>
 #include <fstream>
 #include <sstream>
 #include <algorithm>
 #include <iomanip>
 #include "Staff.h"
 using namespace std;
-
 
 struct EmployeeRevenue
 {
@@ -18,11 +16,11 @@ struct EmployeeRevenue
 class Revenue : public staff
 {
 private:
-    staff* employees; //nhan vien
-    int employeesCount;// so nhan vien
+    staff *employees;   // nhan vien
+    int employeesCount; // so nhan vien
 
-    EmployeeRevenue* temporaryRevenues;//doanh thu tam thoi
-    int temporaryRevenuesCount;//tong doanh thu tam
+    EmployeeRevenue *temporaryRevenues; // doanh thu tam thoi
+    int temporaryRevenuesCount;         // tong doanh thu tam
 
 public:
     Revenue();

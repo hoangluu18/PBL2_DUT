@@ -1,12 +1,6 @@
 #pragma once
-// #ifndef STAFF_MANAGER_H
-// #define STAFF_MANAGER_H
-// create by : luu viet hoang
-#include<iostream> 
+
 #include "list.h"
-#include <fstream>
-#include <conio.h>
-#include <string>
 #include <iomanip>
 #include "staff.h"
 #include "accManagement.h"
@@ -31,6 +25,3 @@ public:
     string getStaffId(string nameStaff);// lấy id nhân viên từ tên
     string getStaffName(string id) ;// lấy tên nhân viên từ id
 };
-
-
-//#endif

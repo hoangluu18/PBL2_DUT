@@ -1,20 +1,19 @@
 #include "hash.h"
 
 Hash::Hash()
-{   
+{
     choose = "";
-   for(int i = 0; i < capacity; i++)
-   {
-       for(int j = 0; j < capacity; j++) 
-       {
-           this->key[i][j] = false;
-       }
-   }
+    for (int i = 0; i < capacity; i++)
+    {
+        for (int j = 0; j < capacity; j++)
+        {
+            this->key[i][j] = false;
+        }
+    }
 }
 
 Hash::~Hash()
 {
-   
 }
 void Hash::setChoose(string name)
 {
@@ -28,63 +27,62 @@ string Hash::getChoose()
 
 void Hash::ReadFile()
 {
-      ifstream file;
-      file.open(getChoose());
-      if(file.is_open())
-      {
-           string line;
-           int pos;
-         try{
-           while(getline(file,line))
-           {
-               pos = line.find(';');
-               int index1 = stoi(line.substr(0,pos));
-                int index2 = stoi(line.substr(pos+1,line.length()));
-                this->key[index1][index2] = true;
-               line.erase(0,line.length());
-
-           }
-         }
-         catch(const exception& e)
+    ifstream file;
+    file.open(getChoose());
+    if (file.is_open())
+    {
+        string line;
+        int pos;
+        try
         {
-            cout<<"error: "<<e.what()<<endl;
-            cout<<"check again file\n";
-
+            while (getline(file, line))
+            {
+                pos = line.find(';');
+                int index1 = stoi(line.substr(0, pos));
+                int index2 = stoi(line.substr(pos + 1, line.length()));
+                this->key[index1][index2] = true;
+                line.erase(0, line.length());
+            }
         }
-      }
+        catch (const exception &e)
+        {
+            cout << "error: " << e.what() << endl;
+            cout << "check again file\n";
+        }
+    }
 
-      else
-      {   
-          cout<<"File not found check again"<<endl;
-          system("pause");
-      }
+    else
+    {
+        cout << "File not found check again" << endl;
+        system("pause");
+    }
 }
 
 int Hash::hashFunction(string value)
 {
     int hash = 0;
-    for(int i = 0; i < value.length(); i++)
+    for (int i = 0; i < value.length(); i++)
     {
         hash += value[i];
     }
     return hash % capacity;
 }
 
-void Hash::insert(string name,string pass)
-{    
-      int hashName = 0;
-      int hashPass = 0;
+void Hash::insert(string name, string pass)
+{
+    int hashName = 0;
+    int hashPass = 0;
 
-       hashName = hashFunction(name);
-      hashPass = hashFunction(pass);
-      this->key[hashName][hashPass] = true;
+    hashName = hashFunction(name);
+    hashPass = hashFunction(pass);
+    this->key[hashName][hashPass] = true;
 }
 
 bool Hash::search(string name, string pass)
-{ 
+{
     int hashName = hashFunction(name);
     int hashPass = hashFunction(pass);
-    if(this->key[hashName][hashPass] == true)
+    if (this->key[hashName][hashPass] == true)
     {
         return true;
     }
@@ -92,40 +90,36 @@ bool Hash::search(string name, string pass)
     {
         return false;
     }
-
 }
 
 void Hash::WriteFile()
 {
     ofstream file;
     file.open(getChoose());
-    if(file.is_open())
-    {   
-        for(int i = 0; i < capacity; i++)
+    if (file.is_open())
+    {
+        for (int i = 0; i < capacity; i++)
         {
-            for(int j = 0; j < capacity; j++)
+            for (int j = 0; j < capacity; j++)
             {
-                if(this->key[i][j] == true)
+                if (this->key[i][j] == true)
                 {
-                    file<<i<<";"<<j<<endl;
+                    file << i << ";" << j << endl;
                 }
             }
         }
     }
     else
     {
-        cout<<"File not found check again"<<endl;
+        cout << "File not found check again" << endl;
     }
 
     file.close();
 }
 
-void Hash::removeKey(string user,string pass)
+void Hash::removeKey(string user, string pass)
 {
     int hashName = hashFunction(user);
     int hashPass = hashFunction(pass);
     this->key[hashName][hashPass] = false;
 }
-
-
-
