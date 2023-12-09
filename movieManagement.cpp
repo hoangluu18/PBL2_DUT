@@ -235,12 +235,65 @@ void movieManagement::start()
 do{
      
     this->printListMovies();
-    cout<<"\t\t\t1. add movie\n";
-    cout<<"\t\t\t2. remove movie\n";
-    cout<<"\t\t\t3. edit movie\n";
-    cout<<"\t\t\t4. list movie\n";
-    cout<<"\t\t\t5. exit\n";
-    cout<<"\t\t\tchoose: ";
+   cout << endl;
+    cout << "\t\t\t";
+    for (int j = 0; j <= 1; j++)
+    {
+        cout << char(218);
+        for (int i = 0; i < 20; i++)
+            cout << char(196);
+        cout << char(191) << "                     ";
+    }
+    cout << endl;
+    cout << "\t\t\t";
+    cout << char(179) << " 1 " << char(179) << "   ADD MOVIE    " << char(179);
+    cout << "                     " << char(179) << " 2 " << char(179) << "  REMOVE MOVIE  " << char(179) << endl;
+
+    cout << "\t\t\t";
+    for (int j = 0; j <= 1; j++)
+    {
+        cout << char(192);
+        for (int i = 0; i < 20; i++)
+            cout << char(196);
+        cout << char(217) << "                     ";
+    }
+    cout << endl;
+    cout << "\t\t\t";
+    for (int j = 0; j <= 1; j++)
+    {
+        cout << char(218);
+        for (int i = 0; i < 20; i++)
+            cout << char(196);
+        cout << char(191) << "                     ";
+    }
+    cout << endl;
+    cout << "\t\t\t";
+    cout << char(179) << " 3 " << char(179) << "   EDIT MOVIE   " << char(179);
+    cout << "                     " << char(179) << " 4 " << char(179) << "   LIST MOVIE   " << char(179) << endl;
+
+    cout << "\t\t\t";
+    for (int j = 0; j <= 1; j++)
+    {
+        cout << char(192);
+        for (int i = 0; i < 20; i++)
+            cout << char(196);
+        cout << char(217) << "                     ";
+    }
+    cout << endl;
+    cout << "\t\t\t\t\t\t";
+
+    cout << char(218);
+    for (int i = 0; i < 15; i++)
+        cout << char(196);
+    cout << char(191);
+    cout << endl;
+    cout << "\t\t\t\t\t\t";
+    cout << char(179) << " 5 " << char(179) << "   BACK    " << char(179) << endl;
+    cout << "\t\t\t\t\t\t" << char(192);
+    for (int i = 0; i < 15; i++)
+        cout << char(196);
+    cout << char(217) << endl;
+    
     
     tt = getche();
     
@@ -257,7 +310,7 @@ do{
             string newId;
             while(this->checkPrimarykey(new_movie.getId()) != true)
             {    
-                 cout<<"\nprimary key is exist , retype!!! \n";
+                 cout<<"\nPrimary key is exist , retype!!! \n";
                  cout<<"Id: ";
                  cin>>newId;
                  new_movie.setId(newId);                 
@@ -273,7 +326,7 @@ do{
         {   string id;
             suatchieumanager m;
             m.readFile();
-            cout<<"\nmovie id : ";
+            cout<<"\nMovie id : ";
             cin>>id;
             while(this->removeMovie(id) != true)
             {    
@@ -290,7 +343,7 @@ do{
             string newId;
             suatchieumanager m;
             m.readFile();
-            cout<<"\nmovie id : ";
+            cout<<"\nMovie id : ";
             cin>>id;
             while(this->editMovie(id,newId) != true)
             {
