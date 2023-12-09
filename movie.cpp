@@ -40,7 +40,7 @@ ostream& operator<<(ostream& os, const movie& m)
 
 istream& operator>>(istream& is, movie& m)
 { 
-    cout<<"idMovie: ";
+    cout<<"Movie ID: ";
     is>>m.id;
     
     is.ignore();

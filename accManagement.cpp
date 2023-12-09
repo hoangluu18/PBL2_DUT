@@ -150,8 +150,9 @@ void accManagement::checkLogin(bool& check, string& nameStaff)
 				choose = getche();
 				if(choose == '1')
 				{
+				system("cls");
                 cout<<"\t\t\t" << "Username: ", cin >> username;
-			    cout<<"t\t\t" <<  "Password: ", cin >> password;
+			    cout<<"\t\t\t" <<  "Password: ", cin >> password;
 				}
 				else if(choose == '2')
 				{
