@@ -2,7 +2,6 @@
 
 int main()
 {    
-
-	 run();
+	run();
 	return 0;
 }

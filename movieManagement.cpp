@@ -252,23 +252,27 @@ do{
             movie new_movie;         
             cout<<endl;
             cin>>new_movie;
+            suatchieumanager m;
+            m.readFile();
+            string newId;
             while(this->checkPrimarykey(new_movie.getId()) != true)
-            {    string newId;
+            {    
                  cout<<"\nprimary key is exist , retype!!! \n";
                  cout<<"Id: ";
                  cin>>newId;
                  new_movie.setId(newId);                 
-
+                 
             }
-            suatchieumanager m;
             m.createNewSuatchieu(new_movie.getId());
-            
+        
             this->addMovie(new_movie);
             this->writeFile();
             break;
         }
         case '2':
         {   string id;
+            suatchieumanager m;
+            m.readFile();
             cout<<"\nmovie id : ";
             cin>>id;
             while(this->removeMovie(id) != true)
@@ -276,6 +280,7 @@ do{
                 cin>>id;
                 continue;
             }
+            m.removeSuatchieu(id);
             this->writeFile();
             break;
         }
@@ -283,6 +288,8 @@ do{
         {
             string id;
             string newId;
+            suatchieumanager m;
+            m.readFile();
             cout<<"\nmovie id : ";
             cin>>id;
             while(this->editMovie(id,newId) != true)
@@ -290,6 +297,7 @@ do{
                 cin>>id;
                 continue;
             }
+            m.editSuatchieu(id, newId);
             this->writeFile();
             
             break;

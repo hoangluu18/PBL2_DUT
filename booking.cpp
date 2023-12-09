@@ -6,7 +6,8 @@ void Booking::Datve(string nameStaff)
     staffManager staff_manager;
     movieManagement movie;
     suatchieumanager manager;
-
+    manager.readFile();
+    manager.resetseat();
     // in thong tin phim
     system("cls");
     movie.readFile();
@@ -17,8 +18,7 @@ void Booking::Datve(string nameStaff)
     cout << "Customer Name: ";
     cin.ignore();
     getline(cin, customer);
-    manager.readFile();
-    manager.resetseat();
+    
     string id;
     cout << "Put in movie ID: ";
     cin >> id;

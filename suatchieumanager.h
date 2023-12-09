@@ -16,9 +16,8 @@ class suatchieumanager : protected list<suatchieu> {
     string getmovieid(string, string); 
     string getmovietime(string, string);
     string getmoviedate(string, string);
-
     string getmoviename(string);
-
+    
     void setmovieseat(string, string, string);
     void addsuatchieu(suatchieu);  
     void readFile();
@@ -28,6 +27,7 @@ class suatchieumanager : protected list<suatchieu> {
     void resetseat();
     void print_Pre_seat(string);
     string pickseat();
-
-    void createNewSuatchieu(string id);
+    void createNewSuatchieu(string);
+    void removeSuatchieu(string);
+    void editSuatchieu(string, string);
 };

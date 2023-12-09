@@ -238,6 +238,7 @@ void suatchieumanager::resetseat(){
             current = current->next;
         }
     }
+    this->writeFile();
 }
 
 void suatchieumanager::print_Pre_seat(string seat){
@@ -304,4 +305,39 @@ void suatchieumanager::createNewSuatchieu(string id){
         outFile << endl << endl << endl;
     }
     outFile.close();
+}
+
+void suatchieumanager::removeSuatchieu(string id) {
+    ifstream inFile("suatchieu.txt");
+    string line;
+    string File;
+    bool check = false;
+    while(getline(inFile, line)) {
+        if(check == true){
+            File += "";
+            check = false;
+        } else if(line.find(id) == false) {
+            check = true;
+            File += "";
+        } else {
+            File += line;
+            File += "\n";
+        }
+    }
+    inFile.close();
+    ofstream outFile("suatchieu.txt");
+    outFile << File;
+    outFile.close();    
+}
+
+
+void suatchieumanager::editSuatchieu(string old_id, string new_id){
+    node <suatchieu>* current = this->head;
+    while(current != NULL) {
+        if(current->data.getId() == old_id) {
+            current->data.setid(new_id);
+            current = current->next;
+        } else current = current->next;
+    }
+    this->writeFile();
 }
