@@ -273,7 +273,7 @@ string suatchieumanager::pickseat(){
         char soghe = seat[1];
         int ghe = soghe - '0';
         if(ghe >= 9 || hangghe > 'H' || seat.size() >= 3) {
-            cout << "Omae wa bakayarou da?. Mou ichido erabe!: ";
+            cout << "Check again: ";
         } else if (S[hang][ghe] == '0') {
             S[hang][ghe] = 'X';
             break;

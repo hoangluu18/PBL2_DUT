@@ -42,7 +42,7 @@ public:
     ~ticket();
     ticket(string = "", string = "", string = "", string = "", string = "", string = "", string = "");
     void show();
-    string removeHyphens(string);
+
     void SaveToFile();
     friend ostream &operator<<(ostream &, const ticket &);
     friend istream &operator>>(istream &, ticket &);

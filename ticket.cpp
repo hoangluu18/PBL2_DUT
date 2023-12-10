@@ -39,12 +39,7 @@ void ticket::show()
     cout << "o" << std::string(38, '=') << "o";
 }
 
-string ticket::removeHyphens(string str)
-{
-    // Xóa tất cả các ký tự '-' khỏi chuỗi
-    str.erase(std::remove(str.begin(), str.end(), '-'), str.end());
-    return str;
-}
+
 string ticket::getId()
 {
     return this->TicketId;

@@ -290,6 +290,14 @@ do{
         { 
             staff s;
             cin>>s;
+            string newId;
+            while(this->checkPrimarykey(s.getId()) != true)
+            {
+                cout<<"\nPrimary key is exist, retype!!!\n";
+                cout<<"Id: ";
+                cin>>newId;
+                s.setId(newId);
+            }
             this->addStaff(s);
             accManagement acc;
             acc.addAccount(s);// insert mật khẩu
