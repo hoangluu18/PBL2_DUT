@@ -118,7 +118,13 @@ void Revenue::printTotalRevenues()
 {
     system("cls");
     for (int i = 0; i < temporaryRevenuesCount; ++i)
-    {
+    {   
+
+        string  x = (temporaryRevenues[i].Staff.getId()) + temporaryRevenues[i].Staff.getName() + "                         ";
+        for(int j = 0; j< (12 + x.length()/2); j++){
+            cout << "==";
+        }
+        cout << endl;
         cout << "ID: " << temporaryRevenues[i].Staff.getId() << ", Name: " << temporaryRevenues[i].Staff.getName() << ", Total Revenue: " << temporaryRevenues[i].totalRevenue << endl;
     }
     system("pause");

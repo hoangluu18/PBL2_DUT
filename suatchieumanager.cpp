@@ -144,11 +144,29 @@ void suatchieumanager::writeFile(){
 
 void suatchieumanager::checkId(string id){
     node<suatchieu> * current = this->head;
+    string x = current->data.getId() + current->data.getstt() + "                   " ;
+    if (current != NULL){
+        cout << char(218);
+        for(int i=0; i<x.length();i++){
+            cout << char(196);
+        }
+        cout << char(191) << endl;
+    }
     while(current != NULL) {
         if(current->data.getId() == id) {
-            cout << current->data.getId() << ";" << current->data.getstt() << ";" << current->data.gettime() << ";" << current->data.getdate();
+            cout << char(179) << current->data.getId() << " " << char(179) << " " << current->data.getstt();
+            cout << " " << char(179) << " " ;
+            if  ((current->data.gettime()).length() < 5 ){ 
+                    cout<< "0" ;
+            } 
+            cout << current->data.gettime() << " " << char(179) << " " << current->data.getdate() << char(179);
             cout << endl;
             current = current->next;
+            cout << char(179);
+            for(int i=0; i<x.length();i++){
+                cout << char(196);
+            }
+            cout << char(179) << endl;
         } else current = current->next;
     }
 }
