@@ -145,30 +145,33 @@ void suatchieumanager::writeFile(){
 void suatchieumanager::checkId(string id){
     node<suatchieu> * current = this->head;
     string x = current->data.getId() + current->data.getstt() + "                   " ;
-    if (current != NULL){
-        cout << char(218);
-        for(int i=0; i<x.length();i++){
-            cout << char(196);
-        }
-        cout << char(191) << endl;
+    cout << "\n\t\t\to";
+    for(int i=0; i< x.length()+5; i++){
+        cout << "=";
     }
+    cout << "o" << endl;
+    cout << "\t\t\t\t MOVIE ID: " << id << endl;
+    cout << "\t\t\to";
+    for(int i=0; i< x.length()+5; i++){
+        cout << "=";
+    }
+    cout << "o\n";
     while(current != NULL) {
         if(current->data.getId() == id) {
-            cout << char(179) << current->data.getId() << " " << char(179) << " " << current->data.getstt();
-            cout << " " << char(179) << " " ;
+            cout << "\t\t\to   " << current->data.getstt() << "  |  ";
             if  ((current->data.gettime()).length() < 5 ){ 
                     cout<< "0" ;
             } 
-            cout << current->data.gettime() << " " << char(179) << " " << current->data.getdate() << char(179);
+            cout << current->data.gettime() << "  |  " << current->data.getdate() << "   o";
             cout << endl;
             current = current->next;
-            cout << char(179);
-            for(int i=0; i<x.length();i++){
-                cout << char(196);
-            }
-            cout << char(179) << endl;
         } else current = current->next;
     }
+    cout << "\n\t\t\to";
+    for(int i=0; i< x.length()+5; i++){
+        cout << "=";
+    }
+    cout << "o\n";
 }
 
 string suatchieumanager::readseat(string id, string stt) {
