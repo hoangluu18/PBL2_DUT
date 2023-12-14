@@ -207,7 +207,7 @@ void accManagement::removeAccount(staff delStaff)
 	this->setChoose(choose); // chọn file cần mở
 	this->ReadFile();
 	string password_current;
-	cout<<"Password : ";
+	cout<<"\t\t\tPassword : ";
     cin>>password_current;
 	while(this->search(delStaff.getName(),password_current) == false) // nhập mật khẩu hiện tại để xóa tài khoản
 	{   
@@ -228,7 +228,7 @@ void accManagement::changePassword(staff s)
 	this->ReadFile();
 
 	string password_current;
-	cout<<"Current password: ";
+	cout<<"\t\t\tCurrent password: ";
 	cin>>password_current;
 	while(this->search(s.getName(),password_current) == false) // nhập mật khẩu hiện tại để xóa tài khoản
 	{   
@@ -240,7 +240,7 @@ void accManagement::changePassword(staff s)
 	this->removeKey(s.getName(),password_current);// xóa mật khẩu cũ
 
 	string new_pass;
-	cout<<"New password: ";
+	cout<<"\t\t\tNew password: ";
 	cin>>new_pass;
 	
 	this->insert(s.getName(),new_pass);

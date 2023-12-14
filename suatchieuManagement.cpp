@@ -183,6 +183,8 @@ string suatchieumanager::readseat(string id, string stt) {
             return current->data.getseat();
         } else current = current->next;
     }
+    cout<<"khong tim thay suat chieu";
+   
 }
 
 string getCurrentDate()
