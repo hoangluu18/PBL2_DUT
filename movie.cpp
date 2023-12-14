@@ -12,7 +12,6 @@ movie::movie()
 
 movie::~movie()
 {
-
 }
 
 movie::movie(string idMovie, string title, string genre, int lenght, string age, int year)
@@ -25,45 +24,79 @@ movie::movie(string idMovie, string title, string genre, int lenght, string age,
     this->year = year;
 }
 
-//operator
+// operator
 
 bool movie::operator==(const movie &m)
 {
     return this->id == m.id;
 }
 
-ostream& operator<<(ostream& os, const movie& m)
+ostream &operator<<(ostream &os, const movie &m)
 {
-    os<<"idMovie: "<<m.id<<" title: "<<m.title<<" genre: "<<m.genre<<" lenght: "<<m.lenght<<" age: "<<m.age<<" year: "<<m.year<<"\n";
+    os << "idMovie: " << m.id << " title: " << m.title << " genre: " << m.genre << " lenght: " << m.lenght << " age: " << m.age << " year: " << m.year << "\n";
     return os;
 }
 
-istream& operator>>(istream& is, movie& m)
-{ 
-    cout<<"Movie ID: ";
-    is>>m.id;
-    
+istream &operator>>(istream &is, movie &m)
+{
+    cout << "MOVIE ID: ";
+    is >> m.id;
+
     is.ignore();
-   
-    cout<<"title: ";
-    getline(is,m.title);
 
-    cout<<"genre: ";
-    is>>m.genre;
+    cout << "TITLE: ";
+    getline(is, m.title);
 
-    cout<<"lenght: ";
-    is>>m.lenght;
+    cout << "GENRE: ";
+    is >> m.genre;
 
-    cout<<"Age: ";
-    is>>m.age;
+    while (true)
+    {
+        cout << "LENGTH: ";
+        string input;
+        cin >> input;
 
-    cout<<"year: ";
-    is>>m.year;
+        istringstream stream(input);
+        if (stream >> m.lenght && stream.eof())
+        {
+            m.lenght = stoi(input);
+            break;
+        }
+        else
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Invalid input. Please enter an integer.\n";
+        }
+    }
+
+    cout << "AGE: ";
+    is >> m.age;
+
+    while (true)
+    {
+        cout << "YEAR: ";
+        string input;
+        cin >> input;
+
+        istringstream stream(input);
+        if (stream >> m.year && stream.eof())
+        {
+
+            break;
+        }
+        else
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Invalid input. Please enter an integer.\n";
+        }
+    }
 
     return is;
 }
 
-const movie& movie::operator = (const movie &m)
+const movie &movie::operator=(const movie &m)
 {
     this->id = m.id;
     this->title = m.title;
@@ -74,8 +107,7 @@ const movie& movie::operator = (const movie &m)
     return *this;
 }
 
-
-//get
+// get
 string movie::getId()
 {
     return this->id;
@@ -90,7 +122,6 @@ string movie::getGenre()
 {
     return this->genre;
 }
-
 
 int movie::getLenght()
 {
@@ -107,9 +138,7 @@ int movie::getYear()
     return this->year;
 }
 
-
-
-//set
+// set
 void movie::setId(string idMovie)
 {
     this->id = idMovie;
@@ -134,6 +163,3 @@ void movie::setYear(int year)
 {
     this->year = year;
 }
-
-
-

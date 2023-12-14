@@ -18,7 +18,7 @@ void Booking::Datve(string nameStaff)
     cout << "Customer Name: ";
     cin.ignore();
     getline(cin, customer);
-    
+
     string id;
     cout << "Put in movie ID: ";
     cin >> id;
@@ -35,14 +35,29 @@ void Booking::Datve(string nameStaff)
     manager.checkId(id);
 
     // chọn suất chiếu
+    bool validInput = false;
     string stt;
-    cout << "Pick showtime you desire: ";
-    cin >> stt;
+    while (!validInput)
+    {
+        try
+        {
 
-    while (stoi(stt) > 6)
-    { 
-        cout << "Showtime you picked doesn't exist. Please pick again!: ";
-        cin >> stt;
+            cout << "\nPick showtime you desire: ";
+            cin >> stt;
+            int showtime = stoi(stt);
+            if (showtime < 1 || showtime > 6 || stt.size() != 3)
+            {
+                cout << "Showtime you picked doesn't exist. Please pick again!: ";
+            }
+            else
+            {
+                validInput = true;
+            }
+        }
+        catch (const exception &e)
+        {
+            cerr << "Ivalid input format.Please input again\n";
+        }
     }
 
     // chọn ghế , số lượng vé
@@ -63,7 +78,7 @@ void Booking::Datve(string nameStaff)
             cout << "Booked successed! " << seat << endl;
         seat = manager.pickseat();
         m = m + ";" + seat;
-        s[i].setId(to_string(i)); 
+        s[i].setId(to_string(i));
         s[i].setCustomer(customer);
         s[i].setMovieName(manager.getmoviename(id));
         s[i].setMovieTime(manager.getmovietime(id, stt));
@@ -71,7 +86,7 @@ void Booking::Datve(string nameStaff)
         s[i].setPrice(55000);
         s[i].setBuyTime();
         s[i].setNameStaff(nameStaff);
-       s[i].setStaff_id(staff_manager.getStaffId(nameStaff));
+        s[i].setStaff_id(staff_manager.getStaffId(nameStaff));
         system("cls");
     }
     system("cls");

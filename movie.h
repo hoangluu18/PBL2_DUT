@@ -1,5 +1,8 @@
 #pragma once
 #include <iostream>
+#include <limits>
+#include <sstream>
+
 using namespace std;
 class movie
 {
