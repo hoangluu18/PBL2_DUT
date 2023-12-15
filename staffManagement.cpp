@@ -1,4 +1,4 @@
-#include "staffManager.h"
+#include "staffManagement.h"
 
 staffManager::staffManager()
 {
@@ -21,7 +21,7 @@ bool staffManager::removeStaff(string id)
    staff* s = this->search(id);
    if(s == NULL)
    {
-     cout<<"\n Not found , check again: ";
+     cout<<"\n\t\tNot found , check again: ";
      return false;
    }
     staff temp = *s;
@@ -37,7 +37,7 @@ bool staffManager::changePassword(string id)
     staff* s = this->search(id);
     if(s == NULL)
     {
-        cout<<"\n Not found , check again: ";
+        cout<<"\n\t\tNot found , check again: ";
         return false;
     }
     
@@ -325,7 +325,7 @@ do{
             cin>>id;
             while(this->changePassword(id) != true)
             {   
-                cout<<"\t\t\tID: ";
+                cout<<"\n\t\t\tID: ";
                 cin>>id;
                 continue;
             }

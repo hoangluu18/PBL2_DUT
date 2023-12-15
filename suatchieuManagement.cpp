@@ -1,4 +1,4 @@
-#include "suatchieumanager.h"
+#include "suatchieuManagement.h"
 
 suatchieumanager::suatchieumanager(){}
 
@@ -34,7 +34,7 @@ void createtable() {
 void suatchieumanager::readFile(){
     ifstream inFile("suatchieu.txt");
     if(inFile.is_open() == false) {
-        cerr << "File wa doko?";
+        cerr << "File not found , check again";
         return;
     }
     string line;

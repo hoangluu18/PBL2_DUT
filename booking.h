@@ -2,9 +2,9 @@
 #include "accManagement.h"
 #include "ticket.h"
 #include "list.h"
-#include "suatchieumanager.h"
+#include "suatchieuManagement.h"
 #include "movieManagement.h"
-#include "staffManager.h"
+#include "staffManagement.h"
 class Booking {
     public:
     void Datve(string nameStaff);

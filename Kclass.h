@@ -2,7 +2,7 @@
 #include "accManagement.h"
 #include "movieManagement.h"
 
-#include "staffManager.h"
+#include "staffManagement.h"
 #include "booking.h"
 #include "revenue.h"
 using namespace std;

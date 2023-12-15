@@ -2,7 +2,7 @@
 
 #include "list.h"
 #include "movie.h"
-#include "suatchieumanager.h"
+#include "suatchieuManagement.h"
 
 using namespace std;
 
