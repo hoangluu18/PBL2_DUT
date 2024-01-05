@@ -48,7 +48,7 @@ istream &operator>>(istream &is, movie &m)
     getline(is, m.title);
 
     cout << "GENRE: ";
-    is >> m.genre;
+    getline(is, m.genre);
 
     while (true)
     {

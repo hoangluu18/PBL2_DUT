@@ -63,9 +63,42 @@ void Booking::Datve(string nameStaff)
     // chọn ghế , số lượng vé
     string m = manager.readseat(id, stt);
     // manager.print_Pre_seat(m);
-    cout << "Ticket's quantity: ";
-    int count;
-    cin >> count;
+      int count = 0;
+     
+      while (1)
+    {
+        cout << "Ticket's quantity: ";
+   
+        string input;
+        cin >> input;
+
+        istringstream stream(input);
+        if (stream >>count && stream.eof())
+        {
+            count = stoi(input);
+            if(count > 64)
+            {
+                cout << "The number of tickets you want to buy is too large. Please try again!\n";
+            }
+            else
+            {
+                break;
+            }
+            
+        }
+        else
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Invalid input. Please enter an integer.\n";
+        }
+    }
+    
+   
+    
+
+
+
 
     // chọn ghế
     system("cls");
